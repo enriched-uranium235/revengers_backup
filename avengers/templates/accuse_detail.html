@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}投稿詳細 | Avengers{% endblock %}
+
+{% block active_accuse_list %}active{% endblock %}
+
+
+{% block contents %}
+<div class="container">
+    <div>
+        <div class="row" style="margin-top:5rem;">
+            <div class="col-3">
+                <strong>投稿したユーザー</strong>
+            </div>
+            <div class="col-9">
+                {{ object.user }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>被害内容</strong>
+            </div>
+            <div class="col-9">
+                {{ object.title }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>所属団体名</strong>
+            </div>
+            <div class="col-9">
+                {{ object.group|linebreaksbr }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>被害内容詳細</strong>
+            </div>
+            <div class="col-9">
+                {{ object.content|linebreaksbr }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>写真</strong>
+            </div>
+            <div class="col-3">
+                {% if object.photo1 %}
+                    <img src="{{ object.photo1.url }}" width="200" height="200"/>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                {% if object.photo2 %}
+                    <img src="{{ object.photo2.url }}" width="200" height="200"/>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                {% if object.photo3 %}
+                    <img src="{{ object.photo3.url }}" width="200" height="200"/>
+                {% endif %}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>音声</strong>
+            </div>
+            <div class="col-3">
+                {% if object.media1 %}
+                <figure>
+                    <figcaption>証拠音声1</figcaption>
+                    <audio controls
+                           src="{{ object.media1.url }}">
+                        申し訳ありません、お使いのブラウザは音声に対応しておりません。
+                    </audio>
+                </figure>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                {% if object.media2 %}
+                <figure>
+                    <figcaption>証拠音声2</figcaption>
+                    <audio controls
+                           src="{{ object.media2.url }}">
+                        申し訳ありません、お使いのブラウザは音声に対応しておりません。
+                    </audio>
+                </figure>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                {% if object.media3 %}
+                <figure>
+                    <figcaption>証拠音声3</figcaption>
+                    <audio controls
+                           src="{{ object.media3.url }}">
+                        申し訳ありません、お使いのブラウザは音声に対応しておりません。
+                    </audio>
+                </figure>
+                {% endif %}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>動画</strong>
+            </div>
+            <div class="col-3">
+                {% if object.media4 %}
+                    <video controls width="250">
+                        <source src="{{ object.media4.url }}">
+                        申し訳ありません、お使いのブラウザはビデオに対応しておりません。
+                    </video>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                {% if object.media5 %}
+                    <video controls width="250">
+                        <source src="{{ object.media5.url }}">
+                        申し訳ありません、お使いのブラウザはビデオに対応しておりません。
+                    </video>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                {% if object.media6 %}
+                    <video controls width="250">
+                        <source src="{{ object.media4.url }}">
+                        申し訳ありません、お使いのブラウザはビデオに対応しておりません。
+                    </video>
+                {% endif %}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>作成日時</strong>
+            </div>
+            <div class="col-9">
+                {{ object.created_at }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>更新日時</strong>
+            </div>
+            <div class="col-9">
+                {{ object.updated_at }}
+            </div>
+        </div>
+
+        <hr>
+
+        <a href="{% url 'avengers:comment_view' object.pk %}" class="btn btn-primary">コメントする</a>
+        <a href="{% url 'avengers:accuse_list' %}" class="btn btn-primary">投稿一覧に戻る</a>
+
+        <hr>
+
+        <h2 class="title is-5">コメント一覧</h2>
+        {% for comment in com_list %}
+        <div class="row">
+            <div class="col-12">
+                <p>{{ comment.content }}</p>
+                <a href="{% url 'avengers:reply_create' comment.pk %}" class="btn btn-secondary">返信する</a>
+                {% with reply_list=comment.comment_set.all %}
+                    {% include 'reply.html' %}
+                {% endwith %}
+                <hr>
+            </div>
+        </div>
+        {% empty %}
+        <h5>まだコメントが投稿されていません。</h5>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

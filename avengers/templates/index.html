@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}集え、復讐を望む者たちよ!! | Avengers{% endblock %}
+
+{% block header%}
+<header class="masthead text-white text-center">
+  <div class="masthead-content">
+    <div class="container">
+      <h1 class="masthead-heading mb-0">Avengers</h1>
+      <h2 class="masthead-subheading mb-0">もう、一人で悩まないで！！<br>あなたは一人じゃないのだから！！</h2>
+      <a href="{% url 'account_login' %}" class="btn btn-primary btn-xl rounded-pill mt-5">LOG IN</a>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/pawahara.png' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <h2 class="display-4">Avengersとは</h2>
+          <p>Avengeresとは、職場いじめやパワハラ、モラハラなどでうつ病を発症した方や発症しかかっている方に向けて作られたWebサービスです。受けた被害を投稿して他のユーザーさんに知ってもらったり、投稿内容を元にお近くの法テラスや心療内科で相談できるようにして、被害を受けたあなたがもう一度やり直す助けになればという思いから作りました。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/letter.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="p-5">
+          <h2 class="display-4">Accuse Your Suffering</h2>
+          <p>あなたの受けた被害を投稿したり、他のユーザーさんの受けた被害を見たりすることができます。理不尽な扱いを受けて病を発症することは恥ずかしいことではありません。むしろ、そういう証拠があるのならば積極的にみんなに知ってもらって法律家や精神科に相談することをお勧めします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/communication.png' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <h2 class="display-4">Community Chat</h2>
+          <p>会員様同士で交流するためのスレッドを用意しています。同じ境遇に置かれて苦しんでいる方々同士で交流し、もう一度あなたが立ち上がる助けになればと思います。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
