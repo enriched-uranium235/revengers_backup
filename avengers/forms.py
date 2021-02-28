@@ -1,7 +1,8 @@
 from django import forms
 from django.core.mail import EmailMessage
+from django.contrib.auth.models import User
 
-from .models import Avengers, Message, Comment
+from .models import Avengers, Notice, Comment, DM, Comment2
 
 
 class InquiryForm(forms.Form):
@@ -47,17 +48,7 @@ class InquiryForm(forms.Form):
 class DiaryCreateForm(forms.ModelForm):
     class Meta:
         model = Avengers
-        fields = ('title', 'content', 'group', 'photo1', 'photo2', 'photo3', 'media1', 'media2', 'media3', 'media4', 'media5', 'media6')
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control'
-
-class MessageCreateForm(forms.ModelForm):
-    class Meta:
-        model = Message
-        fields = ('content',)
+        fields = ('title', 'content', 'group', 'photo1', 'media1', 'media2')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -73,3 +64,31 @@ class CommentCreateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
+
+# 運営からの通知作成フォーム
+class NoticeCreateForm(forms.ModelForm):
+    class Meta:
+        model = Notice
+        fields = ('title', 'content',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+# DM作成フォーム
+class DMForm(forms.ModelForm):
+    # 後から 選択肢を追加
+    class Meta:
+        model = DM
+        fields = ('content',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+class NewCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment2
+        fields = ['content']

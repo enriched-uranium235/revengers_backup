@@ -1,0 +1,23 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}My Page-表示履歴 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">My Page-表示履歴</h1>
+            <hr>
+            <p>　このページでは、My Pageに設置されている「表示履歴」のボタンの役割について説明します。下の画像をご覧いただきますとお分かりかと思いますが、画面の右側に3つ並んでいるボタンの中に「表示履歴」と書かれたボタンが設置してあります。このボタンの役割は、各ユーザー様が閲覧した投稿が各ユーザー様ごとに全て記録され、過去に表示したことのある投稿をもう一度見たいと思ったときにご活用いただけます。なお、過去に見たことのある投稿であっても、投稿主様が投稿を削除してしまった場合又は他のユーザー様からの通報を受けて管理者側で確認の上で削除した場合は、履歴からもその投稿は自動で削除される仕様となっております。</p>
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_mypage2.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　「表示履歴」のボタンを押していただきますと、以下の画像のような画面に飛びます。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage_log.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　まだどの投稿も視聴していない時には上の画像のようになりますが、Everyone's Postのタブをタップして他のユーザー様の投稿ないしはユーザー様自身の投稿を閲覧した際に履歴として記録され、表示履歴のリストに保存されていきます。同じ投稿を複数回見た時に対象の投稿を一番上に持ってくる仕様とかニコニコ動画で実装されてますけどあれってどうやるんでしょうね…。誰かやり方教えてください。そのことはさておき、Everyone's Postに掲載されている投稿を視聴した後で表示履歴のページに飛んだ場合の画像が以下の通りです。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage_log2.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　これはあくまでも例として「動画投稿テスト」の記事を見た後で表示履歴をタップしたらこうなるということを示しています。いろいろな投稿を閲覧しますとその数に応じて10、100と履歴に登録される記事は増えていきます。現状履歴を消す仕様は付けていませんがもし実装を希望される方がいましたら実装しようと思います。その際はお問い合わせお願いします。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

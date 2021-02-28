@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Post Create | Avengers{% endblock %}
+
+{% block active_message_list %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1 class="fs-1">スレッド詳細</h1>
+                <hr>
+                <article class="media content-section">
+                    <div style="width: 100%; word-break: break-all;">
+                        <div class="pb-2 row m-0" style="width: 100%; margin-right: 0 !important;">
+                            <div
+                            style="padding-left: 0px !important;"
+                            class="col-8 no-padding d-flex align-items-center">
+                            <img
+                                class="rounded-circle mr-2"
+                                style="width: 20px; height: 20px;"
+                                src="{{ post.author.profile.image.url }}">
+                            <a class="mr-2 white-important" href="{% url 'avengers:user-posts' post.author %}">
+                                {{ post.author }}
+                            </a>
+                            </div>
+                            <div class="col-4 d-flex flex-row-reverse no-padding align-items-center"
+                            style="padding-right: 0 !important;">
+                            {% if post.author == user %}
+                            <a class="material-icons ml-2"
+                                style="font-size: 14px"
+                                    href="{% url 'avengers:post-delete' post.id %}">削除</a>
+                            <a class="material-icons ml-2"
+                                style="font-size: 14px"
+                                    href="{% url 'avengers:post-update' post.id %}">更新</a>
+                            {%  endif %}
+                            </div>
+                        </div>
+                    <div
+                        class="mb-2"
+                        style="width: 100%; height: 1px;"></div>
+                        <p>
+                            {{ post.content }}
+                        </p>
+
+                        <small
+                            class="d-flex full-width flex-row-reverse">
+                            {{ post.date_posted | date:"H:i l, y.m.d" }}
+                        </small>
+                    </div>
+                </article>
+                <hr>
+                <div class="row">
+                    <div class="col-12 pl-1">
+                        {% if user is not None %}
+                        <div>
+                            <h3 class="white-important mb-3">
+                                コメントを追加する
+                            </h3>
+                            <hr>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <fieldset class="form-group">
+                                    {{ form }}
+                                </fieldset>
+                                <div class="form-group">
+                                    <button class="btn btn-outline-primary" type="submit">追加</button>
+                                </div>
+                            </form>
+                            <hr>
+                        </div>
+                        {% endif %}
+                        <div class="fr">
+                            <h3 class="white-important mb-3">
+                                コメント一覧
+                            </h3>
+                            <hr>
+                            {% for comment in comments %}
+                            <article class="media content-section">
+                                <div style="width: 100%; word-break: break-all;">
+                                    <div class="pb-2 row m-0" style="width: 100%; margin-right: 0 !important;">
+                                        <div
+                                            style="padding-left: 0px !important;"
+                                            class="no-padding d-flex align-items-center">
+                                            <img
+                                                class="rounded-circle mr-2"
+                                                style="width: 20px; height: 20px;"
+                                                src="{{ comment.author.profile.image.url }}">
+                                            <a class="mr-2 white-important" href="{% url 'avengers:user-posts' comment.author.username %}">
+                                                {{ comment.author }}
+                                            </a>
+                                            <a class="material-icons ml-2"
+                                                style="font-size: 14px"
+                                                href="{% url 'avengers:report5' post.pk comment.pk %}">通報</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="mb-2"
+                                        style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.1)"></div>
+                                    <p>
+                                        {{ comment.content }}
+                                    </p>
+
+                                    <small>
+                                        <a href="{% url 'avengers:good6' post.pk comment.pk %}">💛いいね</a>={{ comment.good_count }}
+                                    </small>
+                                    <small class="white-important full-width flex-row-reverse float-right">　　　　
+                                        {{ comment.date_posted | date:"H:i l, y.m.d" }}
+                                    </small>
+                                </div>
+                            </article>
+                            <hr>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

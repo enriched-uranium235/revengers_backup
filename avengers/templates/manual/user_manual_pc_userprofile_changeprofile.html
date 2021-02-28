@@ -1,0 +1,31 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}User Profile-プロフィール変更 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">User Profile-プロフィール変更</h1>
+            <hr>
+            <p>　ここでは、User Profileでプロフィールを変更するやり方について説明をさせていただきます。まずは以下の画像をご覧ください。</p>
+            <img src="{% static 'img/user_manual_PC_userprofile.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　ご覧の通りですが、ホーム画面の右下に「プロフィール編集」と書かれたボタンが設置してあります。そのボタンをクリックしてプロフィール編集画面に移動していただきますと以下のようなページが表示されます。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_changeprofile.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　各項目にはアカウント作成時に登録した情報が入力済みです。今回は、ユーザー名、メールアドレス、プロフィール画像全てを編集してみましょう。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_changeprofile6.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　名前を「アリア」に、メールアドレスを「risounoyome@test.com」に、そして、プロフィール用に画像ファイルを読み込ませました。この状態で「変更」と書かれたボタンを押してみましょう。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_changeprofile7.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　画面上部に「アカウントが更新されました!」という内容のメッセージが表示されました。これでプロフィールは変更されました。User Profileタブをクリックしてホーム画面に戻ってみましょう。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_userprofile3.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　変更された情報が反映されているのがすぐにわかると思います。プロフィール画像が切り替わり、名前が「アリア」に変更されました!!</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>アカウント作成時にも言えることですが、ユーザー名で使える記号は@/./+/-/_の5つのみです。それ以外の記号は利用できませんのでご注意ください。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+        </div>
+    </div>
+</div>
+{% endblock %}

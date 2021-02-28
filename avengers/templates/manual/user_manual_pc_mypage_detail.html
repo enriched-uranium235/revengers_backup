@@ -1,0 +1,34 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}My Page-投稿詳細 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">My Page-投稿詳細</h1>
+            <hr>
+            <p>　このページでは、あなたが投稿した記事の詳細画面の見方について説明をします。まずは以下の画像をご覧ください。</p>
+            <img src="{% static 'img/user_manual_PC_mypage5.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　ホーム画面にはいくつかの記事がリストアップされています。詳細を見ていくためにも画像投稿テストの記事をクリックしてみましょう。すると、以下の画像で示すような画像に飛びます。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_mypage_detail.png' %}" style="width:80vw;height:50vw;">
+            <img src="{% static 'img/user_manual_PC_mypage_detail2.png' %}" style="width:80vw;height:30vw;">
+            <p class="mt-5">　詳細画面では添付された画像や音声、動画のファイルを筆頭として、ユーザーの皆様がフォームに記入した内容が逐一反映されていきます。また、ページを下にスクロールしていきますと「編集」「削除」「戻る」と書かれたボタンがあり、その下には「コメント一覧」と書かれた場所があります。投稿した記事を更新したり、削除したりできるほか、あなたが投稿した記事に対して書かれたコメントに対して返信を送ることができるのもこの詳細画面です。</p>
+            <h3 class="mt-5">《ボタン説明》</h3>
+            <p>編集:　投稿した記事の内容を書き換えて更新します。</p>
+            <p>削除:　投稿した記事を削除します。</p>
+            <p>戻る:　My Pageホーム画面に戻ります。</p>
+            <p>返信する(コメントが投稿された場合):　投稿した記事に対してコメントが書かれた場合、コメントに対して返信することができます。</p>
+            <p>いいね!する(コメントが投稿された場合):　投稿されたコメントに対していいね!をすることができます。コメントに共感できたときなんかにポチッと押してみましょう。</p>
+            <p>通報する(コメントが投稿された場合):　投稿されたコメントが不適切な内容だった場合、通報することができます。通報されたコメントは管理者の目で確認し、不適切であると判断した場合は早急にコメントを消去します。</p>
+            <p class="mt-5">以下の画像がコメントが投稿された場合の表示です。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_mypage_detail_comment.png' %}" style="width:80vw;height:30vw;">
+            <p class="mt-5">　コメントが投稿された場合に「返信する」や「通報する」のボタンも表示されます。特定ユーザーによる執拗な暴言等サービス内の秩序を乱すユーザーがいましたら通報お願いします。</p>
+            <h3 class="mt-5">《その他機能》</h3>
+            <p>　詳細ページのコメント一覧にてコメントしたユーザー様のアイコン画像をクリックしますとそのユーザー様のプロフィールや書いたスレッドが掲載されたページへと移動します。そちらで対象のユーザー様をフォローすることもできます。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

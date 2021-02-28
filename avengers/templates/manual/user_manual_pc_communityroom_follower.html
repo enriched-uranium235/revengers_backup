@@ -1,0 +1,34 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-フォロワー | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-フォロワー</h1>
+            <hr>
+            <p>　ここでは、あなたをフォローしているユーザーのリストを確認する画面についての説明をさせていただきます。まずは、以下の画像をご覧ください。</p>
+            <img src="{% static 'img/user_manual_PC_communityroom.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　「フォロワー」と書かれたボタンがありますね?そちらをクリックしますと、次のような画面に移動します。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_follower.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　まだ誰にもフォローされていない場合には、このような画面となりますが、誰かがフォローしてくれていると上の画像は下の画像のように画面表示が変わります。今回はあらかじめ別アカウントを作成して「アリア_スターライト」のアカウントをフォローさせておきました。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_follower2.png' %}" style="width:80vw;height:50vw;">
+            <div class="balloon2" style="width:55vw;">
+                <p>別アカウントに使用しているキャラクターの詳細は<a href="https://ncode.syosetu.com/n1856gp/">こちら</a>です。興味がありましたらお読みいただければと思います。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+            <h3 class="mt-5">《機能説明》</h3>
+            <p>　この画面でできることは以下の通りです。</p>
+            <p>・フォローしてくれたユーザーにダイレクトメッセージを送る</p>
+            <p>・フォローしてくれたユーザーの詳細を確認する</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>詳しい使い方については別のページで行わせていただきます。このページでできることは上記の2点であることをご理解ください。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+        </div>
+    </div>
+</div>
+{% endblock %}

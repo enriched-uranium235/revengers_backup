@@ -1,0 +1,101 @@
+@media (min-width:400px) and (max-width:600px){
+    header.masthead .masthead-content .masthead-heading {
+        font-size: 20vw;
+    }
+
+    .display-4 {
+        font-size: 10vw;
+    }
+
+    .row {
+        margin-left: 3vw;
+        margin-right: 3vw;
+    }
+
+    .diary-video {
+        float: none !important;
+    }
+
+    .diary-sound {
+        float: none !important;
+    }
+
+    .diary-photo {
+        float: none !important;
+    }
+
+    .post-title {
+        font-size: 5vw;
+        width: 70vw;
+    }
+
+    .adsence-left {
+        display: none !important;
+    }
+
+    .adsence-right {
+        display: none !important;
+    }
+
+    .accuse_video {
+        float: none !important;
+    }
+
+    .accuse_sound {
+        float: none !important;
+    }
+
+    .accuse_photo {
+        float: none !important;
+    }
+
+    .accuse_video_size {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .accuse_sound_size {
+        width: 60vw;
+    }
+
+    .accuse_photo_size {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .input_form {
+        margin-left: 5vw;
+    }
+
+    .float-left.mini-profile {
+        display: none !important;
+    }
+
+    .fs-1 {
+        font-size:7vw;
+    }
+
+    .fs-2 {
+        font-size:5vw;
+    }
+
+    .fs-3 {
+        font-size:4vw;
+    }
+
+    .fs-4 {
+        font-size:3vw;
+    }
+
+    .tac {
+        text-align:center !important;
+    }
+
+    .manual-tab {
+        margin-left:20vw;
+    }
+
+    .manual-sp {
+        margin-left:25vw;
+    }
+}

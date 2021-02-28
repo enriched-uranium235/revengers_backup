@@ -1,0 +1,34 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Everyone's Post-詳細画面 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Everyone's Post-詳細画面</h1>
+            <hr>
+            <h3>《表示内容》</h3>
+            <p>　ここでは、ユーザーの皆様が投稿された記事の詳細画面の見方について説明していきます。まずは以下の画像をご覧ください。</p>
+            <img src="{% static 'img/user_manual_PC_everyonespost_detail.png' %}" style="width:80vw;height:50vw;">
+            <img src="{% static 'img/user_manual_PC_everyonespost_detail2.png' %}" style="width:80vw;height:35vw;">
+            <p class="mt-5">　証拠となる画像や音声、動画が先頭に配置され、その下に投稿者や投稿記事にかかわる詳細情報を示し、そのさらに下には各種機能を備えたボタンやコメント一覧を見ることのできる箇所が用意されています。画面は今後もどんどん使いやすい形に改良していく予定ですが、当面はこのままになると思います。</p>
+            <h3 class="mt-5">《ボタン説明》</h3>
+            <p>　ここでは、このページ内に配置されている各種ボタンの説明をさせていただきます。設置されているボタンの名称と機能としては以下のものがあります。</p>
+            <p>・コメントする:　投稿された記事にコメントを投稿します。</p>
+            <p>・戻る:　この詳細画面を表示する直前のページに戻ります。</p>
+            <p>・いいね!:　投稿された記事に対していいね!します。</p>
+            <p>・お気に入り登録:　投稿された記事をお気に入りとして登録します。</p>
+            <p>・この投稿を通報する:　投稿された記事を不適切なものとして通報します。</p>
+            <p>(コメントや返信が投稿されている場合)</p>
+            <p>・返信する:　投稿されたコメントに対して返信します。</p>
+            <p>・いいね!:　投稿されたコメント又は返信に対していいね!します。</p>
+            <p>・通報する:　投稿されたコメント又は返信を通報します。</p>
+            <p>(その他機能)</p>
+            <p>　投稿したユーザー様やコメントしたユーザー様のアイコン画像をクリックすることで対象ユーザーをフォローすることができます。自分で投稿した記事の場合自分自身のアイコンをクリックすると、Community Roomの自分で投稿したスレッドを管理するページへと移動します。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

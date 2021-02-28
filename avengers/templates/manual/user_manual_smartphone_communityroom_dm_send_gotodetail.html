@@ -1,0 +1,21 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-DM送信詳細 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-送信済みDM詳細</h1>
+            <hr>
+            <p>　ここでは、あなたが送ったダイレクトメッセージの詳細画面へと移動するやり方について説明させていただきます。まずは、Community Roomの「送ったダイレクトメッセージ」のボタンより送信済みダイレクトメッセージのリストを表示します。以下の画像がそうです。</p>
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_communityroom_dm_send2.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　見ての通り、1人のユーザーに今この「アリア_スターライト」のアカウントでダイレクトメッセージを送っています。ユーザー「ディアナ.アニマ」に送ったメッセージ詳細を確認するやり方ですが、送ったメッセージの右端にある「詳細」と書かれたボタンをタップするだけです。すると、次の画面へと移動します。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_communityroom_dm_send_detail.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　これで詳細画面には移動できました。画面の見方やこの画面で使える機能についての説明は別のページで行わせていただきます。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -9,13 +9,18 @@
 <div class="container">
     <div class="row">
         <div class="my-div-style w-100">
-            <h2 class="post-title" style="color:red;">注意：被害を投稿する際は必ず証拠となる画像や音声、動画を添付しましょう。証拠なしに投稿すると名誉棄損等で訴えられる危険性があります。</h2>
+            <h1>被害を投稿</h1>
+            <hr>
+            <h2 class="post-title" style="color:red;">注意：被害を投稿する際は必ず証拠となる画像や音声、動画を添付しましょう。証拠なしに投稿すると名誉棄損等で訴えられる危険があります。物証なしに被害投稿をして投稿者様が訴えられたとしても当サービスは責任を負いません。投稿は自己責任でお願いします。</h2>
             <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
                 <table class="table">
                     {{ form.as_table }}
                 </table>
-                <button class="btn btn-primary" type="submit">作成</button>
+                <div style="text-align:center;">
+                    <button class="btn btn-primary" type="submit">作成</button>
+                    <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+                </div>
             </form>
         </div>
     </div>

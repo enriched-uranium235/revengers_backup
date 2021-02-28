@@ -27,8 +27,6 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
 
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +48,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.media',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -127,16 +126,20 @@ MESSAGE_TAGS = {
     messages.INFO: 'alert alert-info',
 }
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
-
 # django-allauthで利用するdjango.contrib.sitesを使うためにサイト識別用IDを設定
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
-    'allauth.account.auth_backends.AuthenticationBackend',  # 一般ユーザー用(メールアドレス認証)
+    'allauth.account.auth_backends.ModelBackend',  # 一般ユーザー用(ユーザー名認証)
     'django.contrib.auth.backends.ModelBackend',  # 管理サイト用(ユーザー名認証)
 )
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'hexanitrobenzene@gmail.com'
+EMAIL_HOST_PASSWORD = 'password'
+EMAIL_PORT = '587'
 
 
 # ログイン/ログアウト後の遷移先を設定

@@ -9,7 +9,7 @@
     <div class="row">
         <div class="my-div-style">
             <h1>Log In</h1>
-            <form method="post" action="{% url 'account_login' %}">
+            <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
 
                 {{ form.as_p }}
@@ -19,7 +19,7 @@
                 {% endif %}
 
                 <button class="btn btn-primary" type="submit">ログイン</button>
-                <p><a class="button secondaryAction" href="{% url 'account_reset_password' %}">パスワードを忘れましたか？</a></p>
+                <p><a class="button secondaryAction" href="{% url 'password-reset' %}">パスワードを忘れましたか？</a></p>
             </form>
         </div>
     </div>

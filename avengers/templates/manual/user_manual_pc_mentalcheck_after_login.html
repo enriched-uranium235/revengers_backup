@@ -1,0 +1,20 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}メンタルチェック(PC版) | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">メンタルチェック(PC版)</h1>
+            <hr>
+            <p>　このページはパソコンで当サービスをご利用される会員様向けに用意されたマニュアルのメンタルチェック解説ページです。ログイン前とログイン後の違いは上部ナビゲーション表示の項目数が多いか少ないかだけです。</p>
+            <img src="{% static 'img/user_manual_PC_mentalcheck_after_login.png' %}" style="width:80vw;height:50vw;">
+            <h3 class="mt-5">《画面の見方》</h3>
+            <p>　ストレスチェック、およびうつ病診断と書かれた二つのボタンがあります。ストレスチェックと書かれたボタンをクリックしていただきますと厚労省のストレスチェック診断に、うつ病診断と書かれたボタンをクリックしていただきますとうつ病診断のサイトに移動します。いずれも当サービスとは無関係の外部サイトになります。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

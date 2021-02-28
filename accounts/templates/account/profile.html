@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}プロフィール編集 | Avengers{% endblock %}
+
+{% block contents %}
+    <h3 style="margin-top:6rem;margin-left:1rem;">
+        プロフィールを変更
+    </h3>
+    <form class="col-6 no-padding ml-1" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ uform }}
+            {{ pform }}
+        </fieldset>
+        <div class="form-group" style="text-align:center;">
+            <button class="btn btn-outline-primary" type="submit">変更</button>
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+        </div>
+    </form>
+{% endblock %}

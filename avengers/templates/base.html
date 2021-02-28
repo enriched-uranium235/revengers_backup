@@ -8,6 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="icon" type="image/jpg" href="{% static 'icon/avengers_favicon.jpg' %}">
+
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
@@ -18,10 +20,21 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/original2.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/origin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/origin_for_sp2.css' %}" media="(min-width:400px) and (max-width:600px)">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/origin_for_sp.css' %}" media="screen and (max-width:400px)">
 
     <!-- My style -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle1.css' %}">
+
+    <!-- smartphone -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive_smartphone1_1.css' %}" media="screen and (max-width:400px)">
+
+    <!-- smartphone2 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive_smartphone2_2.css' %}" media="(min-width:400px) and (max-width:600px)">
+
+    <!-- tablet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive_tablet1_1.css' %}" media="(min-width:600px) and (max-width:1000px)">
     {% block head %}{% endblock %}
   </head>
 
@@ -39,29 +52,47 @@
                 <li class="nav-item {% block active_inquiry %}{% endblock %}">
                   <a class="nav-link" href="{% url 'avengers:inquiry' %}">Contact</a>
                 </li>
+                <li class="nav-item {% block mental_check %}{% endblock %}">
+                  <a class="nav-link" href="{% url 'avengers:mental_check' %}">Mental Check</a>
+                </li>
+                <li class="nav-item {% block search_lawyer %}{% endblock %}">
+                  <a class="nav-link" href="{% url 'avengers:search_lawyer' %}">Search Lawyer</a>
+                </li>
+                <li class="nav-item {% block psychosomatic_medicine %}{% endblock %}">
+                  <a class="nav-link" href="{% url 'avengers:search_doctor' %}">Psychosomatic Medicine</a>
+                </li>
+                <li class="nav-item {% block user_manual %}{% endblock %}">
+                    <a class="nav-link" href="{% url 'avengers:user_manual' %}">User Manual</a>
+                </li>
                 {% if user.is_authenticated %}
                   <li class="nav-item {% block active_diary_list %}{% endblock %}">
-                      <a class="nav-link" href="{% url 'avengers:diary_list' %}">Your Accusation</a>
+                      <a class="nav-link" href="{% url 'avengers:diary_list' %}">My Page</a>
                   </li>
                   <li class="nav-item {% block active_accuse_list %}{% endblock %}">
                       <a class="nav-link" href="{% url 'avengers:accuse_list' %}">Everyone's Post</a>
                   </li>
                   <li class="nav-item {% block active_message_list %}{% endblock %}">
-                      <a class="nav-link" href="{% url 'avengers:comment_list' %}">Community Room</a>
+                      <a class="nav-link" href="{% url 'avengers:community_room' %}">Community Room</a>
+                  </li>
+                  <li class="nav-item {% block user_profile %}{% endblock %}">
+                      <a class="nav-link" href="{% url 'avengers:profile' %}">User Profile</a>
+                  </li>
+                  <li class="nav-item {% block account_delete %}{% endblock %}">
+                      <a class="nav-link" href="{% url 'avengers:delete' user.username %}">Delete Account</a>
                   </li>
                 {% endif %}
               </ul>
               <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                   <li class="nav-item">
-                      <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+                      <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                   </li>
                 {% else %}
                   <li class="nav-item {% block active_signup %}{% endblock %}">
-                      <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+                      <a class="nav-link" href="{% url 'register-users' %}">Sign Up</a>
                   </li>
                   <li class="nav-item {% block active_login %}{% endblock %}">
-                      <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+                      <a class="nav-link" href="{% url 'login' %}">Log In</a>
                   </li>
                 {% endif %}
               </ul>
@@ -92,7 +123,7 @@
         <!-- Footer -->
         <footer class="py-5 bg-black">
           <div class="container">
-            <p class="m-0 text-center text-white small">Copyright &copy; Avengers 2020</p>
+            <p class="m-0 text-center text-white small">Copyright &copy; Avengers 2021</p>
           </div>
           <!-- /.container -->
         </footer>

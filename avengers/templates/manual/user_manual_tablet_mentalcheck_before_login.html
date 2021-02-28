@@ -1,0 +1,20 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}メンタルチェック(タブレット版) | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">メンタルチェック(タブレット版)</h1>
+            <hr>
+            <p>　このページはタブレットで当サービスをご利用される会員様向けに用意されたマニュアルのメンタルチェック解説ページです。ログイン前とログイン後の違いは右上メニューアイコンタップ時の表示の項目数が多いか少ないかだけです。</p>
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_mentalcheck.png' %}" style="width:50vw;height:60vw;">
+            <h3 class="mt-5">《画面の見方》</h3>
+            <p>　ストレスチェック、およびうつ病診断と書かれた二つのボタンがあります。ストレスチェックと書かれたボタンをクリックしていただきますと厚労省のストレスチェック診断に、うつ病診断と書かれたボタンをクリックしていただきますとうつ病診断のサイトに移動します。いずれも当サービスとは無関係の外部サイトになります。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

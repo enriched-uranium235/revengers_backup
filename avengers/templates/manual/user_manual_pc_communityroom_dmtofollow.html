@@ -1,0 +1,30 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-フォローユーザーにDM | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-フォローユーザーにDM</h1>
+            <hr>
+            <p>　ここでは、フォローユーザーにダイレクトメッセージを送るための流れについて説明させていただきます。気に入ったユーザー様や境遇に共感できたユーザー様がいましたらフォローしてダイレクトメッセージでコンタクトを取り、さらに親密な関係になることもいいと思います。気になったユーザー様にダイレクトメッセージを送るためには、次のような手順を踏んでいく必要があります。</p>
+            <p>　まずは、Community Roomの「フォロー中のユーザー」のボタンをクリックし、フォロー中のユーザーのリストを表示しましょう。ユーザーをフォローしていますと、次のような画面になります。</p>
+            <img src="{% static 'img/user_manual_PC_communityroom_follow2.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　画面上部の説明書きにもありますが、フォロー中ユーザーのプロフィール画像をクリックすることで、特定のユーザー様宛にダイレクトメッセージを送ることもできます。プロフィール画像をクリックすると、次のような画面へと移動します。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_dm_create_follow.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　入力フォームが表示されましたら早速メッセージを書いていきましょう。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_dm_create_follow2.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　送るメッセージの入力が終わりましたら「作成」と書かれたボタンをクリックします。すると、以下の画像のようになります。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_dm_create_follow_comp.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　フォロー中ユーザーのリスト表示画面に戻され、画面上部にメッセージが表示されました。これでダイレクトメッセージの送信は完了です。</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>送ったダイレクトメッセージはCommunity Roomの「送ったダイレクトメッセージを確認する」のボタンからいつでも確認可能です。また、送ったダイレクトメッセージの削除も同じ画面で行うことができます。詳しいことは別のページで解説させていただきますのでここでは、送ったメッセージを後から誰に送ったかを確認したり削除したいときのための機能があることだけご理解いただければと思います。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+        </div>
+    </div>
+</div>
+{% endblock %}

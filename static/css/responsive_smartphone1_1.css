@@ -1,0 +1,133 @@
+@media screen and (max-width:400px){
+    header.masthead {
+    padding-top: calc(7rem + 72px);
+    padding-bottom: 20rem;
+    background-image: url(avengers_index_responsive01.jpg);
+    }
+
+    header.masthead .masthead-content .masthead-heading{
+        padding-bottom: 4vw !important;
+        margin-left: 2vw;
+    }
+
+    header.masthead .masthead-content .masthead-subheading{
+        padding-bottom: 4vw !important;
+        margin-left: 2vw;
+    }
+
+    .mb-0 {
+        font-size: 19vw !important;
+        float: left;
+        padding-bottom: 2vw;
+    }
+
+    .masthead-subheading.mb-0 {
+        font-size: 10vw !important;
+        float: left;
+        width: 80vw !important;
+        padding-bottom: 2vw;
+    }
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .btn {
+        margin-top: 1vw;
+    }
+
+    .p-5 {
+        padding: 0 !important;
+    }
+
+    .img-fluid {
+        margin-top: 10vw;
+        margin-left: 7.5vw;
+        margin-bottom: 10vw;
+    }
+
+    .display-4 {
+        font-size: 12vw;
+        margin-bottom: 5vw;
+    }
+
+    .diary-photo {
+        float: none !important;
+    }
+
+    .diary-sound {
+        float: none !important;
+    }
+
+    .diary-video {
+        float: none !important;
+    }
+
+    .input_form {
+        margin-left: 5vw;
+        margin-bottom: 2vw;
+    }
+
+    .adsence-left {
+        display: none;
+    }
+
+    .adsence-right {
+        display: none !important;
+    }
+
+    .accuse_photo {
+        float: none !important;
+    }
+
+    .accuse_sound {
+        float: none !important;
+    }
+
+    .accuse_video {
+        float: none !important;
+    }
+
+    .accuse_video_size {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .accuse_sound_size {
+        width: 60vw;
+    }
+
+    .accuse_photo_size {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .input_form {
+        margin-left: 5vw;
+    }
+
+    .post-title {
+        font-size: 5vw !important;
+    }
+
+    .float-left.mini-profile {
+        display: none !important;
+    }
+
+    .fs-1 {
+        font-size:8vw;
+    }
+
+    .fs-2 {
+        font-size:7vw;
+    }
+
+    .manual-tab {
+        margin-left:20vw;
+    }
+
+    .manual-sp {
+        margin-left:25vw;
+    }
+}

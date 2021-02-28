@@ -1,0 +1,24 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}User Profile | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">User Profile</h1>
+            <hr>
+            <p>　ここでは、User Profileタブでできることについて解説させていただきます。このタブでできることは、あなたのプロフィール情報を確認したり、変更したりすることです。ここ以外にもプロフィールの確認・変更画面はいくつかのページに設置してありますが、スマホをはじめ画面の横幅が600pxを下回るデバイスをご利用していますとこのタブ以外ではプロフィールが表示されなくなります。ですので、このプロフィールタブは基本的にスマホユーザー向けになります。まずは以下の画像をご覧いただきましょう。</p>
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_userprofile.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　上の画像はアカウント登録後一切プロフィールを変更しない状態でこのタブを開いた時の画面です。</p>
+            <h3 class="mt-5">《表示内容》</h3>
+            <p>　User Profileのホーム画面で表示される内容はプロフィール画像とユーザー名のみです。プロフィールの確認と変更を目的にしたページですのでそれ以外に表示される情報はありません。</p>
+            <h3 class="mt-5">《ボタン説明》</h3>
+            <p>　User Profileのホーム画面に設置してあるボタンは以下の一つだけです。</p>
+            <p>・プロフィール編集：　登録されているプロフィール内容を変更します。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

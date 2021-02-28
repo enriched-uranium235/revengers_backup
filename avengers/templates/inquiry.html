@@ -8,6 +8,10 @@
 <div class="container">
     <div class="row">
         <div class="my-div-style">
+            <h2>お問い合わせフォーム</h2>
+            <hr>
+            <p>※エラー・不具合を発見しましたらお気軽にお問い合わせください。拡張機能の実装の希望も受け付けますが個人開発のサービスのためこちらの対応は遅れがちになります。ご了承ください。</p>
+            <hr>
             <form method="post">
                 {% csrf_token %}
 
@@ -25,7 +29,7 @@
                     </div>
                 {% endfor %}
 
-                <div class="offset-sm-4 col-sm-8">
+                <div style="text-align:center;">
                     <button class="btn btn-primary" type="submit">送信</button>
                 </div>
             </form>

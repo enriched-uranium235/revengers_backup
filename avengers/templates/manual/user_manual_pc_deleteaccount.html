@@ -1,0 +1,30 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}アカウント消去 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Delete Account</h1>
+            <hr>
+            <p>　ここでは、アカウントを消去してサービスを退会するための流れについて説明させていただきます。流れを説明するために消去用の捨てアカウントを作成しました。以下の画像がそうです。</p>
+            <img src="{% static 'img/user_manual_PC_deleteaccount_delete_sample.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　この消去用の捨てアカウントを使って退会処理を行っていきます。まずはDelete Accountのタブをクリックします。すると、次のような画面へと移動します。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_deleteaccount.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　このように、アカウントを消すかどうかの最終確認がされます。それでも退会する場合は「削除」と書かれたボタンをクリックします。</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>一度アカウントを消してしまいますと二度と取り消しはできません。消去したアカウントを運営側で復元することもできません。アカウントを消して退会するときには消しても後悔しないかどうかを今一度よく考えてからにしましょう。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+            <p>　アカウント消去の最終確認画面で「削除」をクリックし、退会処理が完了しますと次の画面へと移動します。</p>
+            <img src="{% static 'img/user_manual_PC_deleteaccount_comp.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　退会処理が完了したことをアナウンスする画面が表示されましたら最後に「確認」と書かれたボタンをクリックします。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_deleteaccount_comp_confirm.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　「確認」ボタンを押しますと、トップページへと戻ってきました。これであなたのアカウントは完全に消去されました。もう一度当サービスをご利用の場合はアカウント作成からになります。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

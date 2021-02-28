@@ -1,0 +1,29 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-DM送信-絞り込み機能 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-DM送信-絞り込み機能</h1>
+            <hr>
+            <p>　ここでは、ダイレクトメール送信リストの絞り込み機能について説明させていただきます。まず、以下の画像をご覧ください。</p>
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_communityroom_dm_send2.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　他のユーザーにダイレクトメッセージを1件送っています。機能説明のためにあらかじめ以下の別アカウントにメッセージを作成しておきました。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_another_account.png' %}" style="width:42vw;height:80vw;">
+            <div class="balloon2" style="width:55vw;">
+                <p>こちらのキャラの詳細は<a href="https://ncode.syosetu.com/n1856gp/">こちら</a>です!ギャグ、コメディが好きな方なら気に入ると思います!</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+            <p>　さて、ダイレクトメッセージを1件しか送っていないですので今は絞り込み機能を使ってもあまりその利便性が理解いただけないかと思いますが、とりあえず使ってみましょう。今、ユーザー「ディアナ.アニマ」へのメッセージしかありませんので、それ以外の名前を入力フォームに入れて検索してみましょう。今回は入力フォームの内容をこうしてみました。</p>
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_communityroom_dm_send3.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　この状態で「ユーザー名で絞り込み」のボタンをタップしますと、こうなります。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_communityroom_dm_send5.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　「スワン部隊一番隊長」という名前のユーザーへのダイレクトメッセージはもともとありませんので、絞り込み機能を使いますと当然該当するメッセージはありませんので何も表示されません。ですが、「ディアナ.アニマ」で検索しなおしますと、その名前のユーザーへのメッセージが1件ありますのでその1件が表示されます。フォローユーザーやフォロワーが増えてきて、送ったメッセージの管理が追い付かなくなってきましたら利用することを推奨します。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

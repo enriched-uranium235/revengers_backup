@@ -1,0 +1,34 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}My Page-お気に入り機能 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">My Page-お気に入り機能</h1>
+            <hr>
+            <p>　ここでは、My Pageの機能の一つであるお気に入りリストについての説明をさせていただきます。まずは以下の画像をご覧ください。</p>
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_mypage5.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　画面の右端にお気に入りリストと書かれたボタンが設置してあります。他のユーザー様が投稿した記事ないしはユーザー様自身が投稿した記事をお気に入りに登録して好きな時に見直すことができます。以下の画像が「お気に入りリスト」と書かれたボタンを押してページを移動した結果になります。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage_favorite.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　お気に入りリストに何も登録されていない状態の時には上の画像の通りになりますが、Everyone's Postに投稿されている記事をお気に入り登録しますと、そのデータが保存されていつでもこのリスト経由で閲覧することができるようになります。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage_favorite2.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　上の画像はその一例です。Everyone's Postに掲載されている投稿の中から「動画投稿テスト」の記事を視聴し、お気に入りに登録した結果リストの中にその投稿が追加されたわけです。</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>ただし、こちらのお気に入りに登録された記事も元の記事を投稿主様が削除してしまったり、通報を受けて管理者側で削除したりした場合は、リストから自動で消去される仕様となっていますのでご了承ください。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+            <p class="mt-5">　また、画像をご覧いただきますとお分かりになると思いますが、お気に入りに登録した投稿を削除することもできます。そのやり方についても以下で説明していきます。</p>
+            <h3 class="mt-5">《お気に入りから削除》</h3>
+            <p>　お気に入りから記事を削除する方法は簡単です。「お気に入りから削除」と書かれたボタンをクリックしますと次の画像が示すページへと移動します。</p>
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_mypage_favorite_delete.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　削除するかどうか確認されますので「削除」と書かれたボタンをタップします。すると、次のような画面になります。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage_favorite_delete_comp.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　削除に成功しますとお気に入りリストに戻され、画面上部にメッセージが表示されます。これでリストからの削除は完了です。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

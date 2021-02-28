@@ -9,17 +9,29 @@
     <div class="row">
         <div class="my-div-style">
             <h1>サインアップ</h1>
-            <form method="post" action="{% url 'account_signup' %}">
+            <form method="POST" class="col-12 col-md-6 pl-3 pr-3 pl-md-0 pr-md-0">
                 {% csrf_token %}
-
-                {{ form.as_p }}
-
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-
-                <button class="btn btn-primary" type="submit">登録</button>
+                <fieldset class="form-group">
+                <legend class="mb-3">
+                    新規アカウント作成
+                </legend>
+                {{ form }}
+                </fieldset>
+                <p>
+                    <input type="checkbox" name="confirm" required>私は<a href="{% url 'avengers:terms_of_service' %}">利用規約</a>を読み同意してサービスを利用します。
+                </p>
+                <p>
+                    <input type="checkbox" name="confirm" required>私は<a href="{% url 'avengers:privacy_policy' %}">プライバシーポリシー</a>を読み同意してサービスを利用します。
+                </p>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Sign Up</button>
+                </div>
             </form>
+            <div class="pt-3">
+                <small class="text-muted">
+                すでにアカウントをお持ちですか? <a class="ml-2" href="{% url 'login' %}">ログイン</a>
+                </small>
+            </div>
         </div>
     </div>
 </div>

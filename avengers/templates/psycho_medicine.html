@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}心療内科に相談 | Avengers{% endblock %}
+
+{% block psychosomatic_medicine %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <h2 class="fs-1">お近くの心療内科を探す</h2>
+            <hr>
+            <p>以下のプルダウンメニューよりお住いの都道府県を選択していただきますとその都道府県の心療内科の検索ページへと遷移します。不眠、食欲減退、集中力の低下、無気力状態、自殺願望などがある方は早急に心療内科に相談し治療を受けましょう。仕事も辞めるか休職しましょう。ここで無理をしてしまいますと手遅れとなります。</p>
+            <hr>
+            <form style="margin-left:2vw;">
+                <select onChange="location.href=value;">
+                    <option value="#">お住いの都道府県を選択</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf1/">北海道</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf2/">青森県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf3/">岩手県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf4/">宮城県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf5/">秋田県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf6/">山形県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf7/">福島県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf8/">茨城県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf9/">栃木県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf10/">群馬県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf11/">埼玉県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf12/">千葉県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf13/">東京都</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf14/">神奈川県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf15/">新潟県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf16/">富山県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf17/">石川県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf18/">福井県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf19/">山梨県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf20/">長野県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf21/">岐阜県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf22/">静岡県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf23/">愛知県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf24/">三重県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf25/">滋賀県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf26/">京都府</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf27/">大阪府</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf28/">兵庫県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf29/">奈良県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf30/">和歌山県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf31/">鳥取県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf32/">島根県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf33/">岡山県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf34/">広島県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf35/">山口県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf36/">徳島県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf37/">香川県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf38/">愛媛県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf39/">高知県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf40/">福岡県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf41/">佐賀県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf42/">長崎県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf43/">熊本県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf44/">大分県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf45/">宮崎県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf46/">鹿児島県</option>
+                    <option value="https://doctorsfile.jp/search/ms62_pf47/">沖縄県</option>
+                </select>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

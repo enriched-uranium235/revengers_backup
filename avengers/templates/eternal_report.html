@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}通報された投稿一覧 | Avengers{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1>通報された投稿</h1>
+                <hr>
+                {% if user.is_superuser %}
+                <form method="GET" action="{% url 'avengers:eternal_report_list01' %}">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-primary" style="border-radius:0.3rem;padding:0.2rem;">絞り込み</button>
+                </form>
+                <a href="{% url 'avengers:excel_export' %}" class="btn btn-success float-right">Excelに出力</a>
+                {% for items in report_list1_1 %}
+                    <div class="post-preview">
+                        {% if items.photo1 %}
+                        <div>
+                            <img class="diary-photo" src="{{ items.photo1.url }}" width="250" height="130" style="float:right;">
+                        </div>
+                        {% elif items.media1 %}
+                        <div>
+                            <img src="{% static 'img/sound.jpg' %}" width="250" height="130" style="float:right;">
+                        </div>
+                        {% elif items.media2 %}
+                        <div>
+                            <video controls width="250" style="float:right;" class="diary-video">
+                                <source src="{{ object.media4.url }}">
+                                申し訳ありません、お使いのブラウザはビデオに対応しておりません。
+                            </video>
+                        </div>
+                        {% endif %}
+                        <p>投稿者:{{ items.user }}　　　　投稿者のID:{{ items.user_id }}</p>
+                        <p>通報者:{{ items.owner }}　　　　通報者のID:{{ items.owner_id }}</p>
+                        <h2 class="post-title">
+                            {{ items.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ items.content }}
+                            {% if not items.content %}
+                               詳細未記入
+                            {% endif %}
+                        </h3>
+                        <p class="post-meta">投稿日時:{{ items.created_at }}</p>
+                        <p class="post-meta">通報日時:{{ items.reported_date }}</p>
+                    </div>
+                    <hr>
+                {% empty %}
+                    <p>通報された投稿がありません。</p>
+                {% endfor %}
+                {% elif user.is_staff %}
+                <form method="GET" action="{% url 'avengers:eternal_report_list01' %}">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-primary" style="border-radius:0.3rem;padding:0.2rem;">絞り込み</button>
+                </form>
+                <a href="{% url 'avengers:excel_export' %}" class="btn btn-success float-right">Excelに出力</a>
+                {% for items in report_list1_1 %}
+                    <div class="post-preview">
+                        {% if items.photo1 %}
+                        <div>
+                            <img class="diary-photo" src="{{ items.photo1.url }}" width="250" height="130" style="float:right;">
+                        </div>
+                        {% elif items.media1 %}
+                        <div>
+                            <img src="{% static 'img/sound.jpg' %}" width="250" height="130" style="float:right;">
+                        </div>
+                        {% elif items.media2 %}
+                        <div>
+                            <video controls width="250" style="float:right;" class="diary-video">
+                                <source src="{{ object.media4.url }}">
+                                申し訳ありません、お使いのブラウザはビデオに対応しておりません。
+                            </video>
+                        </div>
+                        {% endif %}
+                        <p>投稿者:{{ items.user }}　　　　投稿者のID:{{ items.user_id }}</p>
+                        <p>通報者:{{ items.owner }}　　　　通報者のID:{{ items.owner_id }}</p>
+                        <h2 class="post-title">
+                            {{ items.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ items.content }}
+                            {% if not items.content %}
+                               詳細未記入
+                            {% endif %}
+                        </h3>
+                        <p class="post-meta">投稿日時:{{ items.created_at }}</p>
+                        <p class="post-meta">通報日時:{{ items.reported_date }}</p>
+                    </div>
+                    <hr>
+                {% empty %}
+                    <p>通報された投稿がありません。</p>
+                {% endfor %}
+                {% else %}
+                <h4>申し訳ありません、このページは管理者専用です。</h4>
+                {% endif %}
+                <a href="{% url 'avengers:profile' %}" class="btn btn-success float-right mb-1" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

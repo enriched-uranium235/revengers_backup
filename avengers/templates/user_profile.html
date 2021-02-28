@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ユーザープロフィール | Avengers{% endblock %}
+
+{% block user_profile %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <article>
+                {%  if user_profile != None %}
+                    <h3 class="fs-1">ユーザープロフィール</h3>
+                    <div class="mt-2 d-flex full-width align-items-center">
+                        <img
+                           class="rounded-circle"
+                           style="width: 200px; height: 200px;"
+                           src="{{ user_profile.profile.image.url }}">
+                        <div>
+                            <h4 style="text-align: left"
+                                    class="white-important">
+                                ユーザー名:{{ user_profile.username }}
+                            </h4>
+                        </div>
+                    </div>
+                    <ul class="mt-3" style="list-style-type:none;">
+                        <li><a class="btn btn-success" href="{% url 'profile' %}" style="margin-right:3rem;">プロフィール編集</a></li>
+                        <li><a class="btn btn-secondary" href="{% url 'avengers:notice_list' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">運営からのお知らせ</a></li>
+                    </ul>
+                {%  else %}
+                    <h3 class="fs-1">ユーザープロフィール</h3>
+                    <div class="mt-2 d-flex full-width align-items-center">
+                        <img
+                           class="rounded-circle"
+                           style="width: 200px; height: 200px;"
+                           src="{{ user.profile.image.url }}">
+                        <div>
+                            <h4 style="text-align: left"
+                                    class="white-important">
+                                ユーザー名:{{ user.username }}
+                            </h4>
+                        </div>
+                    </div>
+                    <ul class="mt-3" style="list-style-type:none;">
+                        <li><a class="btn btn-success" href="{% url 'profile' %}" style="margin-right:3rem;">プロフィール編集</a></li>
+                        <li><a class="btn btn-secondary" href="{% url 'avengers:notice_list' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">運営からのお知らせ</a></li>
+                        <li><a class="btn btn-secondary" href="{% url 'avengers:terms_of_service' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">利用規約確認</a></li>
+                        <li><a class="btn btn-secondary" href="{% url 'avengers:privacy_policy' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">プライバシーポリシー確認</a></li>
+                    </ul>
+                {%  endif %}
+                </article>
+                {% if user.is_superuser %}
+                <ul style="list-style-type:none;">
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list01' %}">通報リスト(Avengers投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list02' %}" style="margin-top:0.2rem;">通報リスト(Comment,Reply投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list03' %}" style="margin-top:0.2rem;">通報リスト(Thread投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list04' %}" style="margin-top:0.2rem;">通報リスト(DM投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list05' %}" style="margin-top:0.2rem;">通報リスト(ThreadComment投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list01' %}" style="margin-top:0.6rem;">通報リスト(Avengers投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list02' %}" style="margin-top:0.2rem;">通報リスト(Comment,Reply投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list03' %}" style="margin-top:0.2rem;">通報リスト(Thread投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list04' %}" style="margin-top:0.2rem;">通報リスト(DM投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list05' %}" style="margin-top:0.2rem;">通報リスト(ThreadComment投稿永久保存版)</a></li>
+                    <li><a class="btn btn-secondary" href="{% url 'avengers:log_in_out' %}" style="margin-top:0.6rem;">アカウントログイン・ログアウト履歴</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:black-list' %}" style="margin-top:0.6rem;background-color:#000000;">ブラックリスト</a></li>
+                </ul>
+                {% elif user.is_staff %}
+                <ul style="list-style-type:none;">
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list01' %}">通報リスト(Avengers投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list02' %}" style="margin-top:0.2rem;">通報リスト(Comment,Reply投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list03' %}" style="margin-top:0.2rem;">通報リスト(Thread投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list04' %}" style="margin-top:0.2rem;">通報リスト(DM投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list05' %}" style="margin-top:0.2rem;">通報リスト(ThreadComment投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list01' %}" style="margin-top:0.6rem;">通報リスト(Avengers投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list02' %}" style="margin-top:0.2rem;">通報リスト(Comment,Reply投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list03' %}" style="margin-top:0.2rem;">通報リスト(Thread投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list04' %}" style="margin-top:0.2rem;">通報リスト(DM投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list05' %}" style="margin-top:0.2rem;">通報リスト(ThreadComment投稿永久保存版)</a></li>
+                    <li><a class="btn btn-secondary" href="{% url 'avengers:log_in_out' %}" style="margin-top:0.6rem;">アカウントログイン・ログアウト履歴</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:black-list' %}" style="margin-top:0.6rem;background-color:#000000;">ブラックリスト</a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

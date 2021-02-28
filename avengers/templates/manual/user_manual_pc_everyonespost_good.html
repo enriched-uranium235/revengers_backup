@@ -1,0 +1,23 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Everyone's Post-いいね! | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Everyone's Post-いいね!機能</h1>
+            <hr>
+            <p>　ここでは、リストアップされている被害投稿に対していいね!するやり方について説明していきます。SNSを使い慣れているユーザー様なら使い慣れている機能かと思いますが、慣れていない方向けにご用意させていただきました。なお、詳細ページからでもいいね!することができます。リストからいいね!するか詳細画面からいいね!するかはユーザー様次第です。ここでは、リストからいいね!する方法について解説します。</p>
+            <p>　それでは、例として投稿している記事を下へ下へスクロールしていき、「パワハラ」の投稿記事にいいね!してみることにしましょう。</p>
+            <img src="{% static 'img/user_manual_PC_everyonespost_good.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　対象の記事までスクロールしてみますと、記事の左下に「いいね=0」とあり、右下に「いいね!する」と書かれたボタンがあります。これが意味するところは、まだ誰もその投稿にいいね!をしていないためいいね!カウントが0であり、右下のいいね!ボタンをクリックすることでその投稿に対していいね!することができるというわけです。SNSを普段使ってる方でしたらすぐわかることでしょうね。早速この記事のいいね!をしてみましょう。すると、以下の画像のようになります。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_everyonespost_good_comp.png' %}" style="width:80vw;height:20vw;">
+            <img src="{% static 'img/user_manual_PC_everyonespost_good_comp2.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　ページが再読み込みされ、最上部に戻りました。メッセージが表示されています。さっきの記事があったところまでスクロールしていきますと、「いいね!=0」となっていた場所が「いいね!=1」に変わりました。簡単ですね。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

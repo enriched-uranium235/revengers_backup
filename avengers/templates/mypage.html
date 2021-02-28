@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Community Room | Avengers{% endblock %}
+
+{% block active_message_list %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="adsence-left" style="margin-top:7.5vw;float:left;">
+    </div>
+    <div class="adsence-right" style="margin-top:7.5vw;display:flex;flex-direction:column;align-items:right;float:right;">
+    </div>
+
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1 class="fs-2 fs-6">コミュニティースレッド</h1>
+                <p>このページは会員様同士で交流したり、人間関係の悩みを打ち明けたり、会員様同士で新たなつながりを作っていただくために用意させていただいた掲示板です。日頃ストレスとなっていることや悩みの種となっている上司や同僚、部下のことを自由に書いていただけたらと思います。</p>
+                <p style="color:red;">なお、利用規約にも書いてありますが、他の会員様を誹謗中傷したり、暴言を書き込んだりする行為は厳禁です。そのようなコメントは見かけ次第削除しますし、何度もそういった趣旨のコメントを投稿する悪質なユーザー様のアカウントは消去します。また、こちらのスレッドは証拠音声や動画、画像の投稿には対応しておりません。くれぐれも加害者の実名や会社名はここでは出さないようにしてください。</p>
+                <div class="clearfix">
+                    <a href="{% url 'avengers:community_room' %}" class="btn btn-success mb-1" style="padding:0.2rem;">ページを更新</a>
+                    <a href="{% url 'avengers:post-create' %}" class="btn btn-primary mb-1" style="padding:0.2rem;">新規投稿</a>
+                    <a href="{% url 'avengers:user-posts' user.username %}" class="btn btn-secondary mb-1" style="padding:0.2rem;">あなたの投稿</a>
+                    <a href="{% url 'avengers:user-follows' user.username %}" class="btn btn-sm btn-outline-primary mb-1">フォロー中のユーザー</a>
+                    <a href="{% url 'avengers:user-followers' user.username %}" class="btn btn-sm btn-outline-primary mb-1">フォロワー</a>
+                </div>
+                <hr>
+                <div class="clearfix" style="text-align:center">
+                    <a href="{% url 'avengers:dm_list' %}" class="btn btn-sm btn-outline-primary mb-1">送られたダイレクトメッセージを確認する</a>
+                    <a href="{% url 'avengers:dm_send_list' %}" class="btn btn-sm btn-outline-primary mb-1">送ったダイレクトメッセージを確認する</a>
+                </div>
+                <hr>
+                {% if user.is_superuser %}
+                <p>管理者用スレッド検索フォーム</p>
+                <form method="GET" action="{% url 'avengers:community_room' %}">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-primary" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.4rem;">絞り込み</button>
+                </form>
+                {% elif user.is_staff %}
+                <p>管理者用スレッド検索フォーム</p>
+                <form method="GET" action="{% url 'avengers:community_room' %}">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-primary" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.4rem;">絞り込み</button>
+                </form>
+                {% endif %}
+                {%  if user_profile is not None and user_profile.id != user.id  and user.username != '' %}
+                    {%  if user_profile != None %}
+                        <div class="mt-2 d-flex full-width align-items-center">
+                            <img
+                                class="rounded-circle"
+                                style="width: 200px; height: 200px;"
+                                src="{{ user_profile.profile.image.url }}">
+                            <div>
+                                <h4 style="text-align: left"
+                                        class="white-important">
+                                    ユーザー名:{{ user_profile.username }}
+                                </h4>
+                            </div>
+                        </div>
+                    {%  else %}
+                        <div class="mt-2 d-flex full-width align-items-center">
+                            <img
+                                class="rounded-circle"
+                                style="width: 200px; height: 200px;"
+                                src="{{ user.profile.image.url }}">
+                            <div>
+                                <h4 style="text-align: left"
+                                        class="white-important">
+                                    ユーザー名:{{ user.username }}
+                                </h4>
+                            </div>
+                        </div>
+                    {%  endif %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <button class="btn btn-sm btn-outline-primary"
+                                    name="{% if can_follow %}follow{% else %}unfollow{% endif %}"
+                                    type="submit">
+                                {% if can_follow %}
+                                    このユーザーをフォローする
+                                {% else %}
+                                    このユーザーのフォローを外す
+                                {% endif %}
+                            </button>
+                        </div>
+                    </form>
+                {% endif %}
+                <h3>投稿一覧</h3>
+                <hr>
+                {% for post in posts %}
+                <article class="media content-section hovered-tweet">
+                    <div style="width: 100%; word-break: break-all;">
+                        <div class="pb-2 row m-0" style="width: 100%; margin-right: 0 !important;">
+                            <div
+                               style="padding-left: 0px !important;"
+                               class="col-6 no-padding d-flex align-items-center">
+                            <img
+                               class="rounded-circle mr-2"
+                               style="width: 30px; height: 30px;"
+                               src="{{ post.author.profile.image.url }}">
+                            <a class="mr-2 white-important" href="{% url 'avengers:user-posts' post.author %}">
+                               {{ post.author }}
+                            </a>
+                            </div>
+                            <div class="col-6 d-flex flex-row-reverse no-padding align-items-center"
+                            style="padding-right: 0 !important;">
+                            {% if post.author == user %}
+                                <a class="material-icons ml-2"
+                                   style="font-size: 14px"
+                                        href="{% url 'avengers:post-delete' post.id %}">削除</a>
+                                <a class="material-icons ml-2"
+                                   style="font-size: 14px"
+                                        href="{% url 'avengers:post-update' post.id %}">更新</a>
+                            {%  endif %}
+                            </div>
+                        </div>
+                        <a href="{% url 'avengers:post-detail' post.id %}">
+                            <p class="mb-4">
+                                {{ post.content }}
+                            </p>
+                            <p>投稿日時:{{ post.date_posted }}</p>
+                            {% if user.is_superuser %}
+                            <p>投稿者ID:{{ post.author.id }}　　　　スレッドID:{{ post.id }}</p>
+                            {% elif user.is_staff %}
+                            <p>投稿者ID:{{ post.author.id }}　　　　スレッドID:{{ post.id }}</p>
+                            {% endif %}
+                        </a>
+                        <span class="text-info">
+                            いいね!={{ post.good_count }}  コメント数={{ post.number_of_comments }}
+                        </span>
+                        <ul class="float-right" style="list-style-type:none;text-align:right;">
+                            <li><a href="{% url 'avengers:good' post.id %}"><button class="text-white" style="background-color:#ee0979;border-color:#ee0979;border-radius:0.25rem;">💛いいね!する</button></a></li>
+                            <li><a href="{% url 'avengers:report3' post.id %}"><button class="text-white btn-danger" style="border-radius:0.25rem;margin-top:0.4rem;">通報する</button></a></li>
+                            {% if user.is_superuser %}
+                                <li><a class="btn btn-danger" href="{% url 'avengers:thread_delete' post.id %}" style="padding:0.1rem;margin-top:0.6rem;">このスレッドを削除する</a></li>
+                            {% elif user.is_staff %}
+                                <li><a class="btn btn-danger" href="{% url 'avengers:thread_delete' post.id %}" style="padding:0.1rem;margin-top:0.6rem;">このスレッドを削除する</a></li>
+                            {% endif %}
+                        </ul>
+                        {%  if user_profile is not None and user_profile.id != user.id  and user.username != '' %}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <button class="btn btn-sm btn-outline-primary"
+                                        name="{% if can_follow %}follow{% else %}unfollow{% endif %}"
+                                        type="submit">
+                                    {% if can_follow %}
+                                        このユーザーをフォローする
+                                    {% else %}
+                                        このユーザーのフォローを外す
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </form>
+                        {% endif %}
+                    </div>
+                </article>
+                <hr>
+                {% empty %}
+                <p>まだ新しい投稿はありません。</p>
+                {% endfor %}
+
+                <!-- ページネーション処理 -->
+                {% if is_paginated %}
+                    <ul class="pagination">
+                        <!-- 前ページへのリンク -->
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        <!-- ページ数表示 -->
+                        {% for page_num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == page_num %}
+                                <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        <!-- 次ページへのリンク -->
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

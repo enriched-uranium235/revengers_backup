@@ -7,14 +7,83 @@
 
 
 {% block contents %}
+<div class="adsence_top" style="margin-top:5rem;text-align:center;">
+</div>
 <div class="container">
-    <div>
-        <div class="row" style="margin-top:5rem;">
+    <div class="mt-3">
+
+        {% if object.photo1 %}
+
+        <div class="row">
+            <div class="col-3">
+                <strong>写真</strong>
+            </div>
+            <div class="col-3">
+                <img src="{{ object.photo1.url }}" class="accuse_photo_size" width="800" height="500"/>
+            </div>
+        </div>
+
+        <hr>
+
+        {% endif %}
+
+        {% if object.media1 %}
+
+        <div class="row">
+            <div class="col-3">
+                <strong>音声</strong>
+            </div>
+            <div class="col-3">
+                <figure>
+                    <figcaption>証拠音声</figcaption>
+                    <audio controls
+                           src="{{ object.media1.url }}" class="accuse_sound_size">
+                        申し訳ありません、お使いのブラウザは音声に対応しておりません。
+                    </audio>
+                </figure>
+            </div>
+        </div>
+
+        <hr>
+
+        {% endif %}
+
+        {% if object.media2 %}
+
+        <div class="row">
+            <div class="col-3">
+                <strong>動画</strong>
+            </div>
+            <div class="col-3">
+                <video controls class="accuse_video_size" width="800" height="500">
+                    <source src="{{ object.media2.url }}">
+                    申し訳ありません、お使いのブラウザはビデオに対応しておりません。
+                </video>
+            </div>
+        </div>
+
+        <hr>
+
+        {% endif %}
+
+        <div class="row">
             <div class="col-3">
                 <strong>投稿したユーザー</strong>
             </div>
             <div class="col-9">
-                {{ object.user }}
+                <article>
+                {%  if user_profile != None %}
+                    <a href="{% url 'avengers:user-posts' object.user %}"><img class="rounded-circle"
+                         style="width: 60px; height: 60px;"
+                         src="{{ avengers.user_profile.profile.image.url }}"></a>
+                    {{ object.user }}
+                {%  else %}
+                    <a href="{% url 'avengers:user-posts' object.user %}"><img class="rounded-circle"
+                         style="width: 40px; height: 40px;"
+                         src="{{ avengers.user.profile.image.url }}"></a>
+                    {{ object.user }}
+                {%  endif %}
+                </article>
             </div>
         </div>
 
@@ -33,7 +102,7 @@
 
         <div class="row">
             <div class="col-3">
-                <strong>所属団体名</strong>
+                <strong>所属団体名・加害者名</strong>
             </div>
             <div class="col-9">
                 {{ object.group|linebreaksbr }}
@@ -48,102 +117,6 @@
             </div>
             <div class="col-9">
                 {{ object.content|linebreaksbr }}
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="row">
-            <div class="col-3">
-                <strong>写真</strong>
-            </div>
-            <div class="col-3">
-                {% if object.photo1 %}
-                    <img src="{{ object.photo1.url }}" width="200" height="200"/>
-                {% endif %}
-            </div>
-            <div class="col-3">
-                {% if object.photo2 %}
-                    <img src="{{ object.photo2.url }}" width="200" height="200"/>
-                {% endif %}
-            </div>
-            <div class="col-3">
-                {% if object.photo3 %}
-                    <img src="{{ object.photo3.url }}" width="200" height="200"/>
-                {% endif %}
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="row">
-            <div class="col-3">
-                <strong>音声</strong>
-            </div>
-            <div class="col-3">
-                {% if object.media1 %}
-                <figure>
-                    <figcaption>証拠音声1</figcaption>
-                    <audio controls
-                           src="{{ object.media1.url }}">
-                        申し訳ありません、お使いのブラウザは音声に対応しておりません。
-                    </audio>
-                </figure>
-                {% endif %}
-            </div>
-            <div class="col-3">
-                {% if object.media2 %}
-                <figure>
-                    <figcaption>証拠音声2</figcaption>
-                    <audio controls
-                           src="{{ object.media2.url }}">
-                        申し訳ありません、お使いのブラウザは音声に対応しておりません。
-                    </audio>
-                </figure>
-                {% endif %}
-            </div>
-            <div class="col-3">
-                {% if object.media3 %}
-                <figure>
-                    <figcaption>証拠音声3</figcaption>
-                    <audio controls
-                           src="{{ object.media3.url }}">
-                        申し訳ありません、お使いのブラウザは音声に対応しておりません。
-                    </audio>
-                </figure>
-                {% endif %}
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="row">
-            <div class="col-3">
-                <strong>動画</strong>
-            </div>
-            <div class="col-3">
-                {% if object.media4 %}
-                    <video controls width="250">
-                        <source src="{{ object.media4.url }}">
-                        申し訳ありません、お使いのブラウザはビデオに対応しておりません。
-                    </video>
-                {% endif %}
-            </div>
-            <div class="col-3">
-                {% if object.media5 %}
-                    <video controls width="250">
-                        <source src="{{ object.media5.url }}">
-                        申し訳ありません、お使いのブラウザはビデオに対応しておりません。
-                    </video>
-                {% endif %}
-            </div>
-            <div class="col-3">
-                {% if object.media6 %}
-                    <video controls width="250">
-                        <source src="{{ object.media4.url }}">
-                        申し訳ありません、お使いのブラウザはビデオに対応しておりません。
-                    </video>
-                {% endif %}
             </div>
         </div>
 
@@ -171,17 +144,60 @@
 
         <hr>
 
-        <a href="{% url 'avengers:comment_view' object.pk %}" class="btn btn-primary">コメントする</a>
-        <a href="{% url 'avengers:accuse_list' %}" class="btn btn-primary">投稿一覧に戻る</a>
+        <a href="{% url 'avengers:comment_view' object.pk %}" class="btn btn-secondary">コメントする</a>
+        <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success">戻る</a>
+        <a href="{% url 'avengers:good3' object.pk %}" class="btn btn-primary">いいね！💛{{ object.good_count }}</a>
+        <a href="{% url 'avengers:add_favorite' object.pk %}" class="btn btn-secondary" role="button" style="background-color:#f0f000;border-color:#f0f000;margin-right:0.1rem;">★お気に入り登録</a>
+        <hr>
+        <a href="{% url 'avengers:report1' object.pk %}" class="btn btn-danger">この投稿を通報する</a>
+        {% if user.is_superuser %}
+        <a href="{% url 'avengers:accuse_delete' object.pk %}" class="btn btn-danger">この投稿を削除する</a>
+        {% elif user.is_staff %}
+        <a href="{% url 'avengers:accuse_delete' object.pk %}" class="btn btn-danger">この投稿を削除する</a>
+        {% endif %}
 
         <hr>
+    </div>
+</div>
 
+<div class="adsence-bottom" style="text-align:center;">
+</div>
+
+<div class="container">
+    <div>
+        <p class="float-right">コメント件数:{{ comment_c }}件</p>
         <h2 class="title is-5">コメント一覧</h2>
         {% for comment in com_list %}
         <div class="row">
             <div class="col-12">
-                <p>{{ comment.content }}</p>
+                <p>コメント：{{ comment.content }}</p>
+                <p>コメント日時:{{ comment.created_at }}</p>
+                <article>
+                {%  if user_profile != None %}
+                    <p>コメント投稿者：<a href="{% url 'avengers:user-posts' comment.user %}"><img class="rounded-circle"
+                         style="width: 40px; height: 40px;"
+                         src="{{ comment.user_profile.profile.image.url }}"></a>{{ comment.user }}</p>
+                {%  else %}
+                    <p>コメント投稿者：<a href="{% url 'avengers:user-posts' comment.user %}"><img class="rounded-circle"
+                         style="width: 40px; height: 40px;"
+                         src="{{ comment.user.profile.image.url }}"></a>{{ comment.user }}</p>
+                {%  endif %}
+                {% if user.is_superuser %}
+                    <p class="float-right">コメントid:{{ comment.pk }}</p>
+                {% elif user.is_staff %}
+                    <p class="float-right">コメントid:{{ comment.pk }}</p>
+                {% endif %}
+                </article>
                 <a href="{% url 'avengers:reply_create' comment.pk %}" class="btn btn-secondary">返信する</a>
+                <a href="{% url 'avengers:good4' object.pk comment.pk %}" class="btn btn-primary">いいね！💛{{ comment.good_count }}</a>
+                <a href="{% url 'avengers:report2' object.pk comment.pk %}" class="btn btn-danger">通報する</a>
+                {% if user.is_superuser %}
+                    <hr>
+                    <a href="{% url 'avengers:comment_delete' comment.pk %}" class="btn btn-danger">コメントを消去する</a>
+                {% elif user.is_staff %}
+                    <hr>
+                    <a href="{% url 'avengers:comment_delete' comment.pk %}" class="btn btn-danger">コメントを消去する</a>
+                {% endif %}
                 {% with reply_list=comment.comment_set.all %}
                     {% include 'reply.html' %}
                 {% endwith %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}簡易メンタルチェック | Avengers{% endblock %}
+
+{% block mental_check %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <h2>メンタルチェック・ストレスチェック</h2>
+            <hr>
+            <p>心身の状態を確認するための簡易メンタルチェックシート及びストレスチェックを用意させていただきました。心療内科へご相談を考える際にお役立てください。開発者は心の病の専門家ではありませんので診断に際して外部サイトに移動することになります。ご了承ください。</p>
+            <hr>
+            <a href="https://kokoro.mhlw.go.jp/check/" style="margin-right:5vw;" class="btn btn-secondary btn-xl rounded-pill mt-5">ストレスチェック</a>
+            <a href="https://utsu.ne.jp/self_check/" class="btn btn-secondary btn-xl rounded-pill mt-5">うつ病診断に移動</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}My Page-返信 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">My Page-返信</h1>
+            <hr>
+            <p>　ここでは、投稿されたコメントに対して返信を書き込むための手順について説明をさせていただきます。まずは例として「動画投稿テスト」の記事の詳細画面へと移動してみましょう。</p>
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_mypage_detail_reply.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　投稿詳細画面の記事に紐づいたコメントはあらかじめEveryone's Postからこの記事にアクセスし、書き込んだコメントです。My Pageの詳細画面からはコメントに対する返信は書けますがコメントそのものは書けません。つけるかどうか悩みましたが自分で投稿した記事に自分でコメントを入力するのなんて虚しくね?と思いましたのでつけませんでした。なのでついていません。これについても要望があればつけようと思います。話を戻しますが、今回はこのコメントに対する返信を書こうと思います。</p>
+            <p>　早速ですが、「返信する」のボタンをタップします。すると、次のようなページに移動します。注意書きもしてある通りですが当サービス内での他ユーザー様への暴言や誹謗中傷は厳禁です。そういった趣旨のコメントを連投するユーザー様はアカウントそのものを消去しますし、アカウントを変えて荒らし行為を続けるようでしたら偽計業務妨害として刑事告訴も検討させていただきます。くれぐれも節度あるコメントを心がけてください。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_mypage_detail_reply2.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　入力フォームにコメントに対する返信内容を書き込みます。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_mypage_detail_reply3.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　返信を書き込みましたら「送信」と書かれたボタンをタップします。すると、下の画像のように、投稿詳細画面に戻ってきます。画面上部に特にメッセージは表示されませんが、下までフリックしていきますと書き込んだ返信が対象のコメントに紐づくように表示されています。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_mypage_detail_reply_comp.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　これでコメントに対する返信ができました。コメント作成や返信の作成は基本的にEveryone's Postから記事にアクセスする形になりますが、My Pageの詳細画面からでも返信だけは書けるようになっています。やっぱりここにもコメント書き込めるボタン付けた方がいいかなあ…。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

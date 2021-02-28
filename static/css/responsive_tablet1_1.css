@@ -1,0 +1,69 @@
+@media (min-width:600px) and (max-width:1000px){
+    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl{
+        padding-left: 0;
+    }
+
+    .img-fluid {
+        margin-left: 20vw;
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+    }
+
+    .input_form {
+        margin-left: 5vw;
+    }
+
+    .accuse_video_size {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .accuse_photo_size {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .fs-1 {
+        font-size:4vw;
+    }
+
+    .fs-2 {
+        font-size:2vw;
+    }
+
+    .fs-5 {
+        font-size:3.3vw !important;
+    }
+
+    .fs-6 {
+        font-size:3vw !important;
+    }
+
+    .diary-photo {
+        float: none !important;
+    }
+
+    .diary-sound {
+        float: none !important;
+    }
+
+    .diary-video {
+        float: none !important;
+    }
+
+    .adsence-left {
+        margin-top:10vw !important;
+    }
+
+    .adsence-right {
+        margin-top:10vw !important;
+    }
+
+    .manual-tab {
+        margin-left:20vw;
+    }
+
+    .manual-sp {
+        margin-left:25vw;
+    }
+}

@@ -1,0 +1,25 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Everyone's Post-お気に入り | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Everyone's Post-お気に入り</h1>
+            <hr>
+            <p>　ここでは、投稿された記事をお気に入りに登録する方法について解説します。今回は例として「パワハラ」の記事をお気に入り登録してみることにしましょう。「パワハラ」の記事の詳細画面を開きます。</p>
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_everyonespost_detail.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　下の方までフリックしていきますと、「お気に入り登録」と書かれたボタンがあります。このボタンを押すことで記事がMy Pageのお気に入りリストに追加されます。さっそくボタンを押してみましょう。押したら以下の画像のようになります。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_everyonespost_detail_favorite_comp.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　ページが再読み込みされ、詳細画面最上部に上の画像のようなメッセージが表示されましたらお気に入りへの追加完了です。お気に入りに追加した記事の削除についてはMy Pageのお気に入りリストをご参照ください。</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>お気に入りに登録した投稿はMy Pageのお気に入りリストから見ることができますが、投稿主様が記事を削除した場合、管理者側で通報を受けて記事を削除した場合、投稿主様が退会した場合、管理者側でやむを得ず投稿主様のアカウントを削除した場合には、その投稿を見ることはもうできません。ご了承願います。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+        </div>
+    </div>
+</div>
+{% endblock %}

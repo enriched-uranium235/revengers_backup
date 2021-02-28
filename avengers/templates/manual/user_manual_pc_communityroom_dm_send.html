@@ -1,0 +1,44 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-DM送信 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-DM送信</h1>
+            <hr>
+            <p>　ここでは、あなたが他のユーザー様にダイレクトメッセージを送った場合にそれを確認するための方法について解説します。まずは、以下の画像をご覧ください。</p>
+            <img src="{% static 'img/user_manual_PC_communityroom2.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　画面の中に「送ったダイレクトメッセージを確認する」と書かれたボタンがあります。ボタンをクリックして確認画面に移動してみましょう。移動すると、以下の画像のような画面へと移動します。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_dm_send.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　他のユーザー様にダイレクトメッセージを送っていない場合はこのような表示となります。しかし、他のユーザー様にダイレクトメッセージを送るとこの画面の表示内容が変わります。試しに、以下の別アカウントにダイレクトメッセージを作成して送ってみることにしましょう。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_another_account.png' %}" style="width:80vw;height:50vw;">
+            <div class="balloon2" style="width:55vw;">
+                <p>別アカウントで使用しているキャラクターの詳細は<a href="https://ncode.syosetu.com/n1856gp/">こちら</a>まで～。気になる方はお読みください。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+            <p>　この「ディアナ.アニマ」のアカウントに以下の画像のようなダイレクトメッセージを送ることにしましょう。</p>
+            <img src="{% static 'img/user_manual_PC_communityroom_dm_create_follower2.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　ダイレクトメッセージを作成したうえで改めてCommunity Roomホーム画面の「送ったダイレクトメッセージを確認する」のボタンから確認画面へと移動してみましょう。すると、さっきまで送信済みダイレクトメッセージが一つもなかったのに、新たに1件追加されています。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_dm_send2.png' %}" style="width:80vw;height:50vw;">
+            <h3 class="mt-5">《画面の見方》</h3>
+            <p>　受け取ったダイレクトメッセージを確認する画面では、PCやタブレットをご利用の場合、左側にプロフィール編集とフォローリスト、フォロワーリスト移動ボタンが用意され、右側に他のユーザー様に送ったダイレクトメッセージがリスト形式で表示されます。本文があまりにも長すぎる場合、適宜メッセージの詳細を確認していただく必要がございます。ご了承ください。</p>
+            <h3 class="mt-5">《ボタン説明》</h3>
+            <p>・プロフィール編集：　プロフィール編集画面に移動します。</p>
+            <p>・フォローリスト：　フォローリストに移動します。</p>
+            <p>・フォロワーリスト：　フォロワーリストに移動します。</p>
+            <p>・ユーザー名で絞り込み：　入力フォームにユーザー名を入力後このボタンをクリックすることでダイレクトメッセージの送り先を指定することができます。</p>
+            <p>・戻る：　Community Roomホーム画面に戻ります。</p>
+            <p class="mt-5">(以下は他ユーザーにダイレクトメッセージを送った場合)</p>
+            <p>・詳細：　送ったダイレクトメッセージの詳細を確認します。</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>ダイレクトメッセージのやり取りまでは基本的には管理者は監視しません。しかし、この機能を利用して特定ユーザーだけに暴言や誹謗中傷が送られた場合を想定して通報機能を用意させていただきました。通報がありましたら確認したうえで当サービスにふさわしくない発言は片っ端から消していき、場合によっては悪質なDMを送り付けるユーザーのアカウントを消すなどの強制措置も取ります。くれぐれもそうされないよう送るダイレクトメッセージの内容にはご注意ください。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+        </div>
+    </div>
+</div>
+{% endblock %}

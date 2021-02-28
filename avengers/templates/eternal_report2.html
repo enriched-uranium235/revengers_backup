@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}通報されたコメント一覧 | Avengers{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1>通報されたコメント</h1>
+                <hr>
+                {% if user.is_superuser %}
+                <form method="GET" action="{% url 'avengers:eternal_report_list02' %}">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-primary" style="border-radius:0.3rem;padding:0.2rem;">絞り込み</button>
+                </form>
+                <a href="{% url 'avengers:excel_export2' %}" class="btn btn-success float-right">Excelに出力</a>
+                {% for items in report_list2_1 %}
+                    <div class="post-preview">
+                        <p>コメント投稿者:{{ items.user }}　　　　コメント投稿者のID:{{ items.user_id }}</p>
+                        <p>コメントid:{{ items.number2 }}</p>
+                        <p>通報者:{{ items.owner }}　　　　通報者のID:{{ items.owner_id }}</p>
+                        <p>
+                            コメント内容:{{ items.content }}
+                            {% if not items.content %}
+                               コメントなし
+                            {% endif %}
+                        </p>
+                        <p class="post-meta">投稿日時:{{ items.created_at }}</p>
+                        <p class="post-meta">通報日時:{{ items.reported_at }}</p>
+                    </div>
+                    <hr>
+                {% empty %}
+                    <p>通報されたコメントがありません。</p>
+                {% endfor %}
+                {% elif user.is_staff %}
+                <form method="GET" action="{% url 'avengers:eternal_report_list02' %}">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-primary" style="border-radius:0.3rem;padding:0.2rem;">絞り込み</button>
+                </form>
+                <a href="{% url 'avengers:excel_export2' %}" class="btn btn-success float-right">Excelに出力</a>
+                {% for items in report_list2_1 %}
+                    <div class="post-preview">
+                        <p>コメント投稿者:{{ items.user }}　　　　コメント投稿者のID:{{ items.user_id }}</p>
+                        <p>コメントid:{{ items.number2 }}</p>
+                        <p>通報者:{{ items.owner }}　　　　通報者のID:{{ items.owner_id }}</p>
+                        <p>
+                            コメント内容:{{ items.content }}
+                            {% if not items.content %}
+                               コメントなし
+                            {% endif %}
+                        </p>
+                        <p class="post-meta">投稿日時:{{ items.created_at }}</p>
+                        <p class="post-meta">通報日時:{{ items.reported_at }}</p>
+                    </div>
+                    <hr>
+                {% empty %}
+                    <p>通報されたコメントがありません。</p>
+                {% endfor %}
+                {% else %}
+                <h4>申し訳ありません、このページは管理者専用です。</h4>
+                {% endif %}
+                <a href="{% url 'avengers:profile' %}" class="btn btn-success float-right mb-1" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

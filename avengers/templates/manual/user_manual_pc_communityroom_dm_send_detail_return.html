@@ -1,0 +1,21 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-DM詳細-戻る | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-DM詳細-戻る</h1>
+            <hr>
+            <p>　ここでは、ダイレクトメッセージ詳細画面の戻るボタンの役割について説明させていただきます。結論から言いますと送信リストの画面に戻るだけです。以上。早速使ってみましょう。まずは、Community Roomのホーム画面から「送ったダイレクトメッセージを確認する」をクリックし、ダイレクトメッセージ送信リストから任意のダイレクトメッセージの「詳細」ボタンをクリックして詳細を開きます。</p>
+            <img src="{% static 'img/user_manual_PC_communityroom_dm_send_detail.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　詳細画面にて「戻る」と書かれたボタンをクリックしてみましょう。すると、こうなります。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_dm_send2.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　ダイレクトメッセージ送信リストに戻りました。それだけです、はい。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

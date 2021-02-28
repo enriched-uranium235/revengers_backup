@@ -1,0 +1,23 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-いいね! | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-いいね!機能</h1>
+            <hr>
+            <p>　ここでは、リストアップされているスレッドに対していいね!するやり方について説明していきます。SNSを使い慣れているユーザー様なら使い慣れている機能かと思いますが、慣れていない方向けにご用意させていただきました。</p>
+            <p>　それでは、例として投稿されているスレッドの中の一番上のスレッドにいいね!してみることにしましょう。</p>
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_communityroom2.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　対象のスレッドを見てみますと、左下に「いいね=0」とあり、右下に「いいね!する」と書かれたボタンがあります。これが意味するところは、まだ誰もその投稿にいいね!をしていないためいいね!カウントが0であり、右下のいいね!ボタンをタップすることでその投稿に対していいね!することができるというわけです。SNSを普段使ってる方でしたらすぐわかることでしょうね。早速このスレッドにいいね!をしてみましょう。すると、以下の画像のようになります。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_good_comp.png' %}" style="width:50vw;height:60vw;">
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_communityroom_good_comp2.png' %}" style="width:50vw;height:40vw;">
+            <p class="mt-5">　ページが再読み込みされ、最上部に戻りました。メッセージが表示されています。さっきのスレッドがあったところまでフリックしていきますと、「いいね!=0」となっていた場所が「いいね!=1」に変わりました。簡単ですね。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

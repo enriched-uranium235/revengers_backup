@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ブラックリスト | Avengers{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <a href="{% url 'avengers:black-list' %}" class="btn btn-success float-right" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+                <h1 style="margin-top:1rem;">登録された全てのブラックリスト</h1>
+                <hr>
+                {% if user.is_superuser %}
+                <form method="GET" action="{% url 'avengers:all_black_list' %}">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-primary" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.4rem;">絞り込み</button>
+                </form>
+                <a href="{% url 'avengers:excel_export5' %}" class="btn btn-success float-right">Excelに出力</a>
+                <h3>全{{ black_list.count }}件</h3>
+                {% for items in black_list %}
+                <p class="post-subtitle">ユーザーID:{{ items.user_id }}　|　ユーザー名:{{ items.user }}　|　通報された回数:{{ items.is_reported }}</p>
+                <hr>
+                {% empty %}
+                    <p>まだ誰もブラックリストに登録されていません。</p>
+                {% endfor %}
+                {% elif user.is_staff %}
+                <form method="GET" action="{% url 'avengers:all_black_list' %}">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-primary" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.4rem;">絞り込み</button>
+                </form>
+                <a href="{% url 'avengers:excel_export5' %}" class="btn btn-success float-right">Excelに出力</a>
+                <h3>全{{ black_list.count }}件</h3>
+                {% for items in black_list %}
+                <p class="post-subtitle">ユーザーID:{{ items.user_id }}　|　ユーザー名:{{ items.user }}</p>
+                <hr>
+                {% empty %}
+                    <p>まだ誰もブラックリストに登録されていません。</p>
+                {% endfor %}
+                {% else %}
+                    <p>申し訳ありません。このサイトは管理者専用です。</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

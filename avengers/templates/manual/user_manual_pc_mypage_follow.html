@@ -1,0 +1,21 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}コメントユーザーのフォロー | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">My Page-ユーザーフォロー</h1>
+            <hr>
+            <p>　投稿詳細画面にてコメントしてくれた他のユーザー様をフォローすることもできます。やりかたはとても簡単です。まずは『動画投稿テスト』の詳細画面を開き、下までスクロールしていきます。いいね!や通報用に作成した別アカウント「ディアナ.アニマ」をフォローしてみましょう。このユーザーのアイコン画像をクリックしますと以下の画面に飛びます。</p>
+            <img src="{% static 'img/user_manual_PC_mypage_follow.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　アイコン画像をクリックしますとCommunity Roomのユーザー「ディアナ.アニマ」のプロフィール及び投稿スレッドが掲載されたページへと移動します。後は「このユーザーをフォローする」と書かれたボタンをクリックするだけです。簡単ですよね?フォローするとボタンの内容が「このユーザーのフォローを外す」へと変わります。押すと対象ユーザーがフォローから外れます。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_mypage_follow_comp.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　フォローの解説は以上になります。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-DM受信-詳細 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-DM受信-詳細</h1>
+            <hr>
+            <p>　ここでは、送られたダイレクトメッセージの詳細画面を表示する方法についての説明を行わせていただきます。まずは、Community Roomホーム画面から「送られたダイレクトメッセージを確認する」のボタンをタップし、以下の画像のような画面へと移動します。今解説用に使用している「アリア_スターライト」のアカウントでは下の画像のように1件のダイレクトメッセージが来ていることがわかると思います。</p>
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_communityroom_dm_sent2.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　あらかじめ別アカウントで作成して送っておいたダイレクトメッセージが1件投稿されていますが、途中で文章が切れちゃっています。ですので、続きが気になる場合は詳細画面で送られたメッセージ全体を確認していく必要があります。メッセージの右端に「詳細」と書かれたボタンがありますので、そちらをタップしてみましょう。すると、こうなります。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_dm_sent_detail.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　詳細画面はシンプルな作りにこだわっていますので他のユーザー様から送られたメッセージをただ表示するだけです。今後のメンテナンスで使い勝手を上げるためにもダイレクトメッセージを送ったユーザー様にそのまま返信するための機能とかも追加しようと考えていますが、今はその機能はついていませんので別ページで解説しているやり方(フォローリストからDMを送る、フォロワーリストからDMを送る)のいずれかの手段をご利用ください。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

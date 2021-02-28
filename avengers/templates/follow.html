@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}フォロー・フォロワー | Avengers{% endblock %}
+
+{% block active_message_list %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                {% if follow == 'follows' %}
+                    <div>
+                        <h3 class="white-important mb-3">
+                            フォロー中のユーザー
+                        </h3>
+                        <hr>
+                        <p>他のユーザー様のアイコン画像をクリック又はタップするとそのユーザー様宛にメッセージを送ることができます。</p>
+                        <hr>
+                        <a href="{% url 'avengers:community_room' %}" class="btn btn-success float-right" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+                        <div class="row pr-3 pl-3">
+                        {% for follow in follows %}
+                            <div class="pl-0 col-12">
+                                <article class="media content-section">
+                                    <div>
+                                        <a href="{% url 'avengers:dm' follow.follow_user.id %}"><img
+                                           class="rounded-circle mr-2"
+                                           style="width: 40px; height: 40px;"
+                                           src="{{ follow.follow_user.profile.image.url }}"></a>
+                                        <a class="white-important" href="{% url 'avengers:user-posts' follow.follow_user.username %}">
+                                            {{ follow.follow_user.username }}
+                                        </a>
+                                    </div>
+                                </article>
+                                <hr>
+                            </div>
+                        {% empty %}
+                            <p>まだ誰もフォローしていません。</p>
+                        {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if follow == 'followers' %}
+                <div class="col-12 no-padding">
+                    <h3 class="white-important mb-3">
+                        フォロワー
+                    </h3>
+                    <hr>
+                    <p>他のユーザー様のアイコン画像をクリック又はタップするとそのユーザー様宛にメッセージを送ることができます。</p>
+                    <hr>
+                    <a href="{% url 'avengers:community_room' %}" class="btn btn-success float-right" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+                    <div class="row pr-3 pl-3">
+                    {% for follow in follows %}
+                        <div class="pl-0 col-12">
+                            <article class="media content-section">
+                                <div>
+                                    <a href="{% url 'avengers:dm' follow.user.id %}"><img
+                                           class="rounded-circle mr-2"
+                                           style="width: 40px; height: 40px;"
+                                           src="{{ follow.user.profile.image.url }}"></a>
+                                    <a class="mr-2 white-important" href="{% url 'avengers:user-posts' follow.user.username %}">
+                                        {{ follow.user.username }}
+                                    </a>
+                                </div>
+                            </article>
+                            <hr>
+                        </div>
+                    {% empty %}
+                        <p>まだフォロワーはいません。</p>
+                    {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

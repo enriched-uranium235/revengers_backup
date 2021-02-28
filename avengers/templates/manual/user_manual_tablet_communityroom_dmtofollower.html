@@ -1,0 +1,30 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-フォロワーにDM | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-フォロワーにDM</h1>
+            <hr>
+            <p>　ここでは、フォロワーにダイレクトメッセージを送るための流れについて説明させていただきます。あなたをフォローしてくれたユーザー様がいましたらダイレクトメッセージでコンタクトを取り、さらに親密な関係になることもいいと思います。気になったユーザー様にダイレクトメッセージを送るためには、次のような手順を踏んでいく必要があります。</p>
+            <p>　まずは、Community Roomの「フォロワー」のボタンをタップし、フォロワーのリストを表示しましょう。フォロワーがいますと、次のような画面になります。</p>
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_communityroom_follower2.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　画面上部の説明書きにもありますが、フォロワーのプロフィール画像をタップすることで、特定のユーザー様宛にダイレクトメッセージを送ることもできます。プロフィール画像をタップすると、次のような画面へと移動します。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_dm_create_follower.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　入力フォームが表示されましたら早速メッセージを書いていきましょう。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_dm_create_follower2.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　送るメッセージの入力が終わりましたら「作成」と書かれたボタンをタップします。すると、以下の画像のようになります。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_dm_create_follower_comp.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　フォロー中ユーザーのリスト表示画面に戻され、画面上部にメッセージが表示されました。これでダイレクトメッセージの送信は完了です。</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>送ったダイレクトメッセージはCommunity Roomの「送ったダイレクトメッセージを確認する」のボタンからいつでも確認可能です。また、送ったダイレクトメッセージの削除も同じ画面で行うことができます。詳しいことは別のページで解説させていただきますのでここでは、送ったメッセージを後から誰に送ったかを確認したり削除したいときのための機能があることだけご理解いただければと思います。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+        </div>
+    </div>
+</div>
+{% endblock %}

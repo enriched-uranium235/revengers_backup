@@ -1,0 +1,19 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}ログアウト(PC版) | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">ログアウト(PC版)</h1>
+            <hr>
+            <p>　このページはパソコンで当サービスをご利用される会員様向けに用意されたマニュアルのログアウトの手順を解説したページです。といっても、説明する必要すらないと思いますが…。ログイン後、Log Outのタブをクリックするだけです。すると、次のような画面へと移動します。</p>
+            <img src="{% static 'img/user_manual_PC_logout.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　これでログアウトできました。「もう一度ログインしますか?」と書かれたボタンをクリックすると、再度ログイン画面に移動し、「トップページに戻る」のボタンをクリックすると、トップページへと戻ります。ログアウトでの説明は本当にこれだけです。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

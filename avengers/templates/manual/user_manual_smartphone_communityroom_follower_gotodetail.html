@@ -1,0 +1,21 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-フォロワーの詳細 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-フォロワー詳細を見る</h1>
+            <hr>
+            <p>　ここでは、フォロワーの詳細画面へと移動するやり方について説明させていただきます。まずは、Community Roomの「フォロワー」のボタンよりフォロワーのリストを表示します。以下の画像がそうです。</p>
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_communityroom_follower2.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　見ての通り、1人のユーザーが今この「アリア_スターライト」のアカウントをフォローしています。フォローしてくれているユーザー「ディアナ.アニマ」のユーザー詳細情報を確認するやり方ですが、ユーザー名をタップするだけです。すると、ユーザーをフォローするときにさんざん見てきた次の画面へと移動します。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_communityroom_follow_comp.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　これで詳細画面には移動できました。画面の見方やこの画面で使える機能についての説明は別のページで行わせていただきます。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Avengersを退会する | Avengers{% endblock %}
+
+{% block account_delete %}active{% endblock %}
+
+{% block contents %}
+<section class="container" style="text-align:center;">
+  <div class="row">
+    <div class="my-div-style w-100">
+      <h1 class="title">
+        退会
+      </h1>
+    </div>
+  </div>
+</section>
+
+<form role="form" method="post" style="text-align:center;">
+  {% csrf_token %}
+  <p>あなたのアカウント「{{ user.username }}」を、本当に削除してもよろしいですか？</p>
+
+  <button type="submit" class="btn btn-danger">削除</button>
+  <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success">キャンセル</a>
+</form>
+{% endblock %}

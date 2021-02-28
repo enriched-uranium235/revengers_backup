@@ -1,0 +1,23 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-送信済みDM詳細 | Avengers{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-送信済みDM詳細</h1>
+            <hr>
+            <p>　ここでは、あなたが送ったメッセージの詳細画面の見方について説明をさせていただきます。</p>
+            <p>　まず、Community Roomの「送ったダイレクトメッセージを確認する」のボタンから送信済みダイレクトメッセージのリストを表示し、詳細を見たいメッセージの右端の「詳細」と書かれたボタンをクリックします。そうすることで表示されるのが以下の画像のような画面です。</p>
+            <img src="{% static 'img/user_manual_PC_communityroom_dm_send_detail.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　上の画面のようにメッセージの詳細画面が表示されました。ここに表示される内容はメッセージの送信先、送ったメッセージの内容、メッセージ投稿日時です。</p>
+            <h3 class="mt-5">《ボタン説明》</h3>
+            <p>・戻る：　送信済みダイレクトメッセージ一覧画面に戻ります。</p>
+            <p>・メッセージを削除する：　送ったメッセージを削除します。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

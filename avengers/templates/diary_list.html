@@ -11,45 +11,83 @@
 
 {% block contents %}
 <div class="container">
+    {%  if user_profile != None %}
+    <div style="margin-top:6rem;" class="float-left mini-profile">
+        <img
+            class="rounded-circle"
+            style="width: 150px; height: 150px; margin-left:2rem;"
+            src="{{ user_profile.profile.image.url }}">
+        <h4 style="text-align: center;"
+            class="white-important">
+            ユーザー名:{{ user_profile.username }}
+        </h4>
+        <ul style="list-style-type:none;">
+            <li><a class="btn btn-success" href="{% url 'avengers:profile' %}" style="padding:0.3rem;border-radius:0.3rem;">プロフィール詳細</a></li>
+            <li><a class="btn btn-sm btn-outline-primary" href="{% url 'avengers:user-follows' user.username %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">フォローリスト</a></li>
+            <li><a class="btn btn-sm btn-outline-primary" href="{% url 'avengers:user-followers' user.username %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">フォロワーリスト</a></li>
+            <li><a class="btn btn-secondary mt-3" href="{% url 'avengers:notice_list' %}" style="padding:0.3rem;border-radius:0.3rem;">運営からのお知らせ</a></li>
+            <li><a class="btn btn-secondary" href="{% url 'avengers:terms_of_service' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">利用規約確認</a></li>
+            <li><a class="btn btn-secondary" href="{% url 'avengers:privacy_policy' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">プライバシーポリシー確認</a></li>
+        </ul>
+    </div>
+    {% else %}
+    <div style="margin-top:6rem;" class="float-left mini-profile">
+        <img
+            class="rounded-circle"
+            style="width: 150px; height: 150px; margin-left:2rem;"
+            src="{{ user.profile.image.url }}">
+        <h4 style="text-align: center;"
+            class="white-important">
+            ユーザー名:{{ user.username }}
+        </h4>
+        <ul style="list-style-type:none;">
+            <li><a class="btn btn-success" href="{% url 'profile' %}" style="padding:0.3rem;border-radius:0.3rem;">プロフィール編集</a></li>
+            <li><a class="btn btn-sm btn-outline-primary" href="{% url 'avengers:user-follows' user.username %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">フォローリスト</a></li>
+            <li><a class="btn btn-sm btn-outline-primary" href="{% url 'avengers:user-followers' user.username %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">フォロワーリスト</a></li>
+            <li><a class="btn btn-secondary mt-3" href="{% url 'avengers:notice_list' %}" style="padding:0.3rem;border-radius:0.3rem;">運営からのお知らせ</a></li>
+            <li><a class="btn btn-secondary" href="{% url 'avengers:terms_of_service' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">利用規約確認</a></li>
+            <li><a class="btn btn-secondary" href="{% url 'avengers:privacy_policy' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">プライバシーポリシー確認</a></li>
+        </ul>
+    </div>
+    {% endif %}
     <div class="row">
-        <div class="my-div-style w-100">
+        <div class="w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
+                <h1 class="fs-1" style="margin-top:6rem;">あなたの被害投稿一覧</h1>
+                <hr>
                 <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="{% url 'avengers:diary_create' %}">新規作成</a>
+                    <a class="btn btn-primary float-right mb-1" style="background-color:#f0f000;border-color:#000;border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.5rem;" href="{% url 'avengers:favorite' %}">★お気に入りリスト</a>
+                    <a class="btn btn-primary float-right mb-1" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.5rem;margin-right:0.1rem;" href="{% url 'avengers:diary_create' %}">新規作成</a>
+                    <a class="btn btn-primary float-right mb-1" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.5rem;margin-right:0.1rem;" href="{% url 'avengers:log_list' %}">表示履歴</a>
                 </div>
+                <hr>
                 {% for items in object_list %}
                     <div class="post-preview">
                         <a href="{% url 'avengers:diary_detail' items.pk %}">
                             {% if items.photo1 %}
-                                <img src="{{ items.photo1.url }}" width="250" height="130" style="float:right;">
-                            {% elif items.photo2 %}
-                                <img src="{{ items.photo2.url }}" width="250" height="130" style="float:right;">
-                            {% elif items.photo3 %}
-                                <img src="{{ items.photo3.url }}" width="250" height="130" style="float:right;">
-                            {% elif items.media4 %}
-                                <video controls width="250" style="float:right;">
+                                <img class="diary-photo" src="{{ items.photo1.url }}" width="250" height="130" style="float:right;">
+                            {% elif items.media1 %}
+                                <img class="diary-sound" src="{% static 'img/sound.jpg' %}" width="250" height="130" style="float:right;">
+                            {% elif items.media2 %}
+                                <video controls width="250" style="float:right;" class="diary-video">
                                     <source src="{{ object.media4.url }}">
                                     申し訳ありません、お使いのブラウザはビデオに対応しておりません。
                                 </video>
-                            {% elif items.media5 %}
-                                <video controls width="250" style="float:right;">
-                                    <source src="{{ object.media5.url }}">
-                                    申し訳ありません、お使いのブラウザはビデオに対応しておりません。
-                                </video>
-                            {% elif items.media6 %}
-                                <video controls width="250" style="float:right;">
-                                    <source src="{{ object.media6.url }}">
-                                    申し訳ありません、お使いのブラウザはビデオに対応しておりません。
-                                </video>
                             {% endif %}
-                          <h2 class="post-title">
+                          <h4 class="post-subtitle">
                             {{ items.title }}
-                          </h2>
-                          <h3 class="post-subtitle">
+                          </h4>
+                          <h4 class="post-subtitle">
                             {{ items.content|truncatechars:20 }}
-                          </h3>
+                            {% if not items.content %}
+                               詳細未記入
+                            {% endif %}
+                          </h4>
                         </a>
-                        <p class="post-meta">{{ items.created_at }}</p>
+                        <p class="post-meta" style="margin:0;">{{ items.created_at }}</p>
+                        <span class="text-info">
+                            いいね!={{items.good_count}}　　コメント={{items.number_of_comments}}
+                        </span>
                     </div>
                     <hr>
                 {% empty %}

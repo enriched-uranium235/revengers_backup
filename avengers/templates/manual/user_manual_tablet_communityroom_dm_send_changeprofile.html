@@ -1,0 +1,31 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-DM送信-プロフィール変更 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-DM送信-プロフィール変更</h1>
+            <hr>
+            <p>　ここでは、Community Roomのダイレクトメッセージ送信ページからプロフィールを変更するやり方について説明をさせていただきます。まずは以下の画像をご覧ください。</p>
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_communityroom_dm_send.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　ご覧の通りですが、プロフィール画像の下に「プロフィール編集」と書かれたボタンが設置してあります。そのボタンをタップしてプロフィール編集画面に移動していただきますと以下のようなページが表示されます。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_changeprofile4.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　各項目にはアカウント作成時に登録した情報または変更後の最新の情報が入力済みです。今回は、メールアドレスを編集してみましょう。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_changeprofile2.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　メールアドレスが「yomenisitaikemomimishoujo@test.com」(開発者の欲求丸出し)になっていますが、「yumitukai@test.com」に戻すことにしました。この状態で「変更」と書かれたボタンを押してみましょう。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_changeprofile3.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　画面上部に「アカウントが更新されました!」という内容のメッセージが表示されました。これでプロフィールは変更されました。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_dm_send.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　今回いじった情報はメールアドレスのみですので目立ったところに変化が現れるわけではありませんが、プロフィール編集した箇所は間違いなく変更されています。</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>アカウント作成時にも言えることですが、ユーザー名で使える記号は@/./+/-/_の5つのみです。それ以外の記号は利用できませんのでご注意ください。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+        </div>
+    </div>
+</div>
+{% endblock %}

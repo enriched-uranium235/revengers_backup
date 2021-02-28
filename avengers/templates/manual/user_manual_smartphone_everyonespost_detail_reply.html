@@ -1,0 +1,28 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Everyone's Post詳細-返信 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Everyone's Post詳細-返信</h1>
+            <hr>
+            <p>　ここでは、投稿された記事に書かれたコメントにさらにコメントを書き込むやり方について解説します。返信を書き込むやり方はコメントを投稿する場合とほとんど変わりません。早速やってみることにしましょう。今回も「パワハラ」の記事を使うことにしましょう。詳細画面を開き、下までフリックしますと、コメントが投稿されています。このコメントに対する返信を書いていくことにしましょう。以下は使用するサンプルの画像です。</p>
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_everyonespost_detail.png' %}" style="width:42vw;height:80vw;">
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_everyonespost_detail3.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　では、この記事に投稿されているこのコメントに対する返信を早速書いていきましょう。コメントの中に「返信する」と書かれたボタンが設置されています。このボタンをタップして入力フォームへと移動します。以下の画像が入力フォームです。フォームの形式はコメントと変わりません。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_everyonespost_detail_reply.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　入力フォームへと移動しましたら返信内容を入力します。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_everyonespost_detail_reply2.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　返信を入力し終わりましたら「送信」と書かれたボタンをタップします。すると、閲覧していた記事のページトップへと戻ります。そこから下にフリックしていきますと、先ほど書き込んだ返信が追加されています。返信を書き込む流れは以上になります。</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>　コメントの書き方でも注意喚起いたしましたが、当サービスでは他ユーザーへの暴言や誹謗中傷等を厳禁としております。相手を不快にさせる言動を見かけ次第管理者側でも積極的に削除しますし、そうした発言を連投するユーザーのアカウントを消去する措置もさせていただいたりします。節度を守った良識的な発言をするよう個々人がご注意いただければと思います。また、返信には日時が表示されないのは仕様となっております。もし返信にも投稿日時の表示が必要という要望がありましたら今後のメンテナンスで対処させていただきます。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+        </div>
+    </div>
+</div>
+{% endblock %}

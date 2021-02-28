@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Avengers退会完了 | Avengers{% endblock %}
+
+{% block contents %}
+<section class="container" style="text-align:center;">
+  <div class="row">
+    <div class="my-div-style w-100">
+      <h1 class="title">
+        Avengers退会処理完了通知
+      </h1>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;">
+  <p>お使いのアカウントが正常に消去されました。サービスをご利用いただきありがとうございました。</p>
+
+  <a href="{% url 'avengers:index' %}" class="btn btn-success">確認</a>
+</div>
+{% endblock %}

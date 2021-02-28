@@ -1,0 +1,21 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-DM送信-フォロワー | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-DM送信-フォロワー</h1>
+            <hr>
+            <p>　ここでは、ダイレクトメール送信リストの「フォロワーリスト」と書かれたボタンを押したらどうなるかについて説明させていただきます。まずは以下の画像をご覧ください。</p>
+            <img src="{% static 'img/user_manual_PC_communityroom_dm_send.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　画面左側に「フォロワーリスト」と書かれたボタンがあります。そちらを押していただくとこのシステム内のフォロワーリストのページへと移動します。移動した結果が以下の画像です。</p>
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_follower2.png' %}" style="width:80vw;height:50vw;">
+            <p class="mt-5">　フォロワーリストの画面に飛べました。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

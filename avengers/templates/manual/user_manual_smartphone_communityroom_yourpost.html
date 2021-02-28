@@ -1,0 +1,32 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Community Room-あなたの投稿 | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Community Room-あなたの投稿</h1>
+            <hr>
+            <p>　ここでは、あなたが投稿したスレッドを管理する機能についての解説を行います。少人数のユーザーしか利用していないときならばまだしも、ユーザー様が増えれば増えるほど自分で投稿したスレッドを見つけるのは困難になります。そのため、あなたが投稿したスレッドを管理するための機能として実装させていただきました。早速使い方を見ていきましょう。</p>
+            <p>　まず、複数人のユーザー様がすでに当サービスをご利用してくださっている事を前提に、別アカウントでもスレッドを用意させていただきました。以下の画像がそうです。</p>
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_another_account.png' %}" style="width:42vw;height:80vw;">
+            <div class="balloon2" style="width:55vw;">
+                <p>この子も開発者が趣味で書いてる小説より起用しています。詳しくは<a href="https://ncode.syosetu.com/n1856gp/">こちら</a>。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+            <p>　このアカウントにて別のスレッドを作成したのが以下の画像になります。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_communityroom4.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　では、この状態で「あなたの投稿」と書かれたボタンを押してみましょう。すると、こうなります。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_communityroom_yourpost.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　「アリア_スターライト」のアカウントで投稿したスレッドだけが表示されました。このように、自分で投稿したスレッドを更新したり、削除したりしたいときにたくさんのスレッドの中から探すよりもこうして絞り込む方が楽だったりします。投稿したけど後から内容を書き換えたいとか後から削除したくなった時にこの機能を使うのがおすすめです。表示されているボタンの機能は「Community Room-画面の見方」で説明されていることと変わりませんので省略します。各機能について知りたい方はそちらをご参照ください。</p>
+            <div class="balloon2" style="width:55vw;">
+                <p>ボタンの説明は<a href="{% url 'avengers:manual_pc_communityroom' %}">こちら</a>です。また、「あなたの投稿」と書かれたボタンを押さなくても、あなたの投稿を探し出してそのスレッドに書かれているあなたのユーザー名をクリックすることでもスレッド管理画面には移動できます。どちらのやり方を使うかはあなた次第です。</p>
+            </div>
+            <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
+        </div>
+    </div>
+</div>
+{% endblock %}

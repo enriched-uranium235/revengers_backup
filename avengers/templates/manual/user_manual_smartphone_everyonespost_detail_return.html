@@ -1,0 +1,22 @@
+{% extends 'manual/manual_base.html' %}
+{% load static %}
+
+{% block title %}Everyone's Post-戻る | Avengers{% endblock %}
+
+{% block detail %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
+            <h1 class="fs-1">Everyone's Post-戻る</h1>
+            <hr>
+            <p>　書くまででもないことのように思えますが一応ページを用意しておきます。まず、以下の画像は記事の詳細画面です。今回も題材は「パワハラ」の記事です。</p>
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_everyonespost_detail.png' %}" style="width:42vw;height:80vw;">
+            <img class="manual-sp" src="{% static 'img/user_manual_smartphone_everyonespost_detail2.png' %}" style="width:42vw;height:50vw;">
+            <p class="mt-5">　下までフリックしていきますと「戻る」というボタンが設置してあります。それをタップしたらこの記事を見る直前に開いていたページに戻ります。例えば、お気に入りのリストからこの記事を見ていた場合はお気に入りリストに、履歴から見ていた場合には履歴に戻ります。例として履歴から詳細を表示して「戻る」を押してみましょう。</p>
+            <img class="mt-5 manual-sp" src="{% static 'img/user_manual_smartphone_everyonespost_detail_return.png' %}" style="width:42vw;height:80vw;">
+            <p class="mt-5">　はい、もどりました。以上。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
