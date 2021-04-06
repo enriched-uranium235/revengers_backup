@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}通報された投稿一覧 | Avengers{% endblock %}
+{% block title %}通報された投稿一覧 | Vengeancers{% endblock %}
 
 {% block contents %}
 <div class="container">
@@ -32,6 +32,8 @@
                                 </video>
                                 <a class="btn btn-danger float-right text-white" href="{% url 'avengers:report_delete1' items.pk %}" style="padding:0.3rem;border-radius:0.3rem;">通報リストから削除</a>
                             </div>
+                            {% else %}
+                                <a class="btn btn-danger float-right text-white" href="{% url 'avengers:report_delete1' items.pk %}" style="padding:0.3rem;border-radius:0.3rem;">通報リストから削除</a>
                             {% endif %}
                           <p>投稿者:{{ items.user }}　　　　投稿者のID:{{ items.user_id }}</p>
                           <h2 class="post-title">
@@ -72,6 +74,8 @@
                                 </video>
                                 <a class="btn btn-danger float-right text-white" href="{% url 'avengers:report_delete1' items.pk %}" style="padding:0.3rem;border-radius:0.3rem;">通報リストから削除</a>
                             </div>
+                            {% else %}
+                                <a class="btn btn-danger float-right text-white" href="{% url 'avengers:report_delete1' items.pk %}" style="padding:0.3rem;border-radius:0.3rem;">通報リストから削除</a>
                             {% endif %}
                           <p>投稿者:{{ items.user }}　　　　投稿者のID:{{ items.user_id }}</p>
                           <h2 class="post-title">

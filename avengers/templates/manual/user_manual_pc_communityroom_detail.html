@@ -1,7 +1,7 @@
 {% extends 'manual/manual_base.html' %}
 {% load static %}
 
-{% block title %}Community Room-スレッド詳細 | Avengers{% endblock %}
+{% block title %}Community Room-スレッド詳細 | Vengeancers{% endblock %}
 
 {% block detail %}
 <div class="container">
@@ -11,11 +11,13 @@
             <h1 class="fs-1">Community Room-スレッド詳細</h1>
             <hr>
             <p>　ここでは、投稿されたスレッドの詳細画面へと移動するやり方、および詳細画面のざっくりとした説明をさせていただきます。まずは、以下の画像をご覧ください。</p>
-            <img src="{% static 'img/user_manual_PC_communityroom2.png' %}" style="width:80vw;height:50vw;">
+            <img src="{% static 'img/user_manual_PC_communityroom2.png' %}" style="width:74vw;height:50vw;">
             <p class="mt-5">　投稿一覧のところにテスト用に投稿したスレッドがあります。このスレッドの詳細を見てみましょう。このスレッドの詳細画面を見るために必要なことは、このスレッドの本文又は投稿日時をクリックすることです。早速クリックして詳細画面を開いてみましょう。次の画像のように画面が表示されましたら詳細画面に移動できています。</p>
-            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_detail.png' %}" style="width:80vw;height:50vw;">
+            <img class="mt-5" src="{% static 'img/user_manual_PC_communityroom_detail.png' %}" style="width:74vw;height:50vw;">
             <p class="mt-5">　表示内容はスレッド投稿者名、本文、投稿日時、コメント入力フォーム、投稿されたコメント、コメントをしたユーザーのユーザー名、コメント投稿日時です。</p>
             <h3 class="mt-5">《ボタン説明》</h3>
+            <p>・いいね!する：　スレッドや書き込まれたコメントに対していいね!します。</p>
+            <p>・通報：　投稿されたスレッドや書き込まれたコメントを不適切なものとして通報します。</p>
             <p>・追加：　コメントフォームにコメントを入力後このボタンを押すことでコメントを追加できます。</p>
             <p class="mt-5">(その他機能)</p>
             <p>(スレッド投稿者本人が詳細を見ている場合)</p>
@@ -26,8 +28,6 @@
             <p>・ユーザー名をクリック：　投稿したユーザーをフォローするための画面に移動します。</p>
             <p class="mt-5">(コメントが投稿されている場合)</p>
             <p>・ユーザー名をクリック：　コメントを投稿したユーザーのフォロー画面に移動します。</p>
-            <p>・いいね：　投稿されたコメントにいいね!します。</p>
-            <p>・通報：　投稿されたコメントを不適切として通報します。</p>
         </div>
     </div>
 </div>

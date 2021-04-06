@@ -1,29 +1,75 @@
 {% extends 'base.html' %}
 
-{% block title %}サインアップ | Avengers{% endblock %}
+{% block title %}サインアップ | Vengeancers{% endblock %}
 
 {% block active_signup %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-3 text-white border-black float-left">Sign Up</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style">
+        <div class="mt-2 w-100">
+            <style>
+                .errorlist {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                color: red;
+                }
+
+                div.field {
+                    margin-top: 30px;
+                }
+
+                div.field > span.helptext {
+                    font-size: 14px;
+                    color: #999;
+                }
+
+                div.field > label {
+                    display: block;
+                }
+
+                div.field > input, div.field > textarea, div.field > select, div.field > button {
+                    width: 100%;
+                    padding: 6px 12px;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    border: solid 1px #999;
+                }
+            </style>
             <h1>サインアップ</h1>
-            <form method="POST" class="col-12 col-md-6 pl-3 pr-3 pl-md-0 pr-md-0">
-                {% csrf_token %}
-                <fieldset class="form-group">
-                <legend class="mb-3">
-                    新規アカウント作成
-                </legend>
-                {{ form }}
-                </fieldset>
-                <p>
+            <h3 class="mb-3">
+                新規アカウント作成
+            </h3>
+            {{ form.non_field_errors }}
+            {% for field in form %}
+            <div class="field col-lg-6 col-md-6">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <span class="helptext">{{ field.help_text }}</span>
+                {% endif %}
+                {{ field.errors }}
+            </div>
+            {% endfor %}
+            <form method="POST" class="col-lg-6 col-md-6">
+                <p class="mt-2">
                     <input type="checkbox" name="confirm" required>私は<a href="{% url 'avengers:terms_of_service' %}">利用規約</a>を読み同意してサービスを利用します。
                 </p>
                 <p>
                     <input type="checkbox" name="confirm" required>私は<a href="{% url 'avengers:privacy_policy' %}">プライバシーポリシー</a>を読み同意してサービスを利用します。
                 </p>
-                <div class="form-group">
+                <div class="form-group text-center">
                     <button class="btn btn-primary" type="submit">Sign Up</button>
                 </div>
             </form>

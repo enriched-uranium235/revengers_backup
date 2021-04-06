@@ -1,15 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Log Out | Avengers{% endblock %}
+{% block title %}Log Out | Vengeancers{% endblock %}
 
 {% block active_login %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-3 text-white border-black float-left">Log Out</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style">
+        <div class="mt-3 col-lg-8 col-md-8 text-center">
             <h1 class="fs-1">ログアウトしました</h1>
-            <div class="pt-3" style="text-align:center;">
+            <div class="pt-3">
                 <a class="btn btn-primary mb-1" href="{% url 'login' %}">もう一度ログインしますか?</a>
                 <a class="btn btn-success mb-1" href="{% url 'avengers:index' %}">トップページに戻る</a>
             </div>

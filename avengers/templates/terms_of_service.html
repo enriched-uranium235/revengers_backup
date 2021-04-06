@@ -1,15 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %}利用規約 | Avengers{% endblock %}
+{% block title %}利用規約 | Vengeancers{% endblock %}
 
 {% block active_signup %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-3 text-white border-black float-left">Terms of Service</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style">
-            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+        <div class="mt-2 col-lg-8 col-md-8 mx-auto">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
             <h1>利用規約</h1>
+            <hr>
 
         </div>
     </div>

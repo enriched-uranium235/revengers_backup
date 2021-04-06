@@ -2,14 +2,24 @@
 
 {% load static %}
 
-{% block title %}フォロー・フォロワー | Avengers{% endblock %}
+{% block title %}フォロー・フォロワー | Vengeancers{% endblock %}
 
 {% block active_message_list %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-3 text-white border-black float-left">Follow, Follower</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style w-100">
+        <div class="mt-2 w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 {% if follow == 'follows' %}
                     <div>
@@ -25,11 +35,11 @@
                             <div class="pl-0 col-12">
                                 <article class="media content-section">
                                     <div>
-                                        <a href="{% url 'avengers:dm' follow.follow_user.id %}"><img
+                                        <a href="{% url 'avengers:dm_to_follow' follow.follow_user.id %}"><img
                                            class="rounded-circle mr-2"
                                            style="width: 40px; height: 40px;"
                                            src="{{ follow.follow_user.profile.image.url }}"></a>
-                                        <a class="white-important" href="{% url 'avengers:user-posts' follow.follow_user.username %}">
+                                        <a class="white-important" href="{% url 'avengers:user-posts' follow.follow_user.username %}" style="color:#000;">
                                             {{ follow.follow_user.username }}
                                         </a>
                                     </div>
@@ -57,11 +67,11 @@
                         <div class="pl-0 col-12">
                             <article class="media content-section">
                                 <div>
-                                    <a href="{% url 'avengers:dm' follow.user.id %}"><img
+                                    <a href="{% url 'avengers:dm_to_follower' follow.user.id %}"><img
                                            class="rounded-circle mr-2"
                                            style="width: 40px; height: 40px;"
                                            src="{{ follow.user.profile.image.url }}"></a>
-                                    <a class="mr-2 white-important" href="{% url 'avengers:user-posts' follow.user.username %}">
+                                    <a class="mr-2 white-important" href="{% url 'avengers:user-posts' follow.user.username %}" style="color:#000;">
                                         {{ follow.user.username }}
                                     </a>
                                 </div>

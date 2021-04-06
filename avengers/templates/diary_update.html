@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}投稿内容編集 | Avengers{% endblock %}
+{% block title %}投稿内容編集 | Vengeancers{% endblock %}
 
 {% block active_diary_list %}active{% endblock %}
 
@@ -15,8 +15,10 @@
                 <table class="table">
                     {{ form.as_table }}
                 </table>
-                <button class="btn btn-primary" type="submit">更新</button>
-                <a class="btn btn-secondary ml-2" href="{% url 'avengers:diary_detail' object.pk %}">キャンセル</a>
+                <div style="text-align:center;">
+                    <button class="btn btn-primary" type="submit">更新</button>
+                    <a class="btn btn-success ml-2" href="{% url 'avengers:diary_detail' object.pk %}">キャンセル</a>
+                </div>
             </form>
         </div>
     </div>

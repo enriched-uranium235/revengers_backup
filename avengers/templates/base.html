@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" type="image/jpg" href="{% static 'icon/avengers_favicon.jpg' %}">
+    <link rel="icon" type="image/jpg" href="{% static 'icon/vengeancers_favicon.jpg' %}">
 
     <title>{% block title %}{% endblock %}</title>
 
@@ -21,20 +21,24 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/origin.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/origin_for_sp2.css' %}" media="(min-width:400px) and (max-width:600px)">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/origin_for_sp.css' %}" media="screen and (max-width:400px)">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/origin_for_sp2_1.css' %}" media="(min-width:400px) and (max-width:600px)">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/origin_for_sp1_1.css' %}" media="screen and (max-width:400px)">
 
     <!-- My style -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mystyle.css' %}">
 
     <!-- smartphone -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive_smartphone1_1.css' %}" media="screen and (max-width:400px)">
 
     <!-- smartphone2 -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive_smartphone2_2.css' %}" media="(min-width:400px) and (max-width:600px)">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive_smartphone2_1.css' %}" media="(min-width:400px) and (max-width:600px)">
 
     <!-- tablet -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive_tablet1_1.css' %}" media="(min-width:600px) and (max-width:1000px)">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive_tablet1_2.css' %}" media="(min-width:600px) and (max-width:1000px)">
+
+    <!-- script -->
+    <script src="{% static 'js/function.js' %}"></script>
+
     {% block head %}{% endblock %}
   </head>
 
@@ -43,7 +47,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
           <div class="container">
-            <a class="navbar-brand" href="{% url 'avengers:index' %}">Avengers</a>
+            <a class="navbar-brand" href="{% url 'avengers:index' %}">Vengeancers</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,20 +60,22 @@
                   <a class="nav-link" href="{% url 'avengers:mental_check' %}">Mental Check</a>
                 </li>
                 <li class="nav-item {% block search_lawyer %}{% endblock %}">
-                  <a class="nav-link" href="{% url 'avengers:search_lawyer' %}">Search Lawyer</a>
+                  <a class="nav-link" href="{% url 'avengers:search_lawyer' %}">Search Expert</a>
                 </li>
-                <li class="nav-item {% block psychosomatic_medicine %}{% endblock %}">
-                  <a class="nav-link" href="{% url 'avengers:search_doctor' %}">Psychosomatic Medicine</a>
-                </li>
+                <!-- 以下はマニュアルが必要になったら使う
                 <li class="nav-item {% block user_manual %}{% endblock %}">
                     <a class="nav-link" href="{% url 'avengers:user_manual' %}">User Manual</a>
                 </li>
+                -->
                 {% if user.is_authenticated %}
                   <li class="nav-item {% block active_diary_list %}{% endblock %}">
                       <a class="nav-link" href="{% url 'avengers:diary_list' %}">My Page</a>
                   </li>
                   <li class="nav-item {% block active_accuse_list %}{% endblock %}">
                       <a class="nav-link" href="{% url 'avengers:accuse_list' %}">Everyone's Post</a>
+                  </li>
+                  <li class="nav-item {% block active_experiences_list %}{% endblock %}">
+                      <a class="nav-link" href="{% url 'avengers:present_list' %}">Advice and Experiences</a>
                   </li>
                   <li class="nav-item {% block active_message_list %}{% endblock %}">
                       <a class="nav-link" href="{% url 'avengers:community_room' %}">Community Room</a>
@@ -100,12 +106,12 @@
           </div>
         </nav>
 
-        {% block header%}{% endblock %}
+        {% block header %}{% endblock %}
 
         {% if messages %}
           <div class="container">
               <div class="row">
-                  <div class="my-div-style w-100">
+                  <div class="mt-1 w-100">
                       <ul class="messages" style="list-style: none;">
                           {% for message in messages %}
                           <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
@@ -123,7 +129,7 @@
         <!-- Footer -->
         <footer class="py-5 bg-black">
           <div class="container">
-            <p class="m-0 text-center text-white small">Copyright &copy; Avengers 2021</p>
+            <p class="m-0 text-center text-white small">Copyright &copy; Vengeancers 2021</p>
           </div>
           <!-- /.container -->
         </footer>
@@ -131,6 +137,9 @@
         <!-- Bootstrap core JavaScript -->
         <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
         <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+        <!-- JavaScript -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   	</div>
   </body>
 

@@ -1,7 +1,7 @@
 {% extends 'manual/manual_base.html' %}
 {% load static %}
 
-{% block title %}投稿されたコメントへのいいね! | Avengers{% endblock %}
+{% block title %}投稿されたコメントへのいいね! | Vengeancers{% endblock %}
 
 {% block detail %}
 <div class="container">
@@ -17,11 +17,10 @@
             </div>
             <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
             <p class="mt-5">　別アカウント「ディアナ.アニマ」にていいね!用のコメントを以下のように追加したのが以下の画像です。</p>
-            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_everyonespost_comment_good.png' %}" style="width:50vw;height:60vw;">
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_everyonespost_detail_comment_good.png' %}" style="width:50vw;height:60vw;">
             <p class="mt-5">　早速「いいね!」と書かれたボタンをタップしてみましょう。すると、以下の画像のようになります。</p>
             <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_everyonespost_detail_comment_good_comp.png' %}" style="width:50vw;height:60vw;">
-            <img class="manual-tab" src="{% static 'img/user_manual_tablet_everyonespost_detail_comment_good_comp2.png' %}" style="width:50vw;height:60vw;">
-            <p class="mt-5">　詳細画面のトップに戻り、メッセージが表示されました。下までフリックし先ほどいいね!したコメントを見てみますと、ボタンのいいね!カウントが1増えました。簡単ですね!!なお、JavaScriptのajax通信を使うことで再読み込みやページのトップに戻る仕様はなくせるわけですが手間暇かかるのでつけてません。お問い合わせがありましたらそこの実装とかも考えます。</p>
+            <p class="mt-5">　ボタンのいいね!カウントが1増えました。簡単ですね!!もう一度ボタンを押すとカウントが1減ります。</p>
         </div>
     </div>
 </div>

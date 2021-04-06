@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}ユーザープロフィール | Avengers{% endblock %}
+{% block title %}ユーザープロフィール | Vengeancers{% endblock %}
 
 {% block user_profile %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">User Profile</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style w-100">
+        <div class="mt-2 w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <article>
                 {%  if user_profile != None %}
@@ -53,31 +63,39 @@
                 </article>
                 {% if user.is_superuser %}
                 <ul style="list-style-type:none;">
-                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list01' %}">通報リスト(Avengers投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list01' %}">通報リスト(Vengeancers投稿)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:report-list02' %}" style="margin-top:0.2rem;">通報リスト(Comment,Reply投稿)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:report-list03' %}" style="margin-top:0.2rem;">通報リスト(Thread投稿)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:report-list04' %}" style="margin-top:0.2rem;">通報リスト(DM投稿)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:report-list05' %}" style="margin-top:0.2rem;">通報リスト(ThreadComment投稿)</a></li>
-                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list01' %}" style="margin-top:0.6rem;">通報リスト(Avengers投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list06' %}" style="margin-top:0.2rem;">通報リスト(Speech投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list07' %}" style="margin-top:0.2rem;">通報リスト(SpeechComment投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list01' %}" style="margin-top:0.6rem;">通報リスト(Vengeancers投稿永久保存版)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list02' %}" style="margin-top:0.2rem;">通報リスト(Comment,Reply投稿永久保存版)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list03' %}" style="margin-top:0.2rem;">通報リスト(Thread投稿永久保存版)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list04' %}" style="margin-top:0.2rem;">通報リスト(DM投稿永久保存版)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list05' %}" style="margin-top:0.2rem;">通報リスト(ThreadComment投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list06' %}" style="margin-top:0.2rem;">通報リスト(Speech投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list07' %}" style="margin-top:0.2rem;">通報リスト(SpeechComment投稿永久保存版)</a></li>
                     <li><a class="btn btn-secondary" href="{% url 'avengers:log_in_out' %}" style="margin-top:0.6rem;">アカウントログイン・ログアウト履歴</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:black-list' %}" style="margin-top:0.6rem;background-color:#000000;">ブラックリスト</a></li>
                 </ul>
                 {% elif user.is_staff %}
                 <ul style="list-style-type:none;">
-                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list01' %}">通報リスト(Avengers投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list01' %}">通報リスト(Vengeancers投稿)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:report-list02' %}" style="margin-top:0.2rem;">通報リスト(Comment,Reply投稿)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:report-list03' %}" style="margin-top:0.2rem;">通報リスト(Thread投稿)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:report-list04' %}" style="margin-top:0.2rem;">通報リスト(DM投稿)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:report-list05' %}" style="margin-top:0.2rem;">通報リスト(ThreadComment投稿)</a></li>
-                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list01' %}" style="margin-top:0.6rem;">通報リスト(Avengers投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list06' %}" style="margin-top:0.2rem;">通報リスト(Speech投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:report-list07' %}" style="margin-top:0.2rem;">通報リスト(SpeechComment投稿)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list01' %}" style="margin-top:0.6rem;">通報リスト(Vengeancers投稿永久保存版)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list02' %}" style="margin-top:0.2rem;">通報リスト(Comment,Reply投稿永久保存版)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list03' %}" style="margin-top:0.2rem;">通報リスト(Thread投稿永久保存版)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list04' %}" style="margin-top:0.2rem;">通報リスト(DM投稿永久保存版)</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list05' %}" style="margin-top:0.2rem;">通報リスト(ThreadComment投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list06' %}" style="margin-top:0.2rem;">通報リスト(Speech投稿永久保存版)</a></li>
+                    <li><a class="btn btn-danger" href="{% url 'avengers:eternal_report_list07' %}" style="margin-top:0.2rem;">通報リスト(SpeechComment投稿永久保存版)</a></li>
                     <li><a class="btn btn-secondary" href="{% url 'avengers:log_in_out' %}" style="margin-top:0.6rem;">アカウントログイン・ログアウト履歴</a></li>
                     <li><a class="btn btn-danger" href="{% url 'avengers:black-list' %}" style="margin-top:0.6rem;background-color:#000000;">ブラックリスト</a></li>
                 </ul>

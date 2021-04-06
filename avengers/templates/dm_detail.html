@@ -1,23 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}投稿一覧 | Avengers{% endblock %}
+{% block title %}投稿一覧 | Vengeancers{% endblock %}
 
 {% block active_message_list %}active{% endblock %}
 
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">Direct Message</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
 {% block contents %}
 <div class="container">
-    <div class="adsence-left" style="margin-top:7.5vw;float:left;">
-    </div>
-    <div class="adsence-right" style="margin-top:7.5vw;display:flex;flex-direction:column;align-items:right;float:right;">
-    </div>
     <div class="row">
-        <div class="w-100">
+        <div class="mt-2 w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <h1 style="margin-top:6rem;">ダイレクトメッセージ詳細</h1>
+                <h1>ダイレクトメッセージ詳細</h1>
                 <hr>
                 <h4>ダイレクトメッセージを送ったユーザー:<img src="{{ object.owner.profile.image.url }}" style="width:35px;height:35px;" class="rounded-circle">{{ object.owner.username }}</h4>
-                <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+                <a class="btn btn-secondary" href="{% url 'avengers:dm_reply' object.owner.id object.pk %}">返信する</a>
+                <a href="{% url 'avengers:dm_list' %}" class="btn btn-success" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
                 <hr>
                 <p class="post-meta mt-2 mb-2">メッセージ内容:{{ object.content }}</p>
                 <hr>

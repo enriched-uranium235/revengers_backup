@@ -8,6 +8,7 @@
             <hr>
             <div class="col-14" style="margin-left:5rem;">
                 <p>返信：{{ reply.content }}</p>
+                <p>返信日時：{{ reply.created_at }}</p>
                 <article>
                 {%  if user_profile != None %}
                     <p>投稿者：<img class="rounded-circle"
@@ -24,8 +25,8 @@
                     <p class="float-right">コメントid:{{ reply.pk }}</p>
                 {% endif %}
                 </article>
-                <a href="{% url 'avengers:good5' object.pk reply.pk %}" class="btn btn-primary" style="padding:0.1rem;">いいね！💛{{ reply.reply_good_count }}</a>
-                <a href="{% url 'avengers:report2' object.pk reply.pk %}" class="btn btn-danger" style="padding:0.1rem;">通報する</a>
+                {% include 'accuse_detail_reply_like.html' %}
+                {% include 'accuse_reply_report.html' %}
                 {% if user.is_superuser %}
                     <hr>
                     <a href="{% url 'avengers:comment_delete' reply.pk %}" class="btn btn-danger">コメントを消去する</a>

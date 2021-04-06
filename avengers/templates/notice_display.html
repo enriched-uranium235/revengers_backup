@@ -1,0 +1,16 @@
+{% load static %}
+
+<style>
+    .size {
+       width:30px;
+       height:30px;
+    }
+</style>
+
+{% if items.number_of_reads > 0 %}
+    <img class="size" src="{% static 'img/mail_is_read.png' %}">
+{% else %}
+    <img class="size" src="{% static 'img/mail_not_read.png' %}">
+{% endif %}
+
+<p>{{ items.number_of_reads }}</p>

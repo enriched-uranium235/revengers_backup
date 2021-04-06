@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}投稿された全てのコメント | Vengeancers{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <a href="{% url 'avengers:report-list07' %}" class="btn btn-success float-right" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+                <h1 style="margin-top:1rem;">投稿された全てのコメント</h1>
+                <hr>
+                {% if user.is_superuser %}
+                <form method="GET" action="{% url 'avengers:all_comment3' %}" class="text-center">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-info" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.4rem;">絞り込み</button>
+                </form>
+                {% for items in all_comment3 %}
+                    <div class="post-preview">
+                        <a href="{% url 'avengers:comment_delete3' items.pk %}" class="btn btn-danger float-right">コメントを消去する</a>
+                        <p class="post-subtitle">コメント投稿者:{{ items.author.username }}　　　　投稿者ID:{{ items.author.id }}</p>
+                        <p class="post-subtitle">
+                            {{ items.content }}
+                            {% if not items.content %}
+                               詳細未記入
+                            {% endif %}
+                        </p>
+                    </div>
+                    <hr>
+                {% empty %}
+                    <p>投稿されたコメントがありません。</p>
+                {% endfor %}
+                {% elif user.is_staff %}
+                <form method="GET" action="{% url 'avengers:all_comment3' %}" class="text-center">
+                    <input class="input_form" type="text" name="keyword">
+                    <button type="submit" class="btn btn-info" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.4rem;">絞り込み</button>
+                </form>
+                {% for items in all_comment3 %}
+                    <div class="post-preview">
+                        <a href="{% url 'avengers:comment_delete3' items.pk %}" class="btn btn-danger float-right">コメントを消去する</a>
+                        <p class="post-subtitle">コメント投稿者:{{ items.author.username }}　　　　投稿者ID:{{ items.author.id }}</p>
+                        <p class="post-subtitle">
+                            {{ items.content }}
+                            {% if not items.content %}
+                               詳細未記入
+                            {% endif %}
+                        </p>
+                    </div>
+                    <hr>
+                {% empty %}
+                    <p>投稿されたコメントがありません。</p>
+                {% endfor %}
+                {% else %}
+                    <p>申し訳ありません。このサイトは管理者専用です。</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

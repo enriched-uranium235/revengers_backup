@@ -30,9 +30,9 @@
 
  header.masthead .masthead-content{z-index:1;position:relative}
 
- header.masthead .masthead-content .masthead-heading{font-size:6rem;padding-bottom:4rem;text-shadow:4px 0 0 black,0 4px 0 black,-4px 0 0 black,0 -4px 0 black}
+ header.masthead .masthead-content .masthead-heading{font-size:6rem;padding-bottom:4rem;-webkit-text-stroke-width:3px;-webkit-text-stroke-color:#345543;}
 
- header.masthead .masthead-content .masthead-subheading{font-size:3rem;padding-bottom:4rem;text-shadow:4px 0 0 black,0 4px 0 black,-4px 0 0 black,0 -4px 0 black}(0deg,#ee0979 0,#ff6a00 100%)}
+ header.masthead .masthead-content .masthead-subheading{font-size:3rem;padding-bottom:4rem;-webkit-text-stroke-width:2px;-webkit-text-stroke-color:#345543;}(0deg,#ee0979 0,#ff6a00 100%)}
 
  @media (min-width:600px) and screen{
  header.masthead{
@@ -60,3 +60,46 @@
 
  .btn-secondary:focus{-webkit-box-shadow:0 0 0 .2rem rgba(255,106,0,.5);box-shadow:0 0 0 .2rem rgba(255,106,0,.5)}
 
+.anim-box.kiran {
+  opacity: 1;
+  overflow: hidden;
+  position: relative;
+}
+.anim-box.kiran::before {
+  background-color: #fff;
+  content: "";
+  display: block;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  opacity: 0;
+  transition: cubic-bezier(0.32, 0, 0.67, 0);
+}
+.anim-box.kiran:hover::before {
+  animation: kiran 0.75s linear 1;
+}
+
+@keyframes kiran {
+  0% {
+    transform: scale(2) rotate(45deg);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(20) rotate(45deg);
+    opacity: 0.6;
+  }
+  40% {
+    transform: scale(30) rotate(45deg);
+    opacity: 0.4;
+  }
+  80% {
+    transform: scale(45) rotate(45deg);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(50) rotate(45deg);
+    opacity: 0;
+  }
+}

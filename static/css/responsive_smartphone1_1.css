@@ -6,17 +6,21 @@
     }
 
     header.masthead .masthead-content .masthead-heading{
-        padding-bottom: 4vw !important;
+        padding-bottom: 4rem !important;
         margin-left: 2vw;
     }
 
-    header.masthead .masthead-content .masthead-subheading{
+    header.masthead .masthead-content{
         padding-bottom: 4vw !important;
-        margin-left: 2vw;
+    }
+
+    header .masthead-subheading{
+        padding-bottom: 4vw;
+        margin-left:3vw;
     }
 
     .mb-0 {
-        font-size: 19vw !important;
+        font-size: 15vw !important;
         float: left;
         padding-bottom: 2vw;
     }
@@ -37,18 +41,19 @@
         margin-top: 1vw;
     }
 
-    .p-5 {
-        padding: 0 !important;
-    }
-
     .img-fluid {
         margin-top: 10vw;
-        margin-left: 7.5vw;
+        margin-left: 0 !important;
         margin-bottom: 10vw;
     }
 
+    .img-size30 {
+        width:80vw !important;
+        height:80vw !important;
+    }
+
     .display-4 {
-        font-size: 12vw;
+        font-size: 14vw;
         margin-bottom: 5vw;
     }
 
@@ -90,16 +95,16 @@
     }
 
     .accuse_video_size {
-        width: 60vw;
+        width: 100vw;
         height: 60vw;
     }
 
     .accuse_sound_size {
-        width: 60vw;
+        width: 100vw;
     }
 
     .accuse_photo_size {
-        width: 60vw;
+        width: 100vw;
         height: 60vw;
     }
 
@@ -116,7 +121,7 @@
     }
 
     .fs-1 {
-        font-size:8vw;
+        font-size:7vw;
     }
 
     .fs-2 {

@@ -2,7 +2,7 @@ from django import forms
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
 
-from .models import Avengers, Notice, Comment, DM, Comment2
+from .models import Avengers, Notice, Comment, DM, Comment2, Experiences, Comment3
 
 
 class InquiryForm(forms.Form):
@@ -48,7 +48,17 @@ class InquiryForm(forms.Form):
 class DiaryCreateForm(forms.ModelForm):
     class Meta:
         model = Avengers
-        fields = ('title', 'content', 'group', 'photo1', 'media1', 'media2')
+        fields = ('title', 'content', 'group', 'photo1', 'media1', 'media2', 'show')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+class ExperiencesCreateForm(forms.ModelForm):
+    class Meta:
+        model = Experiences
+        fields = ('title', 'content', 'photo', 'video')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -81,7 +91,7 @@ class DMForm(forms.ModelForm):
     # 後から 選択肢を追加
     class Meta:
         model = DM
-        fields = ('content',)
+        fields = ('title', 'content')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -92,3 +102,13 @@ class NewCommentForm(forms.ModelForm):
     class Meta:
         model = Comment2
         fields = ['content']
+
+class CommentCreateForm2(forms.ModelForm):
+    class Meta:
+        model = Comment3
+        fields = ('content',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'

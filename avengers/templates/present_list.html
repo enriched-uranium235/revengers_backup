@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}みんなの経験談 | Vengeancers{% endblock %}
+
+{% block active_experiences_list %}active{% endblock %}
+
+{% block head %}
+<style>
+    .is_hide{
+        display:none;
+    }
+</style>
+{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-4 text-white border-black float-left">Advice and Experiences</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="mt-2 w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1 class="fs-1 fs-5" style="margin-top:1rem;">みんなの経験談・アドバイス一覧</h1>
+                <hr>
+                <p>検索フォームにキーワード(タイトル、投稿したユーザー名等)を入力し検索することで該当する投稿を確認できます。また、プルダウンメニューより投稿されたものを並べ替えることができます。</p>
+                <form method="GET" action="{% url 'avengers:present_list' %}" style="text-align:center;" class="tab">
+                    <input class="mb-1" type="text" name="keyword">
+                    <button type="submit" class="btn btn-info mb-1" style="border-radius:0.3rem;padding-top:0.3rem;padding-bottom:0.2rem;">絞り込み</button>
+                </form>
+                <form style="text-align:center;">
+                    <select onChange="location.href=value;" class="form-deco">
+                        <option value="#">並べ替え</option>
+                        <option value="{% url 'avengers:accuse_good_descending' %}">いいね降順</option>
+                        <option value="{% url 'avengers:accuse_good_ascending' %}">いいね昇順</option>
+                        <option value="{% url 'avengers:accuse_old' %}">投稿日時が古い順</option>
+                        <option value="{% url 'avengers:accuse_new' %}">投稿日時が新しい順</option>
+                    </select>
+                </form>
+                <hr>
+                {% for items in present_list %}
+                    <div class="post-preview">
+                        <a href="{% url 'avengers:get_log2' items.pk %}">
+                            <img class="accuse_photo js-trigger" src="{{ items.photo.url }}" width="240" height="130" style="float:right;">
+                            <video class="accuse_video is_hide js-trigger2" src="{{ items.video.url }}" width="240" height="130" style="float:right;" controls muted autoplay playinline loop></video>
+                            <p class="post-meta text-black">
+                            投稿者：{{ items.user }}
+                            </p>
+                            <h4 class="post-subtitle text-black">
+                            タイトル：{{ items.title }}
+                            </h4>
+                            <h4 class="post-subtitle text-black">
+                            説明：{{ items.content|truncatechars:20 }}
+                            </h4>
+                        </a>
+                        <p class="post-meta" style="margin-bottom:0.5rem;">{{ items.created_at }}</p>
+                        {% include 'present_list_like.html' %}
+                        <small class="text-info">
+                            いいね!=<span id="like_{{items.pk}}">{{ items.good_count }}</span><br>
+                            コメント={{items.number_of_comments}}<br>
+                            表示回数={{items.views}}
+                        </small>
+                    </div>
+                    <hr>
+                {% empty %}
+                    <p>投稿がありません。</p>
+                {% endfor %}
+
+                <!-- ページネーション処理 -->
+                {% if is_paginated %}
+                    <ul class="pagination">
+                        <!-- 前ページへのリンク -->
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        <!-- ページ数表示 -->
+                        {% for page_num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == page_num %}
+                                <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        <!-- 次ページへのリンク -->
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/sleep.js' %}"></script>
+<script>
+let scrollElem = document.querySelectorAll('.js-trigger');
+let scrollElem2 = document.querySelectorAll('.js-trigger2');
+let scrollAnimation = function() {
+  for(let i = 0; i < scrollElem.length; i++) {
+    let trigger;
+    let triggerRange;
+    let action = function(){
+      scrollElem[i].classList.add('is_hide');
+      scrollElem2[i].classList.remove('is_hide');
+    }
+    if (screen.width < 600){
+      trigger = 300;
+      triggerRange = 250;
+
+      if (window.innerHeight > scrollElem[i].getBoundingClientRect().top + trigger) {
+        if (scrollElem[i].getBoundingClientRect().top + trigger + triggerRange > window.innerHeight) {
+          sleep(2, function(){
+            action();
+          });
+        } else {
+          scrollElem[i].classList.remove('is_hide');
+          scrollElem2[i].classList.add('is_hide');
+        }
+      }
+    } else if (screen.width < 1000) {
+      trigger = 100;
+      triggerRange = 700;
+
+      if (window.innerHeight > trigger) {
+        if (scrollElem[i].getBoundingClientRect().top + triggerRange > window.innerHeight) {
+          sleep(2, function(){
+            action();
+          });
+        } else {
+          scrollElem[i].classList.remove('is_hide');
+          scrollElem2[i].classList.add('is_hide');
+        }
+      }
+    } else {
+      trigger = 300;
+      triggerRange = 125;
+
+      if (window.innerHeight > scrollElem[i].getBoundingClientRect().top + trigger) {
+        if (scrollElem[i].getBoundingClientRect().top + trigger + triggerRange > window.innerHeight) {
+          sleep(2, function(){
+            action();
+          });
+        } else {
+          scrollElem[i].classList.remove('is_hide');
+          scrollElem2[i].classList.add('is_hide');
+        }
+      }
+    }
+  }
+}
+window.addEventListener('load', scrollAnimation);
+window.addEventListener('scroll', scrollAnimation);
+</script>
+{% endblock %}

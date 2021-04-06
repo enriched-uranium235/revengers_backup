@@ -10,12 +10,15 @@ from django.dispatch import receiver
 class Avengers(models.Model):
     user = models.ForeignKey(User, verbose_name='ユーザー', on_delete=models.CASCADE)
     title = models.CharField(verbose_name='被害内容', max_length=40)
-    group = models.CharField(verbose_name='所属団体名・加害者名(未記入でも可)', max_length=40, blank=True, null=True)
+    group = models.CharField(verbose_name='会社名・加害者名・学校名(未記入でも可)', max_length=40, blank=True, null=True)
     content = models.TextField(verbose_name='被害内容詳細(職場いじめ、パワハラ等)', blank=True, null=True)
     photo1 = models.ImageField(verbose_name='写真', blank=True, null=True)
     media1 = models.FileField(verbose_name='音声', blank=True, null=True)
     media2 = models.FileField(verbose_name='動画', blank=True, null=True)
     good_count = models.IntegerField(default=0)
+    views = models.IntegerField(default=0)
+    show = models.BooleanField(verbose_name='被害記事を公開したい場合こちらのチェックボックスにチェックをお願いします。', default=False)
+    is_reported = models.CharField(verbose_name='通報状態', max_length=10, default='')
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
 
@@ -36,8 +39,8 @@ class Comment(models.Model):
     post = models.ForeignKey(Avengers, verbose_name='対象記事', on_delete=models.CASCADE)
     parent = models.ForeignKey('self', verbose_name='親コメント', null=True, blank=True, on_delete=models.CASCADE)
     good_count = models.IntegerField(default=0)
-    reply_good_count = models.IntegerField(default=0)
     comment_c = models.IntegerField(default=0)
+    is_reported = models.CharField('通報状態', max_length=10, default='')
     created_at = models.DateTimeField(verbose_name='投稿日時')
 
     def __str__(self):
@@ -53,12 +56,23 @@ class Notice(models.Model):
     def __str__(self):
         return self.content
 
+    @property
+    def number_of_reads(self):
+        return NoticeRead.objects.filter(notice=self).filter(is_read=True).count()
+
+# お知らせ既読確認
+class NoticeRead(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='read_owner')
+    notice = models.ForeignKey(Notice, verbose_name='通知', on_delete=models.CASCADE)
+    is_read = models.BooleanField(default=False)
+
 # コミュニティースレッド
 class Post(models.Model):
     content = models.TextField(max_length=300)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     good_count = models.IntegerField(default=0)
+    is_reported = models.CharField('通報状態', max_length=10, default='')
 
     def __str__(self):
         return self.content
@@ -74,6 +88,42 @@ class Comment2(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post_connected = models.ForeignKey(Post, on_delete=models.CASCADE)
     good_count = models.IntegerField(default=0)
+    is_reported = models.CharField('通報状態', max_length=10, default='')
+
+
+# スピーチ投稿
+class Experiences(models.Model):
+    user = models.ForeignKey(User, verbose_name='ユーザー', on_delete=models.CASCADE)
+    title = models.CharField(verbose_name='タイトル', max_length=40)
+    content = models.TextField(verbose_name='投稿内容説明', blank=True, null=True)
+    photo = models.ImageField(verbose_name='動画紹介画像', null=True)
+    video = models.FileField(verbose_name='投稿動画', null=True)
+    good_count = models.IntegerField(default=0)
+    views = models.IntegerField(default=0)
+    created_at = models.DateTimeField(verbose_name='投稿日時', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def number_of_comments(self):
+        return Comment3.objects.filter(post_connected=self).count()
+
+# コメント(スピーチ投稿用)
+class Comment3(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField(max_length=150)
+    post_connected = models.ForeignKey(Experiences, verbose_name='対象記事', on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', verbose_name='親コメント', null=True, blank=True, on_delete=models.CASCADE)
+    date_posted = models.DateTimeField(verbose_name='コメント日時')
+    good_count = models.IntegerField(default=0)
+    comment_c = models.IntegerField(default=0)
+    is_reported = models.CharField('通報状態', max_length=10, default='')
+
+    def __str__(self):
+        return self.content + '(' + str(self.author) + ')'
+
 
 # Goodクラス(スレッド用)
 class Good(models.Model):
@@ -115,6 +165,24 @@ class Good4(models.Model):
         return 'good for "' + str(self.comment) + '" (by ' + \
                str(self.owner) + ')'
 
+
+# Good5クラス(スピーチ用)
+class Good5(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='good_owner5')
+    experiences = models.ForeignKey(Experiences, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'good for "' + str(self.experiences) + '" (by ' + str(self.owner) + ')'
+
+
+# Good6クラス(コメント3用)
+class Good6(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='good_owner6')
+    comment = models.ForeignKey(Comment3, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'good for "' + str(self.comment) + '" (by ' + str(self.owner) + ')'
+
 # お気に入り投稿
 class Favorite(models.Model):
     owner = models.ForeignKey(User, verbose_name='ユーザー', on_delete=models.CASCADE, related_name='favorite_owner')
@@ -125,7 +193,21 @@ class Favorite(models.Model):
     photo1 = models.ImageField(verbose_name='写真', blank=True, null=True)
     media1 = models.FileField(verbose_name='音声', blank=True, null=True)
     media2 = models.FileField(verbose_name='動画', blank=True, null=True)
-    good_count = models.IntegerField(default=0)
+    number = models.IntegerField(default=0)
+    created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
+
+    def __str__(self):
+        return str(self.owner) + ' (favorite:"' + str(self.favorite) + '")'
+
+# お気に入り投稿(experience)
+class Favorite2(models.Model):
+    owner = models.ForeignKey(User, verbose_name='ユーザー', on_delete=models.CASCADE, related_name='favorite_owner2')
+    favorite = models.ForeignKey(Experiences, verbose_name='保存した記事', on_delete=models.CASCADE)
+    title = models.CharField(verbose_name='タイトル', max_length=40)
+    content = models.TextField(verbose_name='被害内容詳細(職場いじめ、パワハラ等)', blank=True, null=True)
+    photo = models.ImageField(verbose_name='画像', blank=True, null=True)
+    video = models.FileField(verbose_name='動画', blank=True, null=True)
     number = models.IntegerField(default=0)
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
@@ -137,7 +219,10 @@ class Favorite(models.Model):
 class DM(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="dm_owner")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="dm_user")
+    title = models.CharField(max_length=40, blank=True, null=True)
     content = models.TextField(max_length=250)
+    is_read = models.BooleanField(default=False)
+    is_reported = models.CharField('通報状態', max_length=10, default='')
     dm_created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -203,6 +288,27 @@ class Report5(models.Model):
     user = models.CharField(verbose_name='コメントユーザー', max_length=40)
     user_id = models.IntegerField(verbose_name='id', default=0)
     report = models.ForeignKey(Comment2, verbose_name='通報されたコメント', on_delete=models.CASCADE)
+    content = models.TextField(verbose_name='コメント内容', blank=True, null=True)
+    number = models.IntegerField(verbose_name='コメントID', default=0)
+    created_at = models.DateTimeField(verbose_name='通報日時', auto_now=True)
+
+# 通報機能(スピーチ投稿)
+class Report6(models.Model):
+    user = models.CharField(verbose_name='スピーチ投稿者', max_length=40)
+    user_id = models.IntegerField(verbose_name='id', default=0)
+    report = models.ForeignKey(Experiences, verbose_name='通報されたスピーチ', on_delete=models.CASCADE)
+    title = models.CharField(verbose_name='タイトル', max_length=40)
+    content = models.TextField(verbose_name='説明文', blank=True, null=True)
+    photo = models.ImageField(verbose_name='紹介画像', blank=True, null=True)
+    video = models.FileField(verbose_name='スピーチ動画')
+    number = models.IntegerField(default=0)
+    created_at = models.DateTimeField(verbose_name='通報日時', auto_now=True)
+
+# 通報機能(Comment3)
+class Report7(models.Model):
+    user = models.CharField(verbose_name='コメントユーザー', max_length=40)
+    user_id = models.IntegerField(verbose_name='id', default=0)
+    report = models.ForeignKey(Comment3, verbose_name='通報されたコメント', on_delete=models.CASCADE)
     content = models.TextField(verbose_name='コメント内容', blank=True, null=True)
     number = models.IntegerField(verbose_name='コメントID', default=0)
     created_at = models.DateTimeField(verbose_name='通報日時', auto_now=True)
@@ -278,6 +384,35 @@ class Report5_1(models.Model):
     owner = models.CharField(verbose_name='通報者', max_length=40)
     owner_id = models.IntegerField(verbose_name='通報者ID', default=0)
 
+# 通報機能(スピーチ投稿永久保存)
+class Report6_1(models.Model):
+    user = models.CharField(verbose_name='スピーチ投稿者', max_length=40)
+    user_id = models.IntegerField(verbose_name='id', default=0)
+    report = models.ForeignKey(Experiences, verbose_name='通報されたスピーチ', on_delete=models.CASCADE)
+    title = models.CharField(verbose_name='タイトル', max_length=40)
+    content = models.TextField(verbose_name='説明文', blank=True, null=True)
+    photo = models.ImageField(verbose_name='紹介画像', blank=True, null=True)
+    video = models.FileField(verbose_name='スピーチ動画')
+    number = models.IntegerField(default=0)
+    created_at = models.DateTimeField(verbose_name='投稿日時', auto_now=True)
+    reported_at = models.DateTimeField(verbose_name='通報日時')
+    owner = models.CharField(verbose_name='通報者', max_length=40)
+    owner_id = models.IntegerField(verbose_name='通報者ID', default=0)
+
+
+# 通報機能(Comment3永久保存)
+class Report7_1(models.Model):
+    user = models.CharField(verbose_name='コメントユーザー', max_length=40)
+    user_id = models.IntegerField(verbose_name='id', default=0)
+    report = models.ForeignKey(Comment3, verbose_name='通報されたコメント', on_delete=models.CASCADE)
+    content = models.TextField(verbose_name='コメント内容', blank=True, null=True)
+    number = models.IntegerField(verbose_name='コメントID', default=0)
+    created_at = models.DateTimeField(verbose_name='投稿日時', auto_now=True)
+    reported_at = models.DateTimeField(verbose_name='通報日時')
+    owner = models.CharField(verbose_name='通報者', max_length=40)
+    owner_id = models.IntegerField(verbose_name='通報者ID', default=0)
+
+
 # ブラックリストクラス(各ユーザーごとに通報された回数を取得してデータ集計するためのもの)
 class BlackList(models.Model):
     user = models.ForeignKey(User, verbose_name='ユーザー', on_delete=models.CASCADE, related_name='blacklist')
@@ -307,6 +442,23 @@ class AvengersLog(models.Model):
 
     class Meta:
         verbose_name_plural = 'AvengersLog'
+
+    def __str__(self):
+        return self.title
+
+# ログクラス(各ユーザーごとに閲覧履歴を残す(experience))
+class ExperiencesLog(models.Model):
+    user = models.ForeignKey(User, verbose_name='ユーザー', on_delete=models.CASCADE)
+    avengers = models.ForeignKey(Experiences, verbose_name='履歴に記録される投稿', on_delete=models.CASCADE)
+    title = models.CharField(verbose_name='被害内容', max_length=40)
+    content = models.TextField(verbose_name='被害内容詳細(職場いじめ、パワハラ等)', blank=True, null=True)
+    photo = models.ImageField(verbose_name='写真', blank=True, null=True)
+    video = models.FileField(verbose_name='動画', blank=True, null=True)
+    number = models.IntegerField(verbose_name='整理番号', default=0)
+    created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'ExperiencesLog'
 
     def __str__(self):
         return self.title

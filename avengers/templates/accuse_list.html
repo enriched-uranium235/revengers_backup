@@ -1,36 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}みんなの投稿 | Avengers{% endblock %}
+{% block title %}みんなの投稿 | Vengeancers{% endblock %}
 
 {% block active_accuse_list %}active{% endblock %}
 
-{% block head %}
-<link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-3 text-white border-black float-left">Everyone's Post</h1>
+        </div>
+    </div>
+</header>
 {% endblock %}
 
 {% block contents %}
 <div class="container">
-    <div class="adsence-left" style="margin-top:7rem;float:left;">
-    </div>
-    <div class="adsence-right" style="margin-top:7rem;display:flex;flex-direction:column;align-items:right;float:right;">
-    </div>
     <div class="row">
-        <div class="my-div-style w-100">
+        <div class="mt-2 w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <h1 class="fs-1 fs-5" style="margin-top:1rem;">みんなの被害投稿一覧</h1>
                 <hr>
-                <p>検索フォームにキーワード(パワハラ、職場いじめ、会社名、加害者名、投稿したユーザー名等)を入力し検索することで該当する投稿を確認できます。また、プルダウンメニューより投稿されたものを並べ替えることができます。</p>
+                <p>検索フォームにキーワード(パワハラ、職場いじめ、会社名、加害者名、学校名、投稿したユーザー名等)を入力し検索することで該当する投稿を確認できます。また、プルダウンメニューより投稿されたものを並べ替えることができます。</p>
                 <form method="GET" action="{% url 'avengers:accuse_list' %}" style="text-align:center;" class="tab">
                     <input class="mb-1" type="text" name="keyword">
-                    <button type="submit" class="btn btn-primary mb-1" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.4rem;">絞り込み</button>
+                    <button type="submit" class="btn btn-info mb-1" style="border-radius:0.3rem;padding-top:0.3rem;padding-bottom:0.2rem;">絞り込み</button>
                 </form>
                 <form style="text-align:center;">
-                    <select onChange="location.href=value;">
+                    <select onChange="location.href=value;" class="form-deco">
                         <option value="#">並べ替え</option>
-                        <option value="{% url 'avengers:accuse_video' %}">動画で絞り込む</option>
-                        <option value="{% url 'avengers:accuse_sound' %}">音声で絞り込む</option>
-                        <option value="{% url 'avengers:accuse_photo' %}">画像で絞り込む</option>
+                        <option value="{% url 'avengers:accuse_video' %}">動画のみで絞り込む</option>
+                        <option value="{% url 'avengers:accuse_sound' %}">音声のみで絞り込む</option>
+                        <option value="{% url 'avengers:accuse_photo' %}">画像のみで絞り込む</option>
                         <option value="{% url 'avengers:accuse_good_descending' %}">いいね降順</option>
                         <option value="{% url 'avengers:accuse_good_ascending' %}">いいね昇順</option>
                         <option value="{% url 'avengers:accuse_old' %}">投稿日時が古い順</option>
@@ -42,33 +44,32 @@
                     <div class="post-preview">
                         <a href="{% url 'avengers:get_log' items.pk %}">
                             {% if items.photo1 %}
-                                <img class="accuse_photo" src="{{ items.photo1.url }}" width="250" height="200" style="float:right;">
+                                <img class="accuse_photo" src="{{ items.photo1.url }}" width="240" height="160" style="float:right;">
                             {% elif items.media1 %}
-                                <img class="accuse_sound" src="{% static 'img/sound.jpg' %}" width="250" height="200" style="float:right;">
+                                <img class="accuse_sound" src="{% static 'img/sound.jpg' %}" width="240" height="160" style="float:right;">
                             {% elif items.media2 %}
-                                <video class="accuse_video" controls width="250" height="200" style="float:right;">
-                                    <source src="{{ object.media2.url }}">
-                                    申し訳ありません、お使いのブラウザはビデオに対応しておりません。
-                                </video>
+                                <video class="accuse_video" src="{{ items.media2.url }}" width="240" height="160" style="float:right;" controls muted autoplay playinline></video>
                             {% endif %}
-                          <p class="post-meta">
+                          <p class="post-meta text-black">
                             投稿者：{{ items.user }}
                           </p>
-                          <h4 class="post-subtitle">
+                          <h4 class="post-subtitle text-black">
                             被害内容：{{ items.title }}
                           </h4>
-                          <h4 class="post-subtitle">
+                          <h4 class="post-subtitle text-black">
                             {{ items.content|truncatechars:20 }}
                           </h4>
-                          <p class="post-meta" style="margin:0;">
-                            所属企業又は加害者名：{{ items.group }}
+                          <p class="post-meta text-black" style="margin:0;">
+                            会社名・学校名・加害者名：{{ items.group }}
                           </p>
                         </a>
                         <p class="post-meta" style="margin-bottom:0.5rem;">{{ items.created_at }}</p>
-                        <a href="{% url 'avengers:good2' items.id %}"><button class="text-white" style="float:right;background-color:#ee0979;border-color:#ee0979;border-radius:0.25rem;">💛いいね!する</button></a>
-                        <span class="text-info">
-                            いいね!={{items.good_count}}　　コメント={{items.number_of_comments}}
-                        </span>
+                        {% include 'accuse_list_like.html' %}
+                        <small class="text-info">
+                            いいね!=<span id="like_{{items.pk}}">{{ items.good_count }}</span><br>
+                            コメント={{items.number_of_comments}}<br>
+                            表示回数={{items.views}}
+                        </small>
                     </div>
                     <hr>
                 {% empty %}

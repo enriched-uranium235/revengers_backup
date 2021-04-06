@@ -1,7 +1,7 @@
 {% extends 'manual/manual_base.html' %}
 {% load static %}
 
-{% block title %}My Page-新規投稿 | Avengers{% endblock %}
+{% block title %}My Page-新規投稿 | Vengeancers{% endblock %}
 
 {% block detail %}
 <div class="container">
@@ -11,7 +11,7 @@
             <h1 class="fs-1">My Page-新規投稿</h1>
             <hr>
             <p>　このページでは、タブレットで新規で被害投稿を作成するための手順について説明させていただきます。まだ何も投稿していない場合は、以下の画像のようになります。</p>
-            <img class="manual-tab" src="{% static 'img/user_manual_tablet_mypage2.png' %}" style="width:50vw;height:60vw;">
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_mypage.png' %}" style="width:50vw;height:60vw;">
             <h3 class="mt-5">《画像投稿》</h3>
             <p>　それでは、まずは画像の投稿からやってみましょう。My Page画面の「新規投稿」と書かれたボタンがあります。そのボタンをタップしますと、次の画面が表示されます。</p>
             <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage_create.png' %}" style="width:50vw;height:60vw;">
@@ -25,20 +25,20 @@
             </div>
             <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
             <p class="mt-5">　余談はさておき、必要な情報の入力が終わりましたら「作成」と書かれたボタンをタップしてみましょう。すると、My Pageのホーム画面に戻され、画面上部にメッセージが表示され、画面の右側に先ほど作成した画像投稿の記事が追加されています。その記事をタップすると詳細画面へと移動し、編集や削除もできるようになります。詳細画面については別途解説用のページを作成してありますのでここでは詳しく触れません。</p>
-            <img class="manual-tab" src="{% static 'img/user_manual_tablet_mypage3.png' %}" style="width:50vw;height:60vw;">
+            <img class="manual-tab" src="{% static 'img/user_manual_tablet_mypage2.png' %}" style="width:50vw;height:60vw;">
             <h3 class="mt-5">《音声投稿》</h3>
             <p>　続いて、音声投稿についてもやってみましょう。やり方は先ほどの画像投稿とやることはほとんど変わりません。ホーム画面の「新規投稿」から作成ページへと移動し、必要なフォームを入力した後、「音声:」と書かれた箇所の「ファイルを選択」というボタンをタップして証拠音声を登録します。音声投稿もただのテストですので開発者が好きな曲を放り込んでおきました。好きな曲ですけれどもカラオケで歌っても85点くらい。感情が乗っていないと採点機によく評価されます。</p>
             <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage_create5.png' %}" style="width:50vw;height:60vw;">
             <img class="manual-tab" src="{% static 'img/user_manual_tablet_mypage_create6.png' %}" style="width:50vw;height:15vw;">
             <p class="mt-5">　上の画像の通りにフォームを埋めた後で「作成」をタップしてみた結果が以下の画像になります。</p>
-            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage4.png' %}" style="width:50vw;height:60vw;">
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage3.png' %}" style="width:50vw;height:60vw;">
             <p class="mt-5">　このように、音声が添付された投稿を作成した場合は、スピーカーのアイコン画像が付けられた記事が作成されます。一見しただけで音声が添付されているとわかっていいですね。</p>
             <h3 class="mt-5">《動画投稿》</h3>
             <p>　最後に、動画投稿についても説明します。やり方は画像や音声を添付するときと何も変わりません。ホーム画面の「新規投稿」から作成ページに移動し、入力フォームを埋めた後、「動画:」と書かれた箇所の「ファイルを選択」をタップして添付する動画ファイルを読み込ませるだけです。これについてもサンプルビデオはアシスタントキャラのアリアちゃんをiPadで描く動画を入れておきました。</p>
             <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage_create7.png' %}" style="width:50vw;height:60vw;">
             <img class="manual-tab" src="{% static 'img/user_manual_tablet_mypage_create8.png' %}" style="width:50vw;height:15vw;">
             <p class="mt-5">　上記の通りにフォームを入力したうえで「作成」ボタンをタップしてみましょう。動画が添付された記事が追加されましたね。</p>
-            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage5.png' %}" style="width:50vw;height:60vw;">
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_mypage4.png' %}" style="width:50vw;height:60vw;">
             <p class="mt-5">　動画を添付した記事を作成した場合は、上の画像のように表示されます。YouTubeみたいに投稿者側で動画サムネイルを編集できる仕様とか追加できればいいんですけれども実装の仕方がわかりません。教えて知ってる人。</p>
             <div class="balloon2" style="width:55vw;">
                 <p>記事の作成、投稿についての解説は以上になります!!長々とお付き合いいただきありがとうございました!!</p>

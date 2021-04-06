@@ -1,0 +1,42 @@
+{% load static %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% for reply in reply_list %}
+            <hr>
+            <div class="col-14" style="margin-left:5rem;">
+                <p>返信：{{ reply.content }}</p>
+                <p>返信日時：{{ reply.date_posted }}</p>
+                <article>
+                {%  if user_profile != None %}
+                    <p>投稿者：<img class="rounded-circle"
+                         style="width: 40px; height: 40px;"
+                         src="{{ reply.user_profile.profile.image.url }}">{{ reply.author }}</p>
+                {%  else %}
+                    <p>投稿者：<img class="rounded-circle"
+                         style="width: 40px; height: 40px;"
+                         src="{{ reply.author.profile.image.url }}">{{ reply.author }}</p>
+                {%  endif %}
+                {% if user.is_superuser %}
+                    <p class="float-right">コメントid:{{ reply.pk }}</p>
+                {% elif user.is_staff %}
+                    <p class="float-right">コメントid:{{ reply.pk }}</p>
+                {% endif %}
+                </article>
+                {% include 'present_detail_reply_like.html' %}
+                {% include 'present_reply_report.html' %}
+                {% if user.is_superuser %}
+                    <hr>
+                    <a href="{% url 'avengers:comment_delete3' reply.pk %}" class="btn btn-danger">コメントを消去する</a>
+                {% elif user.is_staff %}
+                    <hr>
+                    <a href="{% url 'avengers:comment_delete3' reply.pk %}" class="btn btn-danger">コメントを消去する</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

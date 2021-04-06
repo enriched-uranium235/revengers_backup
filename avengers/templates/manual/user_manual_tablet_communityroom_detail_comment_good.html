@@ -1,7 +1,7 @@
 {% extends 'manual/manual_base.html' %}
 {% load static %}
 
-{% block title %}投稿されたコメントへのいいね! | Avengers{% endblock %}
+{% block title %}投稿されたコメントへのいいね! | Vengeancers{% endblock %}
 
 {% block detail %}
 <div class="container">
@@ -10,18 +10,17 @@
             <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right">戻る</a>
             <h1 class="fs-1">Community Room-詳細-コメント・返信へのいいね!</h1>
             <hr>
-            <p>　ここでは、投稿されたコメントに対していいね!をする機能について解説を行います。コメントに共感できましたら是非ともいいね!ボタンで共感の気持ちを示してみましょう。やり方はとても簡単です。今回は、テスト用に投稿したスレッドに別アカウントを作成したうえで通報用のコメントを書き込みました。これをこのままいいね!用にも使おうと思います。こちらが作成した別アカウントです。</p>
+            <p>　ここでは、投稿されたコメントに対していいね!をする機能について解説を行います。コメントに共感できましたら是非ともいいね!ボタンで共感の気持ちを示してみましょう。やり方はとても簡単です。今回は、テスト用に投稿したスレッドに別アカウントを作成したうえで通報用のコメントを書き込みました。同じアカウントをこのままいいね!用にも使おうと思います。こちらが作成した別アカウントです。</p>
             <img class="manual-tab" src="{% static 'img/user_manual_tablet_another_account.png' %}" style="width:50vw;height:60vw;">
             <div class="balloon2" style="width:55vw;">
                 <p>こちらのキャラクターも開発者が執筆している別作品の小説より採用しています。くわしくは<a href="https://ncode.syosetu.com/n1856gp/">こちら</a>。</p>
             </div>
             <img src="{% static 'img/ariya_starlight2.jpg' %}" style="width:40vw;height:48vw;margin-left:10vw;">
             <p class="mt-5">　別アカウント「ディアナ.アニマ」にていいね!用のコメントを以下のように追加したのが以下の画像です。</p>
-            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_detail_comment_report.png' %}" style="width:50vw;height:60vw;">
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_detail_comment_good.png' %}" style="width:50vw;height:60vw;">
             <p class="mt-5">　早速コメントの下の方にある「いいね」と書かれた箇所をタップしてみましょう。すると、以下の画像のようになります。</p>
-            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_detail_comment_good_comp.png' %}" style="width:50vw;height:10vw;">
-            <img class="manual-tab" src="{% static 'img/user_manual_tablet_communityroom_detail_comment_good_comp2.png' %}" style="width:50vw;height:60vw;">
-            <p class="mt-5">　詳細画面のトップに戻り、メッセージが表示されました。下までフリックし先ほどいいね!したコメントを見てみますと、いいね!カウントが1増えました。簡単ですね!!なお、JavaScriptのajax通信を使うことで再読み込みやページのトップに戻る仕様はなくせるわけですが手間暇かかるのでつけてません。お問い合わせがありましたらそこの実装とかも考えます。</p>
+            <img class="mt-5 manual-tab" src="{% static 'img/user_manual_tablet_communityroom_detail_comment_good_comp.png' %}" style="width:50vw;height:60vw;">
+            <p class="mt-5">　いいね!カウントが1増えました。簡単ですね!!同じボタンを押しますとカウントが1減ります。</p>
         </div>
     </div>
 </div>

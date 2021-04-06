@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}お気に入りの投稿一覧 | Vengeancers{% endblock %}
+
+{% block active_diary_list %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">My Page</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="mt-2 w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+                <h1 class="fs-1" style="margin-top:1rem;">あなたのお気に入りの投稿一覧</h1>
+                <hr>
+                {% for items in favorite_list2 %}
+                    <div class="post-preview">
+                        <a href="{% url 'avengers:see_favorite2' items.pk %}">
+                            {% if items.photo %}
+                            <div>
+                                <img class="diary-photo" src="{{ items.photo.url }}" width="250" height="130" style="float:right;">
+                            </div>
+                            {% else %}
+                            <div>
+                                <video controls width="250" style="float:right;" class="diary-video">
+                                    <source src="{{ items.video.url }}">
+                                    申し訳ありません、お使いのブラウザはビデオに対応しておりません。
+                                </video>
+                            </div>
+                            {% endif %}
+                            <h2 class="post-title text-black">
+                            タイトル：{{ items.title }}
+                            </h2>
+                            <h3 class="post-subtitle text-black">
+                            説明：{{ items.content|truncatechars:20 }}
+                            {% if not items.content %}
+                               詳細未記入
+                            {% endif %}
+                            </h3>
+                        </a>
+                        <a class="btn btn-danger float-right text-white" href="{% url 'avengers:favorite_delete2' items.pk %}" style="padding:0.3rem;border-radius:0.3rem;">お気に入りから削除</a>
+                        <p class="post-meta">{{ items.created_at }}</p>
+                    </div>
+                    <hr>
+                {% empty %}
+                    <p>お気に入りの投稿がありません。</p>
+                {% endfor %}
+
+                <!-- ページネーション処理 -->
+                {% if is_paginated %}
+                    <ul class="pagination">
+                        <!-- 前ページへのリンク -->
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        <!-- ページ数表示 -->
+                        {% for page_num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == page_num %}
+                                <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        <!-- 次ページへのリンク -->
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

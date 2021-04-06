@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}投稿詳細 | Vengeancers{% endblock %}
+
+{% block active_experiences_list %}active{% endblock %}
+
+{% block head %}
+<style>
+    .trigger {
+        border-style: double;
+        border-color: #898989;
+    }
+
+    .guide {
+        width:30px;
+        height:30px;
+    }
+
+    .is_hide {
+        display:none;
+    }
+</style>
+<script>
+    function api_like_{{object.pk}}() {
+        var api_url = "{% url 'avengers:good5' object.pk %}";
+        var btn = document.getElementById("like");
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState === 4 && request.status === 200) {
+                var received_data = JSON.parse(request.responseText);
+                btn.innerText = received_data.like;
+                splash(received_data.message,{
+                    message_class: 'splashmsg default',
+                    fadein_sec: 0.1,
+                    wait_sec: 1.5,
+                    fadeout_sec: 1.5,
+                    opacity: 0.9,
+                    trans_in: 'ease-in',
+                    trans_out: 'ease-out',
+                    outer_style: 'top: 0px;left: 0px;position: fixed;z-index: 1000;width: 100%;height: 100%;', //外側のスタイル
+                    message_style: 'padding:0.5em;font-size:25px;color:white;background-color:#9aefa9; position: absolute;top: 50%; left: 50%;transform: translateY(-50%) translateX(-50%);-webkit-transform: translateY(-50%) translateX(-50%);', //メッセージエリアのスタイル
+                })
+            }
+        }
+        request.open("GET",api_url);
+        request.send();
+    }
+</script>
+<script>
+    function api_report_{{object.pk}}() {
+        var api_url = "{% url 'avengers:report6' object.pk %}";
+        var btn = document.getElementById("report");
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState === 4 && request.status === 200) {
+                var received_data = JSON.parse(request.responseText);
+            }
+        }
+        request.open("GET",api_url);
+        request.send();
+        splash("通報いただきありがとうございます。管理者側で確認の上厳正に対処させていただきます。",{
+            message_class: 'splashmsg default', //メッセージエリアに設定するクラス
+            fadein_sec: 0.1, //コマンド実行からメッセージがフェードインする時間（秒）
+            wait_sec: 1.5, //コマンド実行からメッセージのフェードアウトを開始する時間（秒）
+            fadeout_sec: 1.5, //フェードアウトする時間（秒）
+            opacity: 0.9, //メッセージの透過率
+            trans_in: 'ease-in', //フェードインの加速度設定（CSSのtransition参照）
+            trans_out: 'ease-out', //フェードアウトの加速度設定（CSSのtransition参照）
+            outer_style: 'top: 0px;left: 0px;position: fixed;z-index: 1000;width: 100%;height: 100%;', //外側のスタイル
+            message_style: 'padding:0.5em;font-size:25px;color:white;background-color:#9aefa9; position: absolute;top: 50%; left: 50%;transform: translateY(-50%) translateX(-50%);-webkit-transform: translateY(-50%) translateX(-50%);', //メッセージエリアのスタイル
+        });
+    }
+</script>
+<script>
+    function api_favorite_{{object.pk}}() {
+        var api_url = "{% url 'avengers:add_favorite2' object.pk %}";
+        var btn = document.getElementById("favorite");
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState === 4 && request.status === 200) {
+                var received_data = JSON.parse(request.responseText);
+            }
+        }
+        request.open("GET",api_url);
+        request.send();
+        splash("この投稿をお気に入りに追加しました。",{
+            message_class: 'splashmsg default', //メッセージエリアに設定するクラス
+            fadein_sec: 0.1, //コマンド実行からメッセージがフェードインする時間（秒）
+            wait_sec: 1.5, //コマンド実行からメッセージのフェードアウトを開始する時間（秒）
+            fadeout_sec: 1.5, //フェードアウトする時間（秒）
+            opacity: 0.9, //メッセージの透過率
+            trans_in: 'ease-in', //フェードインの加速度設定（CSSのtransition参照）
+            trans_out: 'ease-out', //フェードアウトの加速度設定（CSSのtransition参照）
+            outer_style: 'top: 0px;left: 0px;position: fixed;z-index: 1000;width: 100%;height: 100%;', //外側のスタイル
+            message_style: 'padding:0.5em;font-size:25px;color:white;background-color:#9aefa9; position: absolute;top: 50%; left: 50%;transform: translateY(-50%) translateX(-50%);-webkit-transform: translateY(-50%) translateX(-50%);', //メッセージエリアのスタイル
+        });
+    }
+</script>
+{% endblock %}
+
+{% block contents %}
+{% if object.video %}
+
+<div class="my-div-style">
+    <div class="text-center">
+        <video class="accuse_video_size" src="{{ object.video.url }}" controls muted autoplay playinline></video>
+        <script>
+            var message = splash("ミュートは各自で解除お願い致します。",{
+                message_class: 'splashmsg default', //メッセージエリアに設定するクラス
+                fadein_sec: 0.1, //コマンド実行からメッセージがフェードインする時間（秒）
+                wait_sec: 1.5, //コマンド実行からメッセージのフェードアウトを開始する時間（秒）
+                fadeout_sec: 0.5, //フェードアウトする時間（秒）
+                opacity: 0.9, //メッセージの透過率
+                trans_in: 'ease-in', //フェードインの加速度設定（CSSのtransition参照）
+                trans_out: 'ease-out', //フェードアウトの加速度設定（CSSのtransition参照）
+                outer_style: 'top: 0px;left: 0px;position: fixed;z-index: 1000;width: 100%;height: 100%;', //外側のスタイル
+                message_style: 'padding:0.5em;font-size:25px;color:white;background-color:9aefa9;position: absolute;top: 50%; left: 50%;transform: translateY(-50%) translateX(-50%);-webkit-transform: translateY(-50%) translateX(-50%);', //メッセージエリアのスタイル
+            });
+
+            setTimeout(message, 500);
+        </script>
+    </div>
+</div>
+
+<hr>
+
+{% endif %}
+<div class="container">
+    <div>
+        <div class="row">
+            <div class="col-3">
+                <strong>投稿したユーザー</strong>
+            </div>
+            <div class="col-9">
+                <article>
+                {%  if user_profile != None %}
+                    <a href="{% url 'avengers:user-posts' object.user %}"><img class="rounded-circle"
+                         style="width: 60px; height: 60px;"
+                         src="{{ experiences.user_profile.profile.image.url }}"></a>
+                    {{ object.user }}
+                {%  else %}
+                    <a href="{% url 'avengers:user-posts' object.user %}"><img class="rounded-circle"
+                         style="width: 40px; height: 40px;"
+                         src="{{ experiences.user.profile.image.url }}"></a>
+                    {{ object.user }}
+                {%  endif %}
+                </article>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>タイトル</strong>
+            </div>
+            <div class="col-9">
+                {{ object.title }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>説明</strong>
+            </div>
+            <div class="col-9">
+                {{ object.content|linebreaksbr }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>投稿日時</strong>
+            </div>
+            <div class="col-9">
+                {{ object.created_at }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>更新日時</strong>
+            </div>
+            <div class="col-9">
+                {{ object.updated_at }}
+            </div>
+        </div>
+
+        <hr>
+
+        <a href="{% url 'avengers:comment_view2' object.pk %}" class="btn btn-secondary">コメントする</a>
+        <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success">戻る</a>
+        <a onclick="api_like_{{object.pk}}()" class="btn btn-primary text-white">いいね！💛<span id="like">{{ object.good_count }}</span></a>
+        <a onclick="api_favorite_{{object.pk}}()" class="btn btn-warning text-white">★お気に入り登録</a>
+        <hr>
+        <a onclick="api_report_{{object.pk}}()" class="btn btn-danger text-white report">通報</a>
+        {% if user.is_superuser %}
+        <a href="{% url 'avengers:present_delete' object.pk %}" class="btn btn-danger">この投稿を削除する</a>
+        {% elif user.is_staff %}
+        <a href="{% url 'avengers:present_delete' object.pk %}" class="btn btn-danger">この投稿を削除する</a>
+        {% endif %}
+
+        <hr>
+    </div>
+</div>
+
+<div class="adsence-bottom" style="text-align:center;">
+</div>
+
+<div class="container">
+    <div>
+        <div class="trigger pt-2" onclick="changePhoto();">
+            <h3 class="title is-5">コメント一覧<img id="target1" class="guide ml-3" src="{% static 'img/down_arrow.png' %}"><img id="target2" class="guide is_hide ml-3 p-1" src="{% static 'img/up_arrow.png' %}"></h3>
+        </div>
+        <hr>
+        <p>コメント件数:{{ comment_c }}件</p>
+        <hr>
+        <div class="switch is_hide">
+            {% for comment in com_list %}
+            <div class="row">
+                <div class="col-12">
+                    <p>コメント：{{ comment.content }}</p>
+                    <p>コメント日時:{{ comment.created_at }}</p>
+                    <article>
+                    {%  if user_profile != None %}
+                        <p>コメント投稿者：<a href="{% url 'avengers:user-posts' comment.author %}"><img class="rounded-circle"
+                             style="width: 40px; height: 40px;"
+                             src="{{ comment.user_profile.profile.image.url }}"></a>{{ comment.user }}</p>
+                    {%  else %}
+                        <p>コメント投稿者：<a href="{% url 'avengers:user-posts' comment.author %}"><img class="rounded-circle"
+                             style="width: 40px; height: 40px;"
+                             src="{{ comment.author.profile.image.url }}"></a>{{ comment.user }}</p>
+                    {%  endif %}
+                    {% if user.is_superuser %}
+                        <p class="float-right">コメントid:{{ comment.pk }}</p>
+                    {% elif user.is_staff %}
+                        <p class="float-right">コメントid:{{ comment.pk }}</p>
+                    {% endif %}
+                    </article>
+                    {% include 'present_detail_comment_like.html' %}
+                    <a href="{% url 'avengers:reply_create3' comment.pk %}" class="btn btn-secondary">返信する</a>
+                    {% include 'present_comment_report.html' %}
+                    {% if user.is_superuser %}
+                        <hr>
+                        <a href="{% url 'avengers:comment_delete3' comment.pk %}" class="btn btn-danger">コメントを消去する</a>
+                    {% elif user.is_staff %}
+                        <hr>
+                        <a href="{% url 'avengers:comment_delete3' comment.pk %}" class="btn btn-danger">コメントを消去する</a>
+                    {% endif %}
+                    {% with reply_list=comment.comment3_set.all %}
+                    {% include 'reply2.html' %}
+                    {% endwith %}
+                    <hr>
+                </div>
+            </div>
+            {% empty %}
+            <h5>まだコメントが投稿されていません。</h5>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    $(".trigger").click(function () {
+        $(".switch").slideToggle();
+    });
+
+    let Element = document.getElementById('target1');
+    let Element2 = document.getElementById('target2');
+
+    function changePhoto() {
+        Element.classList.toggle('is_hide');
+        Element2.classList.toggle('is_hide')
+    }
+</script>
+{% endblock %}

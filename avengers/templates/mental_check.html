@@ -2,21 +2,39 @@
 
 {% load static %}
 
-{% block title %}簡易メンタルチェック | Avengers{% endblock %}
+{% block title %}簡易メンタルチェック | Vengeancers{% endblock %}
 
 {% block mental_check %}active{% endblock %}
 
-{% block contents %}
-<div class="container">
-    <div class="row">
-        <div class="my-div-style w-100">
-            <h2>メンタルチェック・ストレスチェック</h2>
-            <hr>
-            <p>心身の状態を確認するための簡易メンタルチェックシート及びストレスチェックを用意させていただきました。心療内科へご相談を考える際にお役立てください。開発者は心の病の専門家ではありませんので診断に際して外部サイトに移動することになります。ご了承ください。</p>
-            <hr>
-            <a href="https://kokoro.mhlw.go.jp/check/" style="margin-right:5vw;" class="btn btn-secondary btn-xl rounded-pill mt-5">ストレスチェック</a>
-            <a href="https://utsu.ne.jp/self_check/" class="btn btn-secondary btn-xl rounded-pill mt-5">うつ病診断に移動</a>
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">Mental Check</h1>
         </div>
     </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<div class="body-background">
+<div class="container back-white">
+    <div class="row">
+        <div class="mt-5 w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h2>メンタルチェック・ストレスチェック</h2>
+                <hr>
+                <p class="mb-5">心身の状態を確認するための簡易メンタルチェックシート及びストレスチェックを用意させていただきました。心療内科へご相談を考える際にお役立てください。開発者は心の病の専門家ではありませんので診断に際して外部サイトに移動することになります。ご了承ください。<br>移動先は厚生労働省が提供しているセルフストレスチェックのサイト及び日本イーライリリー株式会社が提供しているうつの症状チェックシートになります。</p>
+                <hr>
+                <div class="text-center pb-5 mt-5 mb-5 expert-gradient">
+                    <a href="https://kokoro.mhlw.go.jp/check/" style="margin-right:5vw;" class="btn btn-secondary btn-xl rounded-pill mt-5 mb-1">ストレスチェック</a>
+                    <a href="https://utsu.ne.jp/self_check/" class="btn btn-secondary btn-xl rounded-pill mt-5 mb-1">うつ病診断に移動</a>
+                </div>
+                <hr>
+                <p class="mt-5">メンタルチェックの所要時間はおよそ2分、ストレスチェックの所要時間はおよそ10分です。回答をするに際してあまり深く考えず、今のありのままのあなた自身の状態を回答すると精度は上がります。</p>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 {% endblock %}

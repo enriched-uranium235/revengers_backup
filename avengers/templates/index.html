@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}集え、復讐と再起を望む者たちよ!! | Avengers{% endblock %}
+{% block title %}集え、復讐と再起を望む者たちよ!! | Vengeancers{% endblock %}
 
 {% block header%}
-<header class="masthead text-white text-center">
+<header class="masthead text-white text-center anim-box kiran">
   <div class="masthead-content">
     <div class="container">
-      <h1 class="masthead-heading mb-0">Avengers</h1>
+      <h1 class="masthead-heading mb-0">Vengeancers</h1>
       <h2 class="masthead-subheading mb-0">もう、一人で悩まないで！！<br>あなたは一人じゃないのだから！！</h2>
       <a href="{% url 'login' %}" class="btn btn-primary btn-xl rounded-pill mt-5">LOG IN</a>
     </div>
@@ -16,18 +16,20 @@
 {% endblock %}
 
 {% block contents %}
+<div class="body-background">
+
 <section>
-  <div class="container">
+  <div class="container animate mt-3">
     <div class="row align-items-center">
       <div class="col-lg-6 order-lg-2">
         <div class="p-5">
           <img class="img-fluid rounded-circle" src="{% static 'img/pawahara.png' %}" alt="">
         </div>
       </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Avengersとは</h2>
-          <p>Avengersとは、職場いじめやパワハラ、モラハラなどの被害でうつ病を発症した方や発症しかかっている方に向けて作られたWebサービスです。受けた被害を投稿して他のユーザーさんに知ってもらったり、投稿内容を元にお近くの法テラスや心療内科で相談できるようにして、被害を受けたあなたがもう一度やり直す助けになればという思いから作りました。</p>
+      <div class="col-lg-6 order-lg-1 background-white">
+        <div class="p-3">
+          <h2 class="display-4 top-fonts">Vengeancersとは</h2>
+          <p class="border-black2">Vengeancersとは、職場いじめやパワハラ、モラハラなどの被害でうつ病を発症した方や発症しかかっている方に向けて作られたWebサービスです。受けた被害を投稿して他のユーザーさんに知ってもらったり、投稿内容を元にお近くの法テラスや心療内科で相談できるようにして、被害を受けたあなたがもう一度やり直す助けになればという思いから作りました。</p>
         </div>
       </div>
     </div>
@@ -35,17 +37,17 @@
 </section>
 
 <section>
-  <div class="container">
+  <div class="container animate">
     <div class="row align-items-center">
       <div class="col-lg-6">
         <div class="p-5">
           <img class="img-fluid rounded-circle" src="{% static 'img/letter.jpg' %}" alt="">
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 background-white">
         <div class="p-5">
-          <h2 class="display-4">Accuse Your Suffering</h2>
-          <p>あなたの受けた被害を投稿したり、他のユーザーさんの受けた被害を見たりすることができます。理不尽な扱いを受けて病を発症することは恥ずかしいことではありません。むしろ、そういう証拠があるのならば積極的にみんなに知ってもらって法律家や心療内科・精神科に相談することをお勧めします。</p>
+          <h2 class="display-4 top-fonts">Accuse Your Suffering</h2>
+          <p class="border-black2">あなたの受けた被害を投稿したり、他のユーザーさんの受けた被害を見たりすることができます。理不尽な扱いを受けて病を発症することは恥ずかしいことではありません。むしろ、そういう証拠があるのならば積極的にみんなに知ってもらって法律家や心療内科・精神科に相談することをお勧めします。</p>
         </div>
       </div>
     </div>
@@ -53,20 +55,192 @@
 </section>
 
 <section>
-  <div class="container">
+  <div class="container animate mt-3">
     <div class="row align-items-center">
       <div class="col-lg-6 order-lg-2">
         <div class="p-5">
-          <img class="img-fluid rounded-circle" src="{% static 'img/communication.png' %}" alt="">
+          <img class="img-fluid rounded-circle" src="{% static 'img/speech.png' %}" alt="">
         </div>
       </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Community Thread</h2>
-          <p>会員様同士で交流するためのスレッドを用意しています。同じ境遇に置かれて苦しんでいる方々同士で交流し、もう一度あなたが立ち上がる助けになればと思います。</p>
+      <div class="col-lg-6 order-lg-1 background-white">
+        <div class="p-3">
+          <h2 class="display-4 top-fonts">Present Your Experiences</h2>
+          <p class="border-black2">あなたのこれまでの経験談や他ユーザーに向けて語りたいことをビデオ形式で投稿することができます。つらい経験をしてきたからこそ語ることのできるあなたの思いを是非とも投稿してください。また、心療内科や法律家等の専門家による投稿も受け付けております。窮地に立たされたら法的にどんな仕返しができるか、会社や学校から逃げることが恥ではないことを語ってくださる法律家や心療内科のスピーチも歓迎いたします。顔出しに抵抗ある方はVカツ等でVRアバターを作成したうえでそうしたスピーチをすることもおすすめします。</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section>
+  <div class="container animate">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/communication.png' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-2 background-white">
+        <div class="p-5">
+          <h2 class="display-4 top-fonts">Community Thread</h2>
+          <p class="border-black2">会員様同士で交流するためのスレッドを用意しています。同じ境遇に置かれて苦しんでいる方々同士で交流し、もう一度あなたが立ち上がる助けになればと思います。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container animate">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/gakkouijime.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1 background-white">
+        <div class="p-5">
+          <h2 class="display-4 top-fonts">For Students</h2>
+          <p class="border-black2">いじめの被害に大人も子供も関係ありません。当サービスは学生の方でも被害を投稿したり悩みを打ち明けることができます。学校に行くことが全てではありません。つらい思いをして登校したり命を絶つことを考えるくらいでしたら一度学校から逃げ出して当サービスにて同じ悩みを抱えるユーザー様に悩みを打ち明け、どうするかをゆっくり考えてから行動しても遅くありません。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container animate">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/domestic_violence.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-2 background-white">
+        <div class="p-5">
+          <h2 class="display-4 top-fonts">For Domestic Problems</h2>
+          <p class="border-black2">DV、児童虐待、嫁いびり等々、家庭内の問題の投稿も受け付けます。窮地に立たされた時あなたを守ってくれるのはあなた自身だけです。誰も守ってくれません。受けた被害の証拠は大切に保存し、復讐に動くための準備を進めましょう。当サービスを加害者による証拠隠滅防止のためのバックアップとしてご利用してくださっても構いません。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container animate">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/0yen_image.jpeg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1 background-white">
+        <div class="p-5">
+          <h2 class="display-4 top-fonts">You Can Use It For Free</h2>
+          <p class="border-black2">当サービスは広告収益で運営しています。利用者からは登録料も年会費もいただきません。お金のことは気にせずお気軽にご利用ください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container animate">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/judgement.jpeg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-2 background-white">
+        <div class="p-5">
+          <h2 class="display-4 top-fonts">For Case Study</h2>
+          <p class="border-black2">当サービスはパワハラや職場いじめ等の被害者のための居場所をweb上に用意することを主目的としていますが、そうした社会の闇を事例研究として使いたい法学系や社会学系の研究者や学生がいましたら役立てていただけたらと思います。しかし、あくまでも被害を投稿したユーザー様の許可を得ることが前提です。研究資料として当サービス内に投稿された被害事例を使いたい場合は投稿主様に接触し、使用する許可を得てください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container animate">
+    <div class="row align-items-center col-md-10 col-lg-10 mx-auto p-0 expert-gradient mb-5">
+      <h2 class="top-fonts m-5">辛い思いをしているのはあなただけではありません。同じ苦しみを味わってきた方々と交流し、あなたがもう一度立ち上がる助けになればと思います。</h2>
+    </div>
+  </div>
+</section>
+
+<div class="container animate diagonal-gradient rounded-pill anim-box kiran">
+  <div class="text-center m-5">
+    <div>
+      <h1 class="fs-1 text-white border-black2">今すぐログインする</h1>
+    </div>
+    <div>
+      <a href="{% url 'login' %}" class="btn btn-primary btn-xl rounded-pill mt-5">LOG IN</a>
+    </div>
+  </div>
+</div>
+
+<div class="container animate diagonal-gradient rounded-pill mt-5 anim-box kiran">
+  <div class="text-center m-5">
+    <div>
+      <h1 class="fs-1 text-white border-black2">今すぐ会員登録する</h1>
+    </div>
+    <div>
+      <a href="{% url 'register-users' %}" class="btn btn-secondary btn-xl rounded-pill mt-5">SIGN UP</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container animate diagonal-gradient2 mt-5 p-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-0">
+          <img class="img-fluid img-fluid2 img-size30 rounded-circle" src="{% static 'img/ariya_starlight.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1 background-white">
+        <div class="p-2">
+          <h1 class="top-fonts">Vengeancers<br>マスコット</h1>
+          <p class="border-black2">当サービスのマスコットとして使用しているキャラクター『アリア』は開発者が趣味で執筆しているweb小説より起用しています。ファンタジー小説に見せかけて開発者がうつ病を発症するまでの経験談を混ぜ込んでいる作品ですのでもし興味がありましたらお読みいただければと思います。詳しくは<a href="https://ncode.syosetu.com/n1536fz/">こちら</a>。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container animate diagonal-gradient2 mt-5 mb-5 p-5">
+    <div class="row align-items-center">
+      <div class="col-lg-12 order-lg-1 background-white">
+        <h1 class="display-4 top-fonts text-center pt-3">開発者からのメッセージ</h1>
+        <div class="row align-items-center">
+          <div class="col-lg-6 order-lg-2 p-2">
+            <img class="img-fluid img-fluid2 img-size30 rounded-circle" src="{% static 'img/developer.jpg' %}" alt="">
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <p class="border-black2">Vengeancersへとアクセスいただきありがとうございます。当サービスは学校や会社等のコミュニティーの中で陰湿な嫌がらせを受け、精神を病んでいる方々のために開発したサービスです。私自身もまたそういった経験をしてきたからこそweb上に嫌がらせを受けている方々のための逃げ場と言いますか、愚痴を言える場所を提供できればという思いから当サービスを開発させていただきました。死ぬことを考えるくらいなら今の会社にも学校にも行かなければいい、逃げることは恥ではない、何歳からでも人生はやり直すことができる。そのことを当サービスの利用を通じて理解していただけたらと思います。当サービスのユーザーにはあなたを否定する方はいません。けなす方もいません。いたとしたら私が全力で排除します。あなたが今抱える悩み、困っていること、当サービス内で打ち明けてみませんか？ユーザーの中に心療内科や法律家の先生、カウンセラーがいれば助けてくれるかもしれません。そうでなかったとしても、同じ境遇で悩んでいるユーザーとつながりを作ることができるかもしれません。あなたがもう一度立ち上がり、幸せをつかむことを応援致します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+let scrollElem = document.querySelectorAll('.animate');
+let scrollAnimation = function() {
+  for(let i = 0; i < scrollElem.length; i++) {
+    let trigger = 300;
+    if (window.innerHeight > scrollElem[i].getBoundingClientRect().top + trigger) {
+      scrollElem[i].classList.add('is-show');
+    }
+  }
+}
+window.addEventListener('load', scrollAnimation);
+window.addEventListener('scroll', scrollAnimation);
+</script>
 {% endblock %}

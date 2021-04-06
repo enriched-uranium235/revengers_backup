@@ -1,16 +1,27 @@
 {% extends 'base.html' %}
 
-{% block title %}お問い合わせ | Avengers{% endblock %}
+{% block title %}お問い合わせ | Vengeancers{% endblock %}
 
 {% block active_inquiry %}active{% endblock %}
 
-{% block contents %}
-<div class="container">
-    <div class="row">
+{% block header %}
+<header class="forest">
+    <div class="container">
         <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">Contact</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<div class="body-background">
+<div class="container back-white">
+    <div class="row">
+        <div class="mt-1 p-5">
             <h2>お問い合わせフォーム</h2>
             <hr>
-            <p>※エラー・不具合を発見しましたらお気軽にお問い合わせください。拡張機能の実装の希望も受け付けますが個人開発のサービスのためこちらの対応は遅れがちになります。ご了承ください。</p>
+            <p>※急にログインできなくなった、表示がおかしいなどエラー・不具合を発見しましたらお気軽にお問い合わせください。拡張機能の実装の希望も受け付けますが個人開発のサービスのためこちらの対応は遅れがちになります。ご了承ください。</p>
             <hr>
             <form method="post">
                 {% csrf_token %}
@@ -35,5 +46,6 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}

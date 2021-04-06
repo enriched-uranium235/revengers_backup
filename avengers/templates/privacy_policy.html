@@ -1,15 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %}プライバシーポリシー | Avengers{% endblock %}
+{% block title %}プライバシーポリシー | Vengeancers{% endblock %}
 
 {% block active_signup %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-4 text-white border-black float-left">Privacy Policy</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style">
-            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+        <div class="mt-2 col-lg-8 col-md-10 mx-auto">
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
             <h1>プライバシーポリシー</h1>
+            <hr>
 
         </div>
     </div>

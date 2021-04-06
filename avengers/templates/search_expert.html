@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}専門家に相談 | Vengeancers{% endblock %}
+
+{% block search_lawyer %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">Search Expert</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<div class="body-background">
+<div class="container">
+    <div class="row">
+        <div class="w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="back-white p-3">
+                    <h2 class="fs-1">専門家に相談する</h2>
+                    <hr>
+                    <p>このページでは、各都道府県の法テラスや心療内科、労働基準監督署、カウンセラーを検索することができます。受けた被害について会社や加害者を訴えたい、心身に異常をきたした、賠償金はいらないけどハラスメントの是正のために公的権力を動かしたい、心療内科と別にカウンセラーにも悩みを打ち明けたい等、様々な用途に応じてご利用いただければと思います。</p>
+                </div>
+                <div class="expert-gradient p-5 mt-5 anim-box kiran">
+                    <h3 class="text-white border-black2">法テラスを探す</h3>
+                    <hr>
+                    <p class="text-white border-black2">以下のプルダウンメニューよりお住いの都道府県を選択していただきますとその都道府県の法テラスのページへと遷移します。パワハラや職場いじめ等の被害を受け、かつその証拠を手に入れることができているのでしたら一度弁護士に相談することを推奨します。</p>
+                    <hr>
+                    <form class="text-center">
+                        <select class="form-deco p-2 border-black2" onChange="location.href=value;">
+                            <option value="#">お住いの都道府県を選択</option>
+                            <option value="https://www.houterasu.or.jp/k/address_list/address_list_hok/index.html">北海道</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/aomori/index.html">青森県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/iwate/index.html">岩手県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/miyagi/index.html">宮城県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/akita/index.html">秋田県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/yamagata/index.html">山形県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/fukushima/index.html">福島県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/ibaraki/index.html">茨城県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/tochigi/index.html">栃木県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/gunma/index.html">群馬県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/saitama/index.html">埼玉県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/chiba/index.html">千葉県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/tokyo/index.html">東京都</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/kanagawa/index.html">神奈川県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/niigata/index.html">新潟県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/toyama/index.html">富山県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/ishikawa/index.html">石川県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/fukui/index.html">福井県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/yamanashi/index.html">山梨県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/nagano/index.html">長野県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/gifu/index.html">岐阜県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/shizuoka/index.html">静岡県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/aichi/index.html">愛知県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/mie/index.html">三重県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/shiga/index.html">滋賀県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/kyoto/index.html">京都府</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/osaka/index.html">大阪府</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/hyogo/index.html">兵庫県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/nara/index.html">奈良県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/wakayama/index.html">和歌山県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/tottori/index.html">鳥取県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/shimane/index.html">島根県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/okayama/index.html">岡山県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/hiroshima/index.html">広島県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/yamaguchi/index.html">山口県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/tokushima/index.html">徳島県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/kagawa/index.html">香川県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/ehime/index.html">愛媛県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/kochi/index.html">高知県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/fukuoka/index.html">福岡県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/saga/index.html">佐賀県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/nagasaki/index.html">長崎県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/kumamoto/index.html">熊本県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/oita/index.html">大分県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/miyazaki/index.html">宮崎県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/kagoshima/index.html">鹿児島県</option>
+                            <option value="https://www.houterasu.or.jp/chihoujimusho/okinawa/index.html">沖縄県</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="expert-gradient p-5 mt-5 anim-box kiran">
+                    <h3 class="text-white border-black2">心療内科を探す</h3>
+                    <hr>
+                    <p class="text-white border-black2">以下のプルダウンメニューよりお住いの都道府県を選択していただきますとその都道府県の心療内科の検索ページへと遷移します。不眠、食欲減退、集中力の低下、無気力状態、自殺願望などがある方は早急に心療内科に相談し治療を受けましょう。仕事も辞めるか休職しましょう。ここで無理をしてしまいますと手遅れとなります。</p>
+                    <hr>
+                    <form class="text-center">
+                        <select class="form-deco p-2 border-black2" onChange="location.href=value;">
+                            <option value="#">お住いの都道府県を選択</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf1/">北海道</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf2/">青森県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf3/">岩手県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf4/">宮城県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf5/">秋田県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf6/">山形県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf7/">福島県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf8/">茨城県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf9/">栃木県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf10/">群馬県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf11/">埼玉県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf12/">千葉県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf13/">東京都</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf14/">神奈川県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf15/">新潟県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf16/">富山県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf17/">石川県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf18/">福井県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf19/">山梨県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf20/">長野県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf21/">岐阜県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf22/">静岡県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf23/">愛知県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf24/">三重県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf25/">滋賀県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf26/">京都府</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf27/">大阪府</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf28/">兵庫県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf29/">奈良県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf30/">和歌山県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf31/">鳥取県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf32/">島根県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf33/">岡山県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf34/">広島県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf35/">山口県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf36/">徳島県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf37/">香川県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf38/">愛媛県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf39/">高知県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf40/">福岡県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf41/">佐賀県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf42/">長崎県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf43/">熊本県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf44/">大分県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf45/">宮崎県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf46/">鹿児島県</option>
+                            <option value="https://doctorsfile.jp/search/ms62_pf47/">沖縄県</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="expert-gradient p-5 mt-5 anim-box kiran">
+                    <h3 class="text-white border-black2">労働基準監督署を探す</h3>
+                    <hr>
+                    <p class="text-white border-black2">以下のプルダウンメニューよりお近くの労働基準監督署のHPへと移動します。パワハラ等の被害の中でも特に労働法に抵触するハラスメント(強制無賃金残業、有給消化中無給扱い、休暇を拒否される等)の証拠を押さえることができていて、かつ法律家を挟まなくてもそうした手続きや訴訟沙汰が可能でしたらご利用ください。</p>
+                    <hr>
+                    <form class="text-center">
+                        <select class="form-deco p-2 border-black2" onChange="location.href=value;">
+                            <option value="#">お住いの都道府県を選択</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/hokkaidou/index.html#roudoukyoku">北海道</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/aomori/index.html#roudoukyoku">青森県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/iwate/index.html#roudoukyoku">岩手県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/miyagi/index.html#roudoukyoku">宮城県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/akita/index.html#roudoukyoku">秋田県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/yamagata/index.html#roudoukyoku">山形県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/fukushima/index.html#roudoukyoku">福島県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/ibaraki/index.html#roudoukyoku">茨城県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/tochigi/index.html#roudoukyoku">栃木県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/gunma/index.html#roudoukyoku">群馬県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/saitama/index.html#roudoukyoku">埼玉県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/chiba/index.html#roudoukyoku">千葉県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/tokyo/index.html#roudoukyoku">東京都</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/kanagawa/index.html#roudoukyoku">神奈川県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/niigata/index.html#roudoukyoku">新潟県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/toyama/index.html#roudoukyoku">富山県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/ishikawa/index.html#roudoukyoku">石川県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/fukui/index.html#roudoukyoku">福井県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/yamanashi/index.html#roudoukyoku">山梨県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/nagano/index.html#roudoukyoku">長野県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/gihu/index.html#roudoukyoku">岐阜県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/shizuoka/index.html#roudoukyoku">静岡県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/aichi/index.html#roudoukyoku">愛知県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/mie/index.html#roudoukyoku">三重県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/shiga/index.html#roudoukyoku">滋賀県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/kyoto/index.html#roudoukyoku">京都府</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/osaka/index.html#roudoukyoku">大阪府</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/hyogo/index.html#roudoukyoku">兵庫県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/nara/index.html#roudoukyoku">奈良県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/wakayama/index.html#roudoukyoku">和歌山県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/tottori/index.html#roudoukyoku">鳥取県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/shimane/index.html#roudoukyoku">島根県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/okayama/index.html#roudoukyoku">岡山県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/hiroshima/index.html#roudoukyoku">広島県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/yamaguchi/index.html#roudoukyoku">山口県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/tokushima/index.html#roudoukyoku">徳島県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/kagawa/index.html#roudoukyoku">香川県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/ehime/index.html#roudoukyoku">愛媛県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/kouchi/index.html#roudoukyoku">高知県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/fukuoka/index.html#roudoukyoku">福岡県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/saga/index.html#roudoukyoku">佐賀県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/nagasaki/index.html#roudoukyoku">長崎県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/kumamoto/index.html#roudoukyoku">熊本県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/ooita/index.html#roudoukyoku">大分県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/miyazaki/index.html#roudoukyoku">宮崎県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/kagoshima/index.html#roudoukyoku">鹿児島県</option>
+                            <option value="https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/okinawa/index.html#roudoukyoku">沖縄県</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="expert-gradient p-5 mt-5 mb-5 anim-box kiran">
+                    <h3 class="text-white border-black2">カウンセラーを探す</h3>
+                    <hr>
+                    <p class="text-white border-black2">以下のプルダウンメニューよりお住いの県のカウンセリングルームをお探しいただけます。ただし、こちらについては各都道府県のどこにどれだけのカウンセリングルームがあるか正確に把握できていませんので精度はいまいちです。あくまでも抜粋した情報ですのでカウンセリングルームをお探しの場合は皆さんで調べていただいた方がより正確な情報が得られると思います。</p>
+                    <hr>
+                    <form class="text-center">
+                        <select class="form-deco p-2 border-black2" onChange="location.href=value;">
+                            <option value="#">お住いの都道府県を選択</option>
+                            <option value="https://byoinnavi.jp/hokkaido/q01">北海道</option>
+                            <option value="https://byoinnavi.jp/aomori/q01">青森県</option>
+                            <option value="https://byoinnavi.jp/iwate/q01">岩手県</option>
+                            <option value="https://byoinnavi.jp/miyagi/q01">宮城県</option>
+                            <option value="https://byoinnavi.jp/akita/q01">秋田県</option>
+                            <option value="https://byoinnavi.jp/yamagata/q01">山形県</option>
+                            <option value="https://byoinnavi.jp/fukushima/q01">福島県</option>
+                            <option value="https://byoinnavi.jp/ibaraki/q01">茨城県</option>
+                            <option value="https://byoinnavi.jp/tochigi/q01">栃木県</option>
+                            <option value="https://byoinnavi.jp/gunma/q01">群馬県</option>
+                            <option value="https://byoinnavi.jp/saitama/q01">埼玉県</option>
+                            <option value="https://byoinnavi.jp/chiba/q01">千葉県</option>
+                            <option value="https://byoinnavi.jp/tokyo/q01">東京都</option>
+                            <option value="https://byoinnavi.jp/kanagawa/q01">神奈川県</option>
+                            <option value="https://byoinnavi.jp/niigata/q01">新潟県</option>
+                            <option value="https://byoinnavi.jp/toyama/q01">富山県</option>
+                            <option value="https://byoinnavi.jp/ishikawa/q01">石川県</option>
+                            <option value="https://byoinnavi.jp/fukui/q01">福井県</option>
+                            <option value="https://byoinnavi.jp/yamanashi/q01">山梨県</option>
+                            <option value="https://byoinnavi.jp/nagano/q01">長野県</option>
+                            <option value="https://byoinnavi.jp/gifu/q01">岐阜県</option>
+                            <option value="https://byoinnavi.jp/shizuoka/q01">静岡県</option>
+                            <option value="https://byoinnavi.jp/aichi/q01">愛知県</option>
+                            <option value="https://byoinnavi.jp/mie/q01">三重県</option>
+                            <option value="https://byoinnavi.jp/shiga/q01">滋賀県</option>
+                            <option value="https://byoinnavi.jp/kyoto/q01">京都府</option>
+                            <option value="https://byoinnavi.jp/osaka/q01">大阪府</option>
+                            <option value="https://byoinnavi.jp/hyogo/q01">兵庫県</option>
+                            <option value="https://byoinnavi.jp/nara/q01">奈良県</option>
+                            <option value="https://byoinnavi.jp/wakayama/q01">和歌山県</option>
+                            <option value="https://byoinnavi.jp/tottori/q01">鳥取県</option>
+                            <option value="https://byoinnavi.jp/shimane/q01">島根県</option>
+                            <option value="https://byoinnavi.jp/okayama/q01">岡山県</option>
+                            <option value="https://byoinnavi.jp/hiroshima/q01">広島県</option>
+                            <option value="https://byoinnavi.jp/yamaguchi/q01">山口県</option>
+                            <option value="https://byoinnavi.jp/tokushima/q01">徳島県</option>
+                            <option value="https://byoinnavi.jp/kagawa/q01">香川県</option>
+                            <option value="https://byoinnavi.jp/ehime/q01">愛媛県</option>
+                            <option value="https://byoinnavi.jp/kochi/q01">高知県</option>
+                            <option value="https://byoinnavi.jp/fukuoka/q01">福岡県</option>
+                            <option value="https://byoinnavi.jp/saga/q01">佐賀県</option>
+                            <option value="https://byoinnavi.jp/nagasaki/q01">長崎県</option>
+                            <option value="https://byoinnavi.jp/kumamoto/q01">熊本県</option>
+                            <option value="https://byoinnavi.jp/oita/q01">大分県</option>
+                            <option value="https://byoinnavi.jp/miyazaki/q01">宮崎県</option>
+                            <option value="https://byoinnavi.jp/kagoshima/q01">鹿児島県</option>
+                            <option value="https://byoinnavi.jp/okinawa/q01">沖縄県</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

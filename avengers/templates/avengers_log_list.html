@@ -1,21 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}あなたの閲覧履歴 | Avengers{% endblock %}
+{% block title %}あなたの閲覧履歴 | Vengeancers{% endblock %}
 
 {% block active_diary_list %}active{% endblock %}
 
-{% block head %}
-<link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">My Page</h1>
+        </div>
+    </div>
+</header>
 {% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style w-100">
+        <div class="mt-3 w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success float-right" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
-                <h1 style="margin-top:1rem;">閲覧履歴</h1>
+                <h1 style="margin-top:1rem;">閲覧履歴(被害投稿)</h1>
                 <hr>
                 {% for items in avengers_log_list %}
                     <div class="post-preview">
@@ -36,17 +42,17 @@
                                 </video>
                             </div>
                             {% endif %}
-                          <h3 class="post-subtitle">
+                          <h3 class="post-subtitle text-black">
                             {{ items.title }}
                           </h3>
-                          <h4 class="post-subtitle">
+                          <h4 class="post-subtitle text-black">
                             {{ items.content|truncatechars:20 }}
                             {% if not items.content %}
                                詳細未記入
                             {% endif %}
                           </h4>
                         </a>
-                        <p class="post-meta">{{ items.created_at }}</p>
+                        <p class="post-meta text-black">{{ items.created_at }}</p>
                     </div>
                     <hr>
                 {% empty %}

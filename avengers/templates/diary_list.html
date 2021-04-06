@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}投稿一覧 | Avengers{% endblock %}
+{% block title %}投稿一覧 | Vengeancers{% endblock %}
 
 {% block active_diary_list %}active{% endblock %}
 
-{% block head %}
-<link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">My Page</h1>
+        </div>
+    </div>
+</header>
 {% endblock %}
 
 {% block contents %}
 <div class="container">
     {%  if user_profile != None %}
-    <div style="margin-top:6rem;" class="float-left mini-profile">
+    <div class="float-left mini-profile mt-2">
         <img
             class="rounded-circle"
             style="width: 150px; height: 150px; margin-left:2rem;"
@@ -31,7 +37,7 @@
         </ul>
     </div>
     {% else %}
-    <div style="margin-top:6rem;" class="float-left mini-profile">
+    <div class="float-left mini-profile mt-2">
         <img
             class="rounded-circle"
             style="width: 150px; height: 150px; margin-left:2rem;"
@@ -53,31 +59,34 @@
     <div class="row">
         <div class="w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <h1 class="fs-1" style="margin-top:6rem;">あなたの被害投稿一覧</h1>
+                <h1 class="fs-1 mt-2">あなたの被害投稿一覧</h1>
                 <hr>
-                <div class="clearfix">
-                    <a class="btn btn-primary float-right mb-1" style="background-color:#f0f000;border-color:#000;border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.5rem;" href="{% url 'avengers:favorite' %}">★お気に入りリスト</a>
-                    <a class="btn btn-primary float-right mb-1" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.5rem;margin-right:0.1rem;" href="{% url 'avengers:diary_create' %}">新規作成</a>
-                    <a class="btn btn-primary float-right mb-1" style="border-radius:0.3rem;padding-top:0.5rem;padding-bottom:0.5rem;margin-right:0.1rem;" href="{% url 'avengers:log_list' %}">表示履歴</a>
+                <div class="clearfix text-right">
+                    <a class="btn btn-warning mb-1 text-white" href="{% url 'avengers:favorite' %}">★お気に入りリスト</a>
+                    <a class="btn btn-info mb-1 mr-1" href="{% url 'avengers:diary_create' %}">新規作成</a>
+                </div>
+                <div class="clearfix text-right">
+                    <a class="btn btn-info mb-1" href="{% url 'avengers:log_list' %}">表示履歴</a>
+                    <a class="btn btn-success mb-1 mr-1 text-white" href="{% url 'avengers:experiences_list' %}">切り替え(体験談)</a>
                 </div>
                 <hr>
                 {% for items in object_list %}
                     <div class="post-preview">
-                        <a href="{% url 'avengers:diary_detail' items.pk %}">
+                        <a href="{% url 'avengers:add_count' items.pk %}">
                             {% if items.photo1 %}
                                 <img class="diary-photo" src="{{ items.photo1.url }}" width="250" height="130" style="float:right;">
                             {% elif items.media1 %}
                                 <img class="diary-sound" src="{% static 'img/sound.jpg' %}" width="250" height="130" style="float:right;">
                             {% elif items.media2 %}
                                 <video controls width="250" style="float:right;" class="diary-video">
-                                    <source src="{{ object.media4.url }}">
+                                    <source src="{{ items.media2.url }}">
                                     申し訳ありません、お使いのブラウザはビデオに対応しておりません。
                                 </video>
                             {% endif %}
-                          <h4 class="post-subtitle">
+                          <h4 class="post-subtitle text-black mt-2">
                             {{ items.title }}
                           </h4>
-                          <h4 class="post-subtitle">
+                          <h4 class="post-subtitle text-black">
                             {{ items.content|truncatechars:20 }}
                             {% if not items.content %}
                                詳細未記入
@@ -86,7 +95,8 @@
                         </a>
                         <p class="post-meta" style="margin:0;">{{ items.created_at }}</p>
                         <span class="text-info">
-                            いいね!={{items.good_count}}　　コメント={{items.number_of_comments}}
+                            いいね!={{items.good_count}}　　コメント={{items.number_of_comments}}<br>
+                            表示回数={{items.views}}
                         </span>
                     </div>
                     <hr>

@@ -6,6 +6,9 @@ from PIL import Image
 class Profile(models.Model):
     user = models.OneToOneField(User, verbose_name='ユーザー', on_delete=models.CASCADE, related_name='profile')
     image = models.ImageField(verbose_name="プロフィール画像", blank=True, null=True, upload_to='images/', default='noimage2.png')
+    address = models.TextField(verbose_name="住所", null=True)
+    birth = models.DateField(verbose_name="生年月日", null=True)
+    full_name = models.CharField(verbose_name="本名", max_length=40, null=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'

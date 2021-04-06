@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}新規投稿 | Vengeancers{% endblock %}
+
+{% block active_diary_list %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">My Page</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="mt-3 w-100">
+            <h1>経験談・アドバイスを投稿</h1>
+            <hr>
+            <h3 class="post-title" style="color:red;">注意：経験談を投稿する際は会社名や学校名、加害者名は伏せましょう。あなたの就いている業種を大まかに話すことでしたら問題ありませんが、証拠なく加害者や会社の名前を出すと会社の信用に傷をつけたとか、名誉棄損とかであなたの立場が悪くなります。経験談を投稿するのはあなたの自由ですが、会社名や加害者名が特定されないよう細心の注意を払いましょう。セーフな表現例：「高校生です。」「工場のオペレーターです。」「システムエンジニアです。」「社会科の教師です。」</h3>
+            <form method="POST" enctype='multipart/form-data'>
+                {% csrf_token %}
+                <table class="table">
+                    {{ form.as_p }}
+                </table>
+                <div style="text-align:center;">
+                    <button class="btn btn-primary" type="submit">作成</button>
+                    <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

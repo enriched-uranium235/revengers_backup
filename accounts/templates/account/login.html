@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}Log In | Avengers{% endblock %}
+{% block title %}Log In | Vengeancers{% endblock %}
 
 {% block active_login %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-3 text-white border-black float-left">Log In</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style">
+        <div class="mt-3">
             <h1>Log In</h1>
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
@@ -19,7 +29,7 @@
                 {% endif %}
 
                 <button class="btn btn-primary" type="submit">ログイン</button>
-                <p><a class="button secondaryAction" href="{% url 'password-reset' %}">パスワードを忘れましたか？</a></p>
+                <p><a class="button secondaryaction" href="{% url 'password-reset' %}">パスワードを忘れましたか？</a></p>
             </form>
         </div>
     </div>

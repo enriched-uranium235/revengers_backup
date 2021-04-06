@@ -2,21 +2,87 @@
 
 {% load static %}
 
-{% block title %}プロフィール編集 | Avengers{% endblock %}
+{% block title %}プロフィール編集 | Vengeancers{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">Change Profile</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
 
 {% block contents %}
-    <h3 style="margin-top:6rem;margin-left:1rem;">
+    <style>
+        #image-clear_id {
+            display: none !important;
+        }
+
+        label[for="image-clear_id"] {
+            display: none !important;
+        }
+
+        .errorlist {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        color: red;
+        }
+
+        div.field {
+            margin-top: 30px;
+        }
+
+        div.field > span.helptext {
+            font-size: 14px;
+            color: #999;
+        }
+
+        div.field > label {
+            display: block;
+        }
+
+        div.field > input, div.field > textarea, div.field > select, div.field > button {
+            width: 100%;
+            padding: 6px 12px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: solid 1px #999;
+        }
+    </style>
+    <h2 class="mt-3 ml-2">
         プロフィールを変更
-    </h3>
-    <form class="col-6 no-padding ml-1" method="POST" enctype="multipart/form-data">
+    </h2>
+<div class="container text-center">
+    <form class="text-center" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <fieldset class="form-group">
-            {{ uform }}
-            {{ pform }}
-        </fieldset>
-        <div class="form-group" style="text-align:center;">
+        {{ form.non_field_errors }}
+            {% for field in uform %}
+            <div class="field col-lg-10 col-md-10">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <span class="helptext">{{ field.help_text }}</span>
+                {% endif %}
+                {{ field.errors }}
+            </div>
+            {% endfor %}
+            {% for field in pform %}
+            <div class="field col-lg-10 col-md-10">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <span class="helptext">{{ field.help_text }}</span>
+                {% endif %}
+                {{ field.errors }}
+            </div>
+            {% endfor %}
+        <div class="form-group text-center mt-3">
             <button class="btn btn-outline-primary" type="submit">変更</button>
             <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success" style="padding-top:0.5rem;padding-bottom:0.5rem;border-radius:0.5rem;">戻る</a>
         </div>
     </form>
+</div>
 {% endblock %}

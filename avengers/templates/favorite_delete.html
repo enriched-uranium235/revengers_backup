@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}お気に入りから削除 | Avengers{% endblock %}
+{% block title %}お気に入りから削除 | Vengeancers{% endblock %}
 
 {% block active_diary_list %}active{% endblock %}
 
@@ -15,7 +15,7 @@
                 {% csrf_token %}
                 <p>本当に削除しますか？</p>
                 <button class="btn btn-primary mt-5" type="submit">削除</button>
-                <a class="btn btn-secondary mt-5 ml-2" href="{% url 'avengers:favorite' %}">キャンセル</a>
+                <a class="btn btn-success mt-5 ml-2" href="{% url 'avengers:favorite' %}">キャンセル</a>
             </form>
         </div>
     </div>

@@ -4,7 +4,9 @@
 {% block user_manual %}active{% endblock %}
 
 {% block head %}
-<link href="{% static 'css/manual2.css' %}" rel="stylesheet">
+<link href="{% static 'css/manual3.css' %}" rel="stylesheet">
+
+<link href="{% static 'css/manual_smartphone.css' %}" rel="stylesheet" media="screen and (max-width:600px)">
 {% endblock %}
 
 {% block contents %}
@@ -13,32 +15,27 @@
     <div class="row">
         <div class="my-div-style w-100">
             <h1 class="fs-1">《マニュアル索引》</h1>
-            <h3 class="menu">PCをご利用の場合</h3>
+            <h3 class="menu s-menu">PCをご利用の場合</h3>
             <ul class="manual">
                 <li>まだアカウントをお持ちでない場合
                     <ul class="manual">
-                        <li><a href="{% url 'avengers:manual_pc_index' %}">Avengers-トップページ・ナビゲーション一覧</a></li>
+                        <li><a href="{% url 'avengers:manual_pc_index' %}">Vengeancers-トップページ・ナビゲーション一覧</a></li>
                         <li><a href="{% url 'avengers:manual_pc_contact' %}">Contact-お問い合わせ</a></li>
                         <li><a href="{% url 'avengers:manual_pc_mentalcheck' %}">Mental Check-メンタルチェック</a></li>
-                        <li><a href="{% url 'avengers:manual_pc_searchlawyer' %}">Search Lawyer-お近くの法テラスを探す</a></li>
-                        <li><a href="{% url 'avengers:manual_pc_psychosomaticmedicine' %}">Psychosomatic Medicine-お近くの心療内科を探す</a></li>
+                        <li><a href="{% url 'avengers:manual_pc_searchlawyer' %}">Search Expert-お近くの専門家を探す</a></li>
                         <li><a href="{% url 'avengers:manual_pc_signup' %}">Sign Up-アカウントを登録する</a></li>
                         <li><a href="{% url 'avengers:manual_pc_login' %}">Log In-ログイン</a></li>
                     </ul>
                 </li>
                 <li>すでにアカウントをお持ちの場合
                     <ul class="manual">
-                        <li><a href="{% url 'avengers:manual_pc_index2' %}">Avengers-トップページ・ナビゲーション一覧</a></li>
+                        <li><a href="{% url 'avengers:manual_pc_index2' %}">Vengeancers-トップページ・ナビゲーション一覧</a></li>
                         <li><a href="{% url 'avengers:manual_pc_contact2' %}">Contact-お問い合わせ</a></li>
                         <li><a href="{% url 'avengers:manual_pc_mentalcheck2' %}">Mental Check-メンタルチェック</a></li>
-                        <li><a href="{% url 'avengers:manual_pc_searchlawyer2' %}">Search Lawyer-お近くの法テラスを探す</a></li>
-                        <li><a href="{% url 'avengers:manual_pc_psychosomaticmedicine2' %}">Psychosomatic Medicine-お近くの心療内科を探す</a></li>
+                        <li><a href="{% url 'avengers:manual_pc_searchlawyer2' %}">Search Expert-お近くの専門家を探す</a></li>
                         <li>My Page-ユーザー専用ページ
                         <ul class="manual">
                             <li><a href="{% url 'avengers:manual_pc_mypage' %}">画面の見方</a></li>
-                            <li><a href="{% url 'avengers:manual_pc_mypage_changeprofile' %}">プロフィール編集</a></li>
-                            <li><a href="{% url 'avengers:manual_pc_mypage_followcheck' %}">フォローユーザー確認</a></li>
-                            <li><a href="{% url 'avengers:manual_pc_mypage_followercheck' %}">フォロワー確認</a></li>
                             <li><a href="{% url 'avengers:manual_pc_mypage_log' %}">表示履歴</a></li>
                             <li><a href="{% url 'avengers:manual_pc_mypage_create' %}">新規投稿</a></li>
                             <li><a href="{% url 'avengers:manual_pc_mypage_favorite' %}">お気に入りリスト</a></li>
@@ -46,7 +43,6 @@
                                 <ul>
                                     <li><a href="{% url 'avengers:manual_pc_mypage_detail' %}">画面の見方</a></li>
                                     <li><a href="{% url 'avengers:manual_pc_mypage_update' %}">投稿内容を編集する</a></li>
-                                    <li><a href="{% url 'avengers:manual_pc_mypage_return' %}">投稿一覧画面に戻る</a></li>
                                     <li><a href="{% url 'avengers:manual_pc_mypage_delete' %}">投稿内容を削除する</a></li>
                                     <li><a href="{% url 'avengers:manual_pc_mypage_reply' %}">投稿されたコメントに返信する</a></li>
                                     <li><a href="{% url 'avengers:manual_pc_mypage_good' %}">投稿されたコメントにいいね!する</a></li>
@@ -64,7 +60,6 @@
                                         <li><a href="{% url 'avengers:manual_pc_everyonespost_detail' %}">画面の見方</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_everyonespost_detail_follow' %}">投稿したユーザーをフォローする</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_everyonespost_detail_comment' %}">投稿内容に対してコメントする</a></li>
-                                        <li><a href="{% url 'avengers:manual_pc_everyonespost_detail_return' %}">投稿一覧画面に戻る</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_everyonespost_detail_good' %}">投稿にいいね!する</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_everyonespost_detail_favorite' %}">投稿をお気に入りに登録する</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_everyonespost_detail_report' %}">投稿されている被害を通報する</a></li>
@@ -118,9 +113,6 @@
                                 <li>送られたダイレクトメッセージを確認する
                                     <ul>
                                         <li><a href="{% url 'avengers:manual_pc_communityroom_dm_sent' %}">画面の見方</a></li>
-                                        <li><a href="{% url 'avengers:manual_pc_communityroom_dm_sent_changeprofile' %}">プロフィール編集</a></li>
-                                        <li><a href="{% url 'avengers:manual_pc_communityroom_dm_sent_followcheck' %}">フォローリスト</a></li>
-                                        <li><a href="{% url 'avengers:manual_pc_communityroom_dm_sent_followercheck' %}">フォロワーリスト</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_communityroom_dm_sent_filtering' %}">絞り込み機能の使い方</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_communityroom_dm_sent_detail' %}">送られたダイレクトメッセージの詳細を見る</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_communityroom_dm_sent_report' %}">送られたダイレクトメッセージを通報する</a></li>
@@ -129,15 +121,11 @@
                                 <li>送ったダイレクトメッセージを確認する
                                     <ul>
                                         <li><a href="{% url 'avengers:manual_pc_communityroom_dm_send' %}">画面の見方</a></li>
-                                        <li><a href="{% url 'avengers:manual_pc_communityroom_dm_send_changeprofile' %}">プロフィール編集</a></li>
-                                        <li><a href="{% url 'avengers:manual_pc_communityroom_dm_send_followcheck' %}">フォローリスト</a></li>
-                                        <li><a href="{% url 'avengers:manual_pc_communityroom_dm_send_followercheck' %}">フォロワーリスト</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_communityroom_dm_send_filtering' %}">絞り込み機能の使い方</a></li>
                                         <li><a href="{% url 'avengers:manual_pc_communityroom_dm_send_gotodetail' %}">送ったダイレクトメッセージの詳細を見る</a></li>
                                         <li>送ったダイレクトメッセージ詳細画面
                                             <ul>
                                                 <li><a href="{% url 'avengers:manual_pc_communityroom_dm_send_detail' %}">詳細画面の見方</a></li>
-                                                <li><a href="{% url 'avengers:manual_pc_communityroom_dm_send_detail_return' %}">送ったダイレクトメッセージ一覧に戻る</a></li>
                                                 <li><a href="{% url 'avengers:manual_pc_communityroom_dm_send_detail_delete' %}">送ったダイレクトメッセージを削除する</a></li>
                                             </ul>
                                         </li>
@@ -167,32 +155,27 @@
                     </ul>
                 </li>
             </ul>
-            <h3 class="menu">タブレットをご利用の場合</h3>
+            <h3 class="menu s-menu">タブレットをご利用の場合</h3>
             <ul class="manual">
                 <li>まだアカウントをお持ちでない場合
                     <ul class="manual">
-                        <li><a href="{% url 'avengers:manual_tablet_index' %}">Avengers-トップページ・ナビゲーション一覧</a></li>
+                        <li><a href="{% url 'avengers:manual_tablet_index' %}">Vengeancers-トップページ・ナビゲーション一覧</a></li>
                         <li><a href="{% url 'avengers:manual_tablet_contact' %}">Contact-お問い合わせ</a></li>
                         <li><a href="{% url 'avengers:manual_tablet_mentalcheck' %}">Mental Check-メンタルチェック</a></li>
-                        <li><a href="{% url 'avengers:manual_tablet_searchlawyer' %}">Search Lawyer-お近くの法テラスを探す</a></li>
-                        <li><a href="{% url 'avengers:manual_tablet_psychosomaticmedicine' %}">Psychosomatic Medicine-お近くの心療内科を探す</a></li>
+                        <li><a href="{% url 'avengers:manual_tablet_searchlawyer' %}">Search Expert-お近くの専門家を探す</a></li>
                         <li><a href="{% url 'avengers:manual_tablet_signup' %}">Sign Up-アカウントを登録する</a></li>
                         <li><a href="{% url 'avengers:manual_tablet_login' %}">Log In-ログイン</a></li>
                     </ul>
                 </li>
                 <li>すでにアカウントをお持ちの場合
                     <ul class="manual">
-                        <li><a href="{% url 'avengers:manual_tablet_index2' %}">Avengers-トップページ・ナビゲーション一覧</a></li>
+                        <li><a href="{% url 'avengers:manual_tablet_index2' %}">Vengeancers-トップページ・ナビゲーション一覧</a></li>
                         <li><a href="{% url 'avengers:manual_tablet_contact2' %}">Contact-お問い合わせ</a></li>
                         <li><a href="{% url 'avengers:manual_tablet_mentalcheck2' %}">Mental Check-メンタルチェック</a></li>
-                        <li><a href="{% url 'avengers:manual_tablet_searchlawyer2' %}">Search Lawyer-お近くの法テラスを探す</a></li>
-                        <li><a href="{% url 'avengers:manual_tablet_psychosomaticmedicine2' %}">Psychosomatic Medicine-お近くの心療内科を探す</a></li>
+                        <li><a href="{% url 'avengers:manual_tablet_searchlawyer2' %}">Search Expert-お近くの専門家を探す</a></li>
                         <li>My Page-ユーザー専用ページ
                         <ul class="manual">
                             <li><a href="{% url 'avengers:manual_tablet_mypage' %}">画面の見方</a></li>
-                            <li><a href="{% url 'avengers:manual_tablet_mypage_changeprofile' %}">プロフィール編集</a></li>
-                            <li><a href="{% url 'avengers:manual_tablet_mypage_followcheck' %}">フォローユーザー確認</a></li>
-                            <li><a href="{% url 'avengers:manual_tablet_mypage_followercheck' %}">フォロワー確認</a></li>
                             <li><a href="{% url 'avengers:manual_tablet_mypage_log' %}">表示履歴</a></li>
                             <li><a href="{% url 'avengers:manual_tablet_mypage_create' %}">新規投稿</a></li>
                             <li><a href="{% url 'avengers:manual_tablet_mypage_favorite' %}">お気に入りリスト</a></li>
@@ -200,7 +183,6 @@
                                 <ul>
                                     <li><a href="{% url 'avengers:manual_tablet_mypage_detail' %}">画面の見方</a></li>
                                     <li><a href="{% url 'avengers:manual_tablet_mypage_update' %}">投稿内容を編集する</a></li>
-                                    <li><a href="{% url 'avengers:manual_tablet_mypage_return' %}">投稿一覧画面に戻る</a></li>
                                     <li><a href="{% url 'avengers:manual_tablet_mypage_delete' %}">投稿内容を削除する</a></li>
                                     <li><a href="{% url 'avengers:manual_tablet_mypage_reply' %}">投稿されたコメントに返信する</a></li>
                                     <li><a href="{% url 'avengers:manual_tablet_mypage_good' %}">投稿されたコメントにいいね!する</a></li>
@@ -218,7 +200,6 @@
                                         <li><a href="{% url 'avengers:manual_tablet_everyonespost_detail' %}">画面の見方</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_everyonespost_detail_follow' %}">投稿したユーザーをフォローする</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_everyonespost_detail_comment' %}">投稿内容に対してコメントする</a></li>
-                                        <li><a href="{% url 'avengers:manual_tablet_everyonespost_detail_return' %}">投稿一覧画面に戻る</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_everyonespost_detail_good' %}">投稿にいいね!する</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_everyonespost_detail_favorite' %}">投稿をお気に入りに登録する</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_everyonespost_detail_report' %}">投稿されている被害を通報する</a></li>
@@ -272,9 +253,6 @@
                                 <li>送られたダイレクトメッセージを確認する
                                     <ul>
                                         <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_sent' %}">画面の見方</a></li>
-                                        <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_sent_changeprofile' %}">プロフィール編集</a></li>
-                                        <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_sent_followcheck' %}">フォローリスト</a></li>
-                                        <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_sent_followercheck' %}">フォロワーリスト</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_sent_filtering' %}">絞り込み機能の使い方</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_sent_detail' %}">送られたダイレクトメッセージの詳細を見る</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_sent_report' %}">送られたダイレクトメッセージを通報する</a></li>
@@ -283,15 +261,11 @@
                                 <li>送ったダイレクトメッセージを確認する
                                     <ul>
                                         <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_send' %}">画面の見方</a></li>
-                                        <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_send_changeprofile' %}">プロフィール編集</a></li>
-                                        <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_send_followcheck' %}">フォローリスト</a></li>
-                                        <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_send_followercheck' %}">フォロワーリスト</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_send_filtering' %}">絞り込み機能の使い方</a></li>
                                         <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_send_gotodetail' %}">送ったダイレクトメッセージの詳細を見る</a></li>
                                         <li>送ったダイレクトメッセージ詳細画面
                                             <ul>
                                                 <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_send_detail' %}">詳細画面の見方</a></li>
-                                                <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_send_detail_return' %}">送ったダイレクトメッセージ一覧に戻る</a></li>
                                                 <li><a href="{% url 'avengers:manual_tablet_communityroom_dm_send_detail_delete' %}">送ったダイレクトメッセージを削除する</a></li>
                                             </ul>
                                         </li>
@@ -321,26 +295,24 @@
                     </ul>
                 </li>
             </ul>
-            <h3 class="menu">スマートフォンをご利用の場合</h3>
+            <h3 class="menu s-menu">スマートフォンをご利用の場合</h3>
             <ul class="manual">
                 <li>まだアカウントをお持ちでない場合
                     <ul class="manual">
-                        <li><a href="{% url 'avengers:manual_sp_index' %}">Avengers-トップページ・ナビゲーション一覧</a></li>
+                        <li><a href="{% url 'avengers:manual_sp_index' %}">Vengeancers-トップページ・ナビゲーション一覧</a></li>
                         <li><a href="{% url 'avengers:manual_sp_contact' %}">Contact-お問い合わせ</a></li>
                         <li><a href="{% url 'avengers:manual_sp_mentalcheck' %}">Mental Check-メンタルチェック</a></li>
-                        <li><a href="{% url 'avengers:manual_sp_searchlawyer' %}">Search Lawyer-お近くの法テラスを探す</a></li>
-                        <li><a href="{% url 'avengers:manual_sp_psychosomaticmedicine' %}">Psychosomatic Medicine-お近くの心療内科を探す</a></li>
+                        <li><a href="{% url 'avengers:manual_sp_searchlawyer' %}">Search Expert-お近くの専門家を探す</a></li>
                         <li><a href="{% url 'avengers:manual_sp_signup' %}">Sign Up-アカウントを登録する</a></li>
                         <li><a href="{% url 'avengers:manual_sp_login' %}">Log In-ログイン</a></li>
                     </ul>
                 </li>
                 <li>すでにアカウントをお持ちの場合
                     <ul class="manual">
-                        <li><a href="{% url 'avengers:manual_sp_index2' %}">Avengers-トップページ・ナビゲーション一覧</a></li>
+                        <li><a href="{% url 'avengers:manual_sp_index2' %}">Vengeancers-トップページ・ナビゲーション一覧</a></li>
                         <li><a href="{% url 'avengers:manual_sp_contact2' %}">Contact-お問い合わせ</a></li>
                         <li><a href="{% url 'avengers:manual_sp_mentalcheck2' %}">Mental Check-メンタルチェック</a></li>
-                        <li><a href="{% url 'avengers:manual_sp_searchlawyer2' %}">Search Lawyer-お近くの法テラスを探す</a></li>
-                        <li><a href="{% url 'avengers:manual_sp_psychosomaticmedicine2' %}">Psychosomatic Medicine-お近くの心療内科を探す</a></li>
+                        <li><a href="{% url 'avengers:manual_sp_searchlawyer2' %}">Search Expert-お近くの専門家を探す</a></li>
                         <li>My Page-ユーザー専用ページ
                         <ul class="manual">
                             <li><a href="{% url 'avengers:manual_sp_mypage' %}">画面の見方</a></li>
@@ -351,7 +323,6 @@
                                 <ul>
                                     <li><a href="{% url 'avengers:manual_sp_mypage_detail' %}">画面の見方</a></li>
                                     <li><a href="{% url 'avengers:manual_sp_mypage_update' %}">投稿内容を編集する</a></li>
-                                    <li><a href="{% url 'avengers:manual_sp_mypage_return' %}">投稿一覧画面に戻る</a></li>
                                     <li><a href="{% url 'avengers:manual_sp_mypage_delete' %}">投稿内容を削除する</a></li>
                                     <li><a href="{% url 'avengers:manual_sp_mypage_reply' %}">投稿されたコメントに返信する</a></li>
                                     <li><a href="{% url 'avengers:manual_sp_mypage_good' %}">投稿されたコメントにいいね!する</a></li>
@@ -369,7 +340,6 @@
                                         <li><a href="{% url 'avengers:manual_sp_everyonespost_detail' %}">画面の見方</a></li>
                                         <li><a href="{% url 'avengers:manual_sp_everyonespost_detail_follow' %}">投稿したユーザーをフォローする</a></li>
                                         <li><a href="{% url 'avengers:manual_sp_everyonespost_detail_comment' %}">投稿内容に対してコメントする</a></li>
-                                        <li><a href="{% url 'avengers:manual_sp_everyonespost_detail_return' %}">投稿一覧画面に戻る</a></li>
                                         <li><a href="{% url 'avengers:manual_sp_everyonespost_detail_good' %}">投稿にいいね!する</a></li>
                                         <li><a href="{% url 'avengers:manual_sp_everyonespost_detail_favorite' %}">投稿をお気に入りに登録する</a></li>
                                         <li><a href="{% url 'avengers:manual_sp_everyonespost_detail_report' %}">投稿されている被害を通報する</a></li>
@@ -436,7 +406,6 @@
                                         <li>送ったダイレクトメッセージ詳細画面
                                             <ul>
                                                 <li><a href="{% url 'avengers:manual_sp_communityroom_dm_send_detail' %}">詳細画面の見方</a></li>
-                                                <li><a href="{% url 'avengers:manual_sp_communityroom_dm_send_detail_return' %}">送ったダイレクトメッセージ一覧に戻る</a></li>
                                                 <li><a href="{% url 'avengers:manual_sp_communityroom_dm_send_detail_delete' %}">送ったダイレクトメッセージを削除する</a></li>
                                             </ul>
                                         </li>

@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}投稿一覧 | Avengers{% endblock %}
+{% block title %}投稿一覧 | Vengeancers{% endblock %}
 
 {% block active_message_list %}active{% endblock %}
 
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-2 text-white border-black float-left">Direct Message</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
 {% block contents %}
 <div class="container">
-    <div class="adsence-left" style="margin-top:7.5vw;float:left;">
-    </div>
-    <div class="adsence-right" style="margin-top:7.5vw;display:flex;flex-direction:column;align-items:right;float:right;">
-    </div>
     <div class="row">
-        <div class="w-100">
+        <div class="w-100 mt-2">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <h1 class="fs-3" style="margin-top:6rem;">ダイレクトメッセージ詳細</h1>
+                <h1 class="fs-3">ダイレクトメッセージ詳細</h1>
                 <hr>
                 <h4>ダイレクトメッセージが送られたユーザー:<img src="{{ object.user.profile.image.url }}" style="width:35px;height:35px;" class="rounded-circle">{{ object.user.username }}</h4>
                 <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success" style="padding:0.4rem;border-radius:0.3rem;">戻る</a>
