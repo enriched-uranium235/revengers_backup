@@ -221,10 +221,33 @@ def noticeread(request, pk):
     if is_read > 0:
         return redirect('avengers:notice_detail', pk=pk)
     else:
+        try:
+            notice.read_list.append(request.user)
+            notice.save()
+        except:
+            try:
+                notice.read_list2.append(request.user)
+                notice.save()
+            except:
+                try:
+                    notice.read_list3.append(request.user)
+                    notice.save()
+                except:
+                    try:
+                        notice.read_list4.append(request.user)
+                        notice.save()
+                    except:
+                        try:
+                            notice.read_list5.append(request.user)
+                            notice.save()
+                        except:
+                            messages.error('申し訳ありません、既読処理が正常に完了しませんでした。管理者側にお問い合わせください。')
+
         read = NoticeRead()
         read.user = user
         read.notice = notice
         read.is_read = True
+        read.number = request.user.id
         read.save()
         return redirect('avengers:notice_detail', pk=pk)
 
@@ -375,6 +398,16 @@ class AccuseDetailView(LoginRequiredMixin, generic.DetailView):
         post_id = self.kwargs['pk']
         context['comment_c'] = Comment.objects.filter(post__id=post_id).count()
         return context
+
+# 関連リスト(被害投稿)
+class AccuseReccomendView(LoginRequiredMixin, generic.ListView):
+    model = Avengers
+    template_name = 'accuse_reccomend.html'
+    context_object_name = 'object_list2'
+
+    def get_queryset(self):
+        reccomend = Avengers.objects.all().order_by('-created_at')[:74]
+        return reccomend
 
 
 # みんなの投稿(Experience)

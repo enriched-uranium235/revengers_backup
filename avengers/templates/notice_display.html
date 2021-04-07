@@ -7,10 +7,18 @@
     }
 </style>
 
-{% if items.number_of_reads > 0 %}
-    <img class="size" src="{% static 'img/mail_is_read.png' %}">
-{% else %}
-    <img class="size" src="{% static 'img/mail_not_read.png' %}">
+{% if user != items.user %}
+    {% if user.username in items.read_list %}
+        <img class="size" src="{% static 'img/mail_is_read.png' %}">
+    {% elif user.username in items.read_list2 %}
+        <img class="size" src="{% static 'img/mail_is_read.png' %}">
+    {% elif user.username in items.read_list3 %}
+        <img class="size" src="{% static 'img/mail_is_read.png' %}">
+    {% elif user.username in items.read_list4 %}
+        <img class="size" src="{% static 'img/mail_is_read.png' %}">
+    {% elif user.username in items.read_list5 %}
+        <img class="size" src="{% static 'img/mail_is_read.png' %}">
+    {% else %}
+        <img class="size" src="{% static 'img/mail_not_read.png' %}">
+    {% endif %}
 {% endif %}
-
-<p>{{ items.number_of_reads }}</p>

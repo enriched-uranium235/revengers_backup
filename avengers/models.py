@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.dispatch import receiver
+from django_mysql.models import ListCharField
 
 
 # Avengers被害投稿
@@ -21,6 +22,8 @@ class Avengers(models.Model):
     is_reported = models.CharField(verbose_name='通報状態', max_length=10, default='')
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
+    tags = models.ManyToManyField('self', verbose_name='タグ', related_name='tag', blank=True)
+    relate = models.ManyToManyField('self', verbose_name='関連', related_name='relate', blank=True)
 
     class Meta:
         verbose_name_plural = 'Avengers'
@@ -52,19 +55,21 @@ class Notice(models.Model):
     posted = models.DateTimeField(verbose_name='通知日時', auto_now_add=True)
     title = models.CharField(verbose_name='タイトル', max_length=100)
     content = models.TextField(verbose_name='お知らせ内容')
+    read_list = ListCharField(models.CharField(max_length=40), size=1, max_length=(40 * 2))
+    read_list2 = ListCharField(models.CharField(max_length=40), size=1, max_length=(40 * 2))
+    read_list3 = ListCharField(models.CharField(max_length=40), size=1, max_length=(40 * 2))
+    read_list4 = ListCharField(models.CharField(max_length=40), size=1, max_length=(40 * 2))
+    read_list5 = ListCharField(models.CharField(max_length=40), size=1, max_length=(40 * 2))
 
     def __str__(self):
         return self.content
 
-    @property
-    def number_of_reads(self):
-        return NoticeRead.objects.filter(notice=self).filter(is_read=True).count()
-
 # お知らせ既読確認
 class NoticeRead(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='read_owner')
-    notice = models.ForeignKey(Notice, verbose_name='通知', on_delete=models.CASCADE)
+    notice = models.ForeignKey(Notice, on_delete=models.CASCADE, related_name='notice')
     is_read = models.BooleanField(default=False)
+    number = models.IntegerField(default=0)
 
 # コミュニティースレッド
 class Post(models.Model):
@@ -73,6 +78,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     good_count = models.IntegerField(default=0)
     is_reported = models.CharField('通報状態', max_length=10, default='')
+    tag = models.ManyToManyField('self', verbose_name='タグ', related_name='tag', blank=True)
 
     def __str__(self):
         return self.content
@@ -102,6 +108,8 @@ class Experiences(models.Model):
     views = models.IntegerField(default=0)
     created_at = models.DateTimeField(verbose_name='投稿日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
+    tag = models.ManyToManyField('self', verbose_name='タグ', related_name='tag', blank=True)
+    relate = models.ManyToManyField('self', verbose_name='関連', related_name='relate', blank=True)
 
     def __str__(self):
         return self.title

@@ -51,9 +51,11 @@
             <h3 class="mb-3">
                 新規アカウント作成
             </h3>
+            <form method="POST" class="col-lg-6 col-md-6">
+            {% csrf_token %}
             {{ form.non_field_errors }}
             {% for field in form %}
-            <div class="field col-lg-6 col-md-6">
+            <div class="field">
                 {{ field.label_tag }}
                 {{ field }}
                 {% if field.help_text %}
@@ -62,7 +64,6 @@
                 {{ field.errors }}
             </div>
             {% endfor %}
-            <form method="POST" class="col-lg-6 col-md-6">
                 <p class="mt-2">
                     <input type="checkbox" name="confirm" required>私は<a href="{% url 'avengers:terms_of_service' %}">利用規約</a>を読み同意してサービスを利用します。
                 </p>
