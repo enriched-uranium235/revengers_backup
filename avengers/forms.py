@@ -1,9 +1,9 @@
 from django import forms
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 
-from .models import Avengers, Notice, Comment, DM, Comment2, Experiences, Comment3
-
+from .models import Avengers, Notice, Comment, DM, Comment2, Experiences, Comment3, Tag, Tag2, Tag3
 
 class InquiryForm(forms.Form):
     name = forms.CharField(label='お名前', max_length=30)
@@ -48,17 +48,18 @@ class InquiryForm(forms.Form):
 class DiaryCreateForm(forms.ModelForm):
     class Meta:
         model = Avengers
-        fields = ('title', 'content', 'group', 'photo1', 'media1', 'media2', 'show')
+        fields = ('title', 'group', 'content', 'photo1', 'media1', 'media2', 'show', 'tags', 'relate')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
+
 class ExperiencesCreateForm(forms.ModelForm):
     class Meta:
         model = Experiences
-        fields = ('title', 'content', 'photo', 'video')
+        fields = ('title', 'content', 'photo', 'video', 'tag', 'relate')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -107,6 +108,38 @@ class CommentCreateForm2(forms.ModelForm):
     class Meta:
         model = Comment3
         fields = ('content',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+class TagCreateForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = ('name',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+
+class TagCreateForm2(forms.ModelForm):
+    class Meta:
+        model = Tag2
+        fields = ('name',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+
+class TagCreateForm3(forms.ModelForm):
+    class Meta:
+        model = Tag3
+        fields = ('name',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

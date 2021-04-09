@@ -132,6 +132,15 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 <h1 class="fs-1">スレッド詳細</h1>
                 <hr>
+                <div class="inline">
+                    {% for items in object.tag.all %}
+                    <a class="text-black m-1" href="{% url 'avengers:tag_detail3' items.pk %}">
+                        <small class="post-meta tag-deco">{{items}}</small>
+                    </a>
+                    {% empty %}
+                    {% endfor %}
+                </div>
+                <hr>
                 <article class="media content-section">
                     <div style="width: 100%; word-break: break-all;">
                         <div class="pb-2 row m-0" style="width: 100%; margin-right: 0 !important;">

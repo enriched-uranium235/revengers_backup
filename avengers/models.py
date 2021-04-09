@@ -7,6 +7,28 @@ from django.dispatch import receiver
 from django_mysql.models import ListCharField
 
 
+# Avengers被害投稿用タグ
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+# Experiences投稿用タグ
+class Tag2(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+# Post用タグ
+class Tag3(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
 # Avengers被害投稿
 class Avengers(models.Model):
     user = models.ForeignKey(User, verbose_name='ユーザー', on_delete=models.CASCADE)
@@ -22,8 +44,8 @@ class Avengers(models.Model):
     is_reported = models.CharField(verbose_name='通報状態', max_length=10, default='')
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
-    tags = models.ManyToManyField('self', verbose_name='タグ', related_name='tag', blank=True)
-    relate = models.ManyToManyField('self', verbose_name='関連', related_name='relate', blank=True)
+    relate = models.ManyToManyField('self', verbose_name='関連記事(関連記事の登録は各自で設定お願い致します。複数選択はPCでCTRLキーを押しながらのやり方でしかできません。ご了承ください。)', related_name='relate', blank=True)
+    tags = models.ManyToManyField(Tag, verbose_name='タグ(タグの登録は各自で設定お願い致します。複数選択はPCでCTRLキーを押しながらのやり方でしかできません。ご了承ください。)', related_name='tag', blank=True)
 
     class Meta:
         verbose_name_plural = 'Avengers'
@@ -78,7 +100,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     good_count = models.IntegerField(default=0)
     is_reported = models.CharField('通報状態', max_length=10, default='')
-    tag = models.ManyToManyField('self', verbose_name='タグ', related_name='tag', blank=True)
+    tag = models.ManyToManyField(Tag3, verbose_name='タグ(タグの登録は各自で設定お願い致します。複数選択はPCでCTRLキーを押しながらのやり方でしかできません。ご了承ください。)', related_name='tag', blank=True)
 
     def __str__(self):
         return self.content
@@ -108,8 +130,8 @@ class Experiences(models.Model):
     views = models.IntegerField(default=0)
     created_at = models.DateTimeField(verbose_name='投稿日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
-    tag = models.ManyToManyField('self', verbose_name='タグ', related_name='tag', blank=True)
-    relate = models.ManyToManyField('self', verbose_name='関連', related_name='relate', blank=True)
+    relate = models.ManyToManyField('self', verbose_name='関連(関連記事の登録は各自で設定お願い致します。複数選択はPCでCTRLキーを押しながらのやり方でしかできません。ご了承ください。)', related_name='relate', blank=True)
+    tag = models.ManyToManyField(Tag2, verbose_name='タグ(タグの登録は各自で設定お願い致します。複数選択はPCでCTRLキーを押しながらのやり方でしかできません。ご了承ください。)', related_name='tag', blank=True)
 
     def __str__(self):
         return self.title

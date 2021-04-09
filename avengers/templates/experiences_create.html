@@ -21,6 +21,10 @@
         <div class="mt-3 w-100">
             <h1>経験談・アドバイスを投稿</h1>
             <hr>
+            <div class="text-center">
+                <a class="btn btn-info text-white" href="{% url 'avengers:tag2_create' %}">タグ追加はこちら</a>
+            </div>
+            <hr>
             <h3 class="post-title" style="color:red;">注意：経験談を投稿する際は会社名や学校名、加害者名は伏せましょう。あなたの就いている業種を大まかに話すことでしたら問題ありませんが、証拠なく加害者や会社の名前を出すと会社の信用に傷をつけたとか、名誉棄損とかであなたの立場が悪くなります。経験談を投稿するのはあなたの自由ですが、会社名や加害者名が特定されないよう細心の注意を払いましょう。セーフな表現例：「高校生です。」「工場のオペレーターです。」「システムエンジニアです。」「社会科の教師です。」</h3>
             <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}

@@ -1,0 +1,34 @@
+{% load static %}
+
+<div class="container">
+    <div class="col-12">
+        {% for post in experiences.relate.all %}
+        <a href="{% url 'avengers:get_log2' post.pk %}">
+            {% if post.photo %}
+            <img class="accuse_photo" src="{{ post.photo.url }}" width="240" height="160" style="float:right;">
+            {% elif post.video %}
+            <video class="accuse_video" src="{{ post.video.url }}" width="240" height="160" style="float:right;" controls></video>
+            {% endif %}
+            <h4 class="post-subtitle text-black mt-2">{{ post.title }}</h4>
+            <p class="text-black">{{ post.user.username }}</p>
+            <p class="text-black">{{ post.content|truncatechars:20 }}</p>
+            <small class="text-info">
+                いいね!={{ post.good_count }}<br>
+                コメント={{post.number_of_comments}}<br>
+                表示回数={{post.views}}
+            </small>
+            <div class="datatime text-black float-right">{{ post.created_at|date:"Y/n/j" }}</div>
+        </a>
+        <div class="inline">
+            {% for items in post.tag.all %}
+            <a class="text-black m-1" href="{% url 'avengers:tag_detail2' items.pk %}">
+                <small class="post-meta tag-deco">{{items}}</small>
+            </a>
+            {% empty %}
+            {% endfor %}
+        </div>
+        <hr>
+        {% empty %}
+        {% endfor %}
+    </div>
+</div>

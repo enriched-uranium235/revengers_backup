@@ -9,13 +9,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.utils import timezone
-from .forms import InquiryForm, DiaryCreateForm, ExperiencesCreateForm, NoticeCreateForm, CommentCreateForm, DMForm, NewCommentForm, CommentCreateForm2
-from .models import Avengers, Experiences, Comment, Notice, NoticeRead, Post, Good, Good2, Good3, Good4, Good5, Good6, Favorite, Favorite2, Report, Report2, Report3, Report4, Report5, Report6, Report7, Report1_1, Report2_1, Report3_1, Report4_1, Report5_1, Report6_1, Report7_1, BlackList, AllBlackList, AvengersLog, ExperiencesLog, DM, AttendanceRecord, AttendanceAllRecord, Comment2, Comment3
+from .forms import InquiryForm, DiaryCreateForm, ExperiencesCreateForm, NoticeCreateForm, CommentCreateForm, DMForm, NewCommentForm, CommentCreateForm2, TagCreateForm, TagCreateForm2, TagCreateForm3
+from .models import Tag, Tag2, Tag3, Avengers, Experiences, Comment, Notice, NoticeRead, Post, Good, Good2, Good3, Good4, Good5, Good6, Favorite, Favorite2, Report, Report2, Report3, Report4, Report5, Report6, Report7, Report1_1, Report2_1, Report3_1, Report4_1, Report5_1, Report6_1, Report7_1, BlackList, AllBlackList, AvengersLog, ExperiencesLog, DM, AttendanceRecord, AttendanceAllRecord, Comment2, Comment3
 from accounts.models import Profile, Follow
 from django.db.models import Count
 from django.http import QueryDict, HttpResponse, JsonResponse
 from xlsxwriter.workbook import Workbook
 from io import BytesIO
+from django.views.generic.detail import SingleObjectMixin
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +34,58 @@ class InquiryView(generic.FormView):
         messages.success(self.request, 'メッセージを送信しました。')
         logger.info('Inquiry sent by {}'.format(form.cleaned_data['name']))
         return super().form_valid(form)
+
+# タグ1,2,3生成
+class TagCreate(LoginRequiredMixin, generic.CreateView):
+    model = Tag
+    template_name = 'tag_create.html'
+    form_class = TagCreateForm
+    success_url = reverse_lazy('avengers:diary_create')
+
+    def form_valid(self, form):
+        diary = form.save(commit=False)
+        diary.user = self.request.user
+        diary.save()
+        messages.success(self.request, '新規タグを作成しました。')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, "新規タグの作成に失敗しました。")
+        return super().form_invalid(form)
+
+class Tag2Create(LoginRequiredMixin, generic.CreateView):
+    model = Tag2
+    template_name = 'tag2_create.html'
+    form_class = TagCreateForm2
+    success_url = reverse_lazy('avengers:experiences_create')
+
+    def form_valid(self, form):
+        diary = form.save(commit=False)
+        diary.user = self.request.user
+        diary.save()
+        messages.success(self.request, '新規タグを作成しました。')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, "新規タグの作成に失敗しました。")
+        return super().form_invalid(form)
+
+class Tag3Create(LoginRequiredMixin, generic.CreateView):
+    model = Tag3
+    template_name = 'tag3_create.html'
+    form_class = TagCreateForm3
+    success_url = reverse_lazy('avengers:post-create')
+
+    def form_valid(self, form):
+        diary = form.save(commit=False)
+        diary.user = self.request.user
+        diary.save()
+        messages.success(self.request, '新規タグを作成しました。')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, "新規タグの作成に失敗しました。")
+        return super().form_invalid(form)
 
 class DiaryListView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'object_list'
@@ -399,16 +452,45 @@ class AccuseDetailView(LoginRequiredMixin, generic.DetailView):
         context['comment_c'] = Comment.objects.filter(post__id=post_id).count()
         return context
 
-# 関連リスト(被害投稿)
-class AccuseReccomendView(LoginRequiredMixin, generic.ListView):
-    model = Avengers
-    template_name = 'accuse_reccomend.html'
-    context_object_name = 'object_list2'
+
+# 被害投稿に紐づけられたタグのクリック先の作成
+class TagDetail(SingleObjectMixin, generic.ListView):
+    paginate_by = 40
+    template_name = "tag_detail.html"
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=Tag.objects.all())
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tag'] = self.object
+        return context
 
     def get_queryset(self):
-        reccomend = Avengers.objects.all().order_by('-created_at')[:74]
-        return reccomend
+        t = self.object.name
+        avengers_list = Avengers.objects.filter(tags__name=t).filter(show=True).order_by('-views')
+        return avengers_list
 
+# 関連記事の取得(被害投稿)
+# 被害投稿に紐づけられたタグのクリック先の作成
+class RelateDetail(SingleObjectMixin, generic.ListView):
+    paginate_by = 40
+    template_name = "relate_detail.html"
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=Avengers.objects.all())
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['relate'] = self.object
+        return context
+
+    def get_queryset(self):
+        t = self.object.title or self.object.group or self.object.content or self.object.username or self.object.user
+        avengers_list = Avengers.objects.filter(relate=t).filter(show=True).order_by('-views')[:74]
+        return avengers_list
 
 # みんなの投稿(Experience)
 class PresentListView(generic.ListView):
@@ -506,6 +588,45 @@ class PresentDetailView(LoginRequiredMixin, generic.DetailView):
         post_id = self.kwargs['pk']
         context['comment_c'] = Comment3.objects.filter(post_connected=post_id).count()
         return context
+
+# 経験談に紐づけられたタグのクリック先の作成
+class TagDetail2(SingleObjectMixin, generic.ListView):
+    paginate_by = 40
+    template_name = "tag_detail2.html"
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=Tag2.objects.all())
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tag'] = self.object
+        return context
+
+    def get_queryset(self):
+        t = self.object.name
+        avengers_list = Experiences.objects.filter(tag__name=t).order_by('-views')
+        return avengers_list
+
+# 関連記事の取得(体験談)
+# 被害投稿に紐づけられたタグのクリック先の作成
+class RelateDetail2(SingleObjectMixin, generic.ListView):
+    paginate_by = 40
+    template_name = "relate_detail2.html"
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=Experiences.objects.all())
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['relate'] = self.object
+        return context
+
+    def get_queryset(self):
+        t = self.object.title or self.object.group or self.object.content or self.object.username or self.object.user
+        experiences_list = Experiences.objects.filter(relate=t).filter(show=True).order_by('-views')[:74]
+        return experiences_list
 
 
 class UserProfileView(generic.TemplateView):
@@ -848,7 +969,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
 
 class PostCreateView(LoginRequiredMixin, generic.CreateView):
     model = Post
-    fields = ['content']
+    fields = ['content', 'tag']
     template_name = 'post_new.html'
     success_url = '/community_room'
 
@@ -882,6 +1003,24 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
         data['tag_line'] = '投稿内容の編集'
         return data
 
+# 経験談に紐づけられたタグのクリック先の作成
+class TagDetail3(SingleObjectMixin, generic.ListView):
+    paginate_by = 100
+    template_name = "tag_detail3.html"
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=Tag3.objects.all())
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tag'] = self.object
+        return context
+
+    def get_queryset(self):
+        t = self.object.name
+        avengers_list = Post.objects.filter(tag__name=t).order_by('-date_posted')
+        return avengers_list
 
 class FollowsListView(generic.ListView):
     model = Follow

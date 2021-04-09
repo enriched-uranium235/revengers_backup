@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}新規投稿 | Vengeancers{% endblock %}
+{% block title %}新規タグ作成 | Vengeancers{% endblock %}
 
 {% block active_diary_list %}active{% endblock %}
 
@@ -9,7 +9,7 @@
 <header class="forest">
     <div class="container">
         <div class="my-div-style">
-            <h1 class="display-2 text-white border-black float-left">My Page</h1>
+            <h1 class="display-2 text-white border-black float-left">Create Tags</h1>
         </div>
     </div>
 </header>
@@ -19,13 +19,8 @@
 <div class="container">
     <div class="row">
         <div class="mt-3 w-100">
-            <h1>被害を投稿</h1>
+            <h1>新規タグ作成</h1>
             <hr>
-            <div class="text-center">
-                <a class="btn btn-info text-white" href="{% url 'avengers:tag_create' %}">タグ追加はこちら</a>
-            </div>
-            <hr>
-            <h2 class="post-title" style="color:red;">注意：被害を投稿する際は必ず証拠となる画像や音声、動画を添付しましょう。証拠なしに投稿すると訴えられる危険があります。物証なしに被害投稿をして投稿者様が訴えられたとしても当サービスは責任を負いません。投稿は自己責任でお願いします。</h2>
             <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
                 <table class="table">

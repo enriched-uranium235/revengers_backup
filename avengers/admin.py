@@ -1,8 +1,11 @@
 from django.contrib import admin
 
-from .models import Avengers, Experiences, Comment, Comment2, Comment3, Notice, NoticeRead, Post, Good, Good2, Good3, Good4, Good5, Good6, Favorite, DM, Report, Report2, Report3, Report4, Report5, Report6, Report7, Report1_1, Report2_1, Report3_1, Report4_1, Report5_1, Report6_1, Report7_1, BlackList, AllBlackList, AvengersLog, AttendanceRecord, AttendanceAllRecord
+from .models import Tag, Tag2, Tag3, Avengers, Experiences, Comment, Comment2, Comment3, Notice, NoticeRead, Post, Good, Good2, Good3, Good4, Good5, Good6, Favorite, DM, Report, Report2, Report3, Report4, Report5, Report6, Report7, Report1_1, Report2_1, Report3_1, Report4_1, Report5_1, Report6_1, Report7_1, BlackList, AllBlackList, AvengersLog, AttendanceRecord, AttendanceAllRecord
 
 
+admin.site.register(Tag)
+admin.site.register(Tag2)
+admin.site.register(Tag3)
 admin.site.register(Avengers)
 admin.site.register(Experiences)
 admin.site.register(Comment)

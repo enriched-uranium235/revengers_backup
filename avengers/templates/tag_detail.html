@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ tag.name }}に関連する投稿一覧 | Vengeancers{% endblock %}
+
+{% block active_accuse_list %}active{% endblock %}
+
+{% block header %}
+<header class="forest">
+    <div class="container">
+        <div class="my-div-style">
+            <h1 class="display-3 text-white border-black float-left">Tag Infomation</h1>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="mt-2 w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h2 class="post-title">{{tag.name}}の投稿一覧</h2>
+                <hr>
+                {% for post in page_obj %}
+                <a href="{% url 'avengers:get_log' post.pk %}">
+                    {% if post.photo1 %}
+                        <img class="accuse_photo" src="{{ post.photo1.url }}" width="240" height="160" style="float:right;">
+                    {% elif post.media1 %}
+                        <img class="accuse_sound" src="{% static 'img/sound.jpg' %}" width="240" height="160" style="float:right;">
+                    {% elif post.media2 %}
+                        <video class="accuse_video" src="{{ post.media2.url }}" width="240" height="160" style="float:right;" controls></video>
+                    {% endif %}
+                    <h4 class="post-subtitle text-black mt-2">{{ post.title }}</h4>
+                    <p class="text-black">{{ post.user.username }}</p>
+                    <p class="text-black">{{ post.content|truncatechars:20 }}</p>
+                    <p class="text-black">{{ post.group }}</p>
+                    <small class="text-info">
+                        いいね!={{ post.good_count }}<br>
+                        コメント={{post.number_of_comments}}<br>
+                        表示回数={{post.views}}
+                    </small>
+                    <div class="datatime text-black float-right">{{ post.created_at|date:"Y/n/j" }}</div>
+                </a>
+                <hr>
+                {% empty %}
+                <p>まだこのタグが付けられた投稿はありません。</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

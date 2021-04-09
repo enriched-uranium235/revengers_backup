@@ -65,13 +65,18 @@ footer {
     height:120;
 }
 
+.accuse_size {
+    width:240px;
+    height:160px;
+}
+
 .accuse_photo_size {
     width:100vw;
     height:43vw;
 }
 
 .accuse_sound_size {
-    width:100vw;
+    width:50vw;
 }
 
 .accuse_video_size {
@@ -121,6 +126,20 @@ footer {
 .border-black2 {
     -webkit-text-stroke-width:1px;
     -webkit-text-stroke-color:#000;
+}
+
+.tag-deco {
+    background-color: #afeecb;
+    border-radius: 2px;
+    width: 200px;
+    text-align: center;
+    border-style: solid;
+    border-width:2px;
+    border-color: #000;
+}
+
+.inline {
+    display: inline;
 }
 
 .form-deco{

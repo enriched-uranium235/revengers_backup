@@ -16,13 +16,27 @@
 {% endblock %}
 
 {% block contents %}
+<style>
+    #id_content {
+        width:70vw;
+    }
+
+    #id_tag {
+        width:70vw;
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="mt-2 w-100">
-            <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="col-12">
                 <h3 class="white-important">
                     {{  tag_line }}
                 </h3>
+                <hr>
+                <div class="text-center">
+                    <a class="btn btn-info text-white" href="{% url 'avengers:tag3_create' %}">タグ追加はこちら</a>
+                </div>
+                <hr>
                 <form method="POST">
                     {% csrf_token %}
                     {{ form.non_field_errors }}
@@ -36,9 +50,9 @@
                         {{ field.errors }}
                     </div>
                     {% endfor %}
-                    <div class="form-group ml-1 p-1" style="text-align:center;">
-                        <button class="btn btn-outline-primary float-right mb-1" type="submit">確定</button>
-                        <a href="{% url 'avengers:community_room' %}" class="btn btn-success float-right mr-1 mb-1">戻る</a>
+                    <div class="form-group ml-1 p-1 text-center">
+                        <button class="btn btn-outline-primary mb-1" type="submit">確定</button>
+                        <a href="{% url 'avengers:community_room' %}" class="btn btn-success mr-1 mb-1">戻る</a>
                     </div>
                 </form>
             </div>
