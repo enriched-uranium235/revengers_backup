@@ -92,7 +92,7 @@ class DMForm(forms.ModelForm):
     # 後から 選択肢を追加
     class Meta:
         model = DM
-        fields = ('title', 'content')
+        fields = ('title', 'content', 'is_read')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

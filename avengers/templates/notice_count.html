@@ -1,0 +1,5 @@
+{% if notice_list > 0 and not_read != 0 %}
+    <li><a class="btn btn-secondary mt-3 badge1" data-badge="{{ not_read }}" href="{% url 'avengers:notice_list' %}" style="padding:0.3rem;border-radius:0.3rem;">運営からのお知らせ</a></li>
+{% else %}
+    <li><a class="btn btn-secondary mt-3" href="{% url 'avengers:notice_list' %}" style="padding:0.3rem;border-radius:0.3rem;">運営からのお知らせ</a></li>
+{% endif %}

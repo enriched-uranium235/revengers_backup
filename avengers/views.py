@@ -18,6 +18,12 @@ from xlsxwriter.workbook import Workbook
 from io import BytesIO
 from django.views.generic.detail import SingleObjectMixin
 
+from sklearn.linear_model import Ridge
+from sklearn.model_selection import train_test_split
+from django_pandas.io import read_frame
+import itertools
+import numpy as np
+
 logger = logging.getLogger(__name__)
 
 
@@ -96,6 +102,14 @@ class DiaryListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         diaries = Avengers.objects.filter(user=self.request.user).order_by('-created_at')
         return diaries
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # 運営からのお知らせのインスタンスの数を取得
+        context['notice_list'] = Notice.objects.all().count()
+        context['not_read'] = Notice.objects.all().count() - NoticeRead.objects.filter(user=self.request.user).filter(is_read=True).count()
+        context['dm_count'] = DM.objects.filter(user=self.request.user).filter(is_read=False).count()
+        return context
 
 class DiaryDetailView(LoginRequiredMixin, generic.DetailView):
     model = Avengers
@@ -309,7 +323,6 @@ class AccuseListView(generic.ListView):
     context_object_name = 'object_list2'
     model = Avengers
     template_name = 'accuse_list.html'
-    paginate_by = 40
 
     def get_queryset(self):
         accuses = Avengers.objects.filter(show=True).order_by('-created_at')
@@ -329,7 +342,7 @@ class AccuseListViewMovieOnly(generic.ListView):
     paginate_by = 40
 
     def get_queryset(self):
-        accuses = Avengers.objects.filter(media1__exact='').filter(photo1__exact='').order_by('-created_at')
+        accuses = Avengers.objects.filter(media1__exact='').filter(photo1__exact='').filter(show=True).order_by('-created_at')
         keyword = self.request.GET.get('keyword')
 
         if keyword:
@@ -346,7 +359,7 @@ class AccuseListViewSoundOnly(generic.ListView):
     paginate_by = 40
 
     def get_queryset(self):
-        accuses = Avengers.objects.filter(photo1__exact='').filter(media2__exact='').order_by('-created_at')
+        accuses = Avengers.objects.filter(photo1__exact='').filter(media2__exact='').filter(show=True).order_by('-created_at')
         keyword = self.request.GET.get('keyword')
 
         if keyword:
@@ -363,7 +376,7 @@ class AccuseListViewPhotoOnly(generic.ListView):
     paginate_by = 40
 
     def get_queryset(self):
-        accuses = Avengers.objects.filter(media1__exact='').filter(media2__exact='').order_by('-created_at')
+        accuses = Avengers.objects.filter(media1__exact='').filter(media2__exact='').filter(show=True).order_by('-created_at')
         keyword = self.request.GET.get('keyword')
 
         if keyword:
@@ -380,7 +393,7 @@ class AccuseListViewGoodDescending(generic.ListView):
     paginate_by = 40
 
     def get_queryset(self):
-        accuses = Avengers.objects.all().order_by('-good_count')
+        accuses = Avengers.objects.filter(show=True).order_by('-good_count')
         keyword = self.request.GET.get('keyword')
 
         if keyword:
@@ -397,7 +410,7 @@ class AccuseListViewGoodAscending(generic.ListView):
     paginate_by = 40
 
     def get_queryset(self):
-        accuses = Avengers.objects.all().order_by('good_count')
+        accuses = Avengers.objects.filter(show=True).order_by('good_count')
         keyword = self.request.GET.get('keyword')
 
         if keyword:
@@ -414,7 +427,7 @@ class AccuseListViewOld(generic.ListView):
     paginate_by = 40
 
     def get_queryset(self):
-        accuses = Avengers.objects.all().order_by('created_at')
+        accuses = Avengers.objects.filter(show=True).order_by('created_at')
         keyword = self.request.GET.get('keyword')
 
         if keyword:
@@ -431,7 +444,7 @@ class AccuseListViewNew(generic.ListView):
     paginate_by = 40
 
     def get_queryset(self):
-        accuses = Avengers.objects.all().order_by('-created_at')
+        accuses = Avengers.objects.filter(show=True).order_by('-created_at')
         keyword = self.request.GET.get('keyword')
 
         if keyword:
@@ -631,6 +644,13 @@ class RelateDetail2(SingleObjectMixin, generic.ListView):
 
 class UserProfileView(generic.TemplateView):
     template_name = 'user_profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # 運営からのお知らせのインスタンスの数を取得
+        context['notice_list'] = Notice.objects.all().count()
+        context['not_read'] = Notice.objects.all().count() - NoticeRead.objects.filter(user=self.request.user).filter(is_read=True).count()
+        return context
 
 def comment_create(request, post_pk):
     """記事へのコメント作成"""
@@ -876,6 +896,7 @@ class PostListView(LoginRequiredMixin, generic.ListView):
             all_users.append(User.objects.filter(pk=aux['author']).first())
 
         data['all_users'] = all_users
+        data['dm_count'] = DM.objects.filter(user=self.request.user).filter(is_read=False).count()
         print(all_users, file=sys.stderr)
         return data
 
@@ -915,6 +936,7 @@ class UserPostListView(LoginRequiredMixin, generic.ListView):
 
         data['user_profile'] = visible_user
         data['can_follow'] = can_follow
+        data['dm_count'] = DM.objects.filter(user=self.request.user).filter(is_read=False).count()
         return data
 
     def get_queryset(self):
@@ -1436,10 +1458,9 @@ def add_avengers_log(request, pk):
     count.save()
 
     # ログの作成
-    log = AvengersLog.objects.filter(user=request.user).filter(pk=pk)
+    log = AvengersLog.objects.filter(user=request.user).filter(pk=pk).count()
     log2 = AvengersLog()
-    if log.exists:
-        log.delete()
+    if log > 1:
         log2.user = request.user
         log2.avengers = post
         log2.title = post.title
@@ -1449,6 +1470,7 @@ def add_avengers_log(request, pk):
         log2.media1 = post.media1
         log2.media2 = post.media2
         log2.number = post.pk
+        log2.user_num = post.user.id
         log2.created_at = post.created_at
         log2.save()
     else:
@@ -1461,6 +1483,7 @@ def add_avengers_log(request, pk):
         log2.media1 = post.media1
         log2.media2 = post.media2
         log2.number = post.pk
+        log2.user_num = post.user.id
         log2.created_at = post.created_at
         log2.save()
 
@@ -1500,10 +1523,9 @@ def add_experiences_log(request, pk):
     count.save()
 
     # ログの作成
-    log = ExperiencesLog.objects.filter(user=request.user).filter(pk=pk)
+    log = ExperiencesLog.objects.filter(user=request.user).filter(pk=pk).count()
     log2 = ExperiencesLog()
-    if log.exists:
-        log.delete()
+    if log > 1:
         log2.user = request.user
         log2.avengers = post
         log2.title = post.title
@@ -1511,6 +1533,7 @@ def add_experiences_log(request, pk):
         log2.photo = post.photo
         log2.video = post.video
         log2.number = post.pk
+        log2.user_num = post.user.id
         log2.created_at = post.created_at
         log2.save()
     else:
@@ -1521,6 +1544,7 @@ def add_experiences_log(request, pk):
         log2.photo = post.photo
         log2.video = post.video
         log2.number = post.pk
+        log2.user_num = post.user.id
         log2.created_at = post.created_at
         log2.save()
 

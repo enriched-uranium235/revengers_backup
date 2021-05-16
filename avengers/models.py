@@ -468,6 +468,7 @@ class AvengersLog(models.Model):
     media1 = models.FileField(verbose_name='音声', blank=True, null=True)
     media2 = models.FileField(verbose_name='動画', blank=True, null=True)
     number = models.IntegerField(verbose_name='整理番号', default=0)
+    user_num = models.IntegerField(verbose_name='投稿者ID', default=0)
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
 
     class Meta:
@@ -485,6 +486,7 @@ class ExperiencesLog(models.Model):
     photo = models.ImageField(verbose_name='写真', blank=True, null=True)
     video = models.FileField(verbose_name='動画', blank=True, null=True)
     number = models.IntegerField(verbose_name='整理番号', default=0)
+    user_num = models.IntegerField(verbose_name='投稿者ID', default=0)
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
 
     class Meta:

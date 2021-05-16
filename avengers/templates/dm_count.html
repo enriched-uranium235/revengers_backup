@@ -1,0 +1,5 @@
+{% if dm_count > 0 %}
+    <li><a href="{% url 'avengers:dm_list' %}" class="btn btn-sm btn-outline-primary mb-1 mt-1 badge1" data-badge="{{ dm_count }}">送られたダイレクトメッセージ</a></li>
+{% else %}
+    <li><a href="{% url 'avengers:dm_list' %}" class="btn btn-sm btn-outline-primary mb-1 mt-1">送られたダイレクトメッセージ</a></li>
+{% endif %}

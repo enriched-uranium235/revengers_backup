@@ -5,6 +5,29 @@
 
 {% block active_diary_list %}active{% endblock %}
 
+{% block head %}
+<style>
+    .badge1 {
+        position:relative;
+    }
+
+    .badge1[data-badge]:after {
+        content:attr(data-badge);
+        position:absolute;
+        top:-10px;
+        right:-10px;
+        font-size:.7em;
+        background:green;
+        color:white;
+        width:18px;height:18px;
+        text-align:center;
+        line-height:18px;
+        border-radius:50%;
+        box-shadow:0 0 1px #333;
+    }
+</style>
+{% endblock %}
+
 {% block header %}
 <header class="forest">
     <div class="container">
@@ -31,7 +54,8 @@
             <li><a class="btn btn-success" href="{% url 'avengers:profile' %}" style="padding:0.3rem;border-radius:0.3rem;">プロフィール詳細</a></li>
             <li><a class="btn btn-sm btn-outline-primary" href="{% url 'avengers:user-follows' user.username %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">フォローリスト</a></li>
             <li><a class="btn btn-sm btn-outline-primary" href="{% url 'avengers:user-followers' user.username %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">フォロワーリスト</a></li>
-            <li><a class="btn btn-secondary mt-3" href="{% url 'avengers:notice_list' %}" style="padding:0.3rem;border-radius:0.3rem;">運営からのお知らせ</a></li>
+            {% include 'dm_count.html' %}
+            {% include 'notice_count.html' %}
             <li><a class="btn btn-secondary" href="{% url 'avengers:terms_of_service' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">利用規約確認</a></li>
             <li><a class="btn btn-secondary" href="{% url 'avengers:privacy_policy' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">プライバシーポリシー確認</a></li>
         </ul>
@@ -50,7 +74,8 @@
             <li><a class="btn btn-success" href="{% url 'profile' %}" style="padding:0.3rem;border-radius:0.3rem;">プロフィール編集</a></li>
             <li><a class="btn btn-sm btn-outline-primary" href="{% url 'avengers:user-follows' user.username %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">フォローリスト</a></li>
             <li><a class="btn btn-sm btn-outline-primary" href="{% url 'avengers:user-followers' user.username %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">フォロワーリスト</a></li>
-            <li><a class="btn btn-secondary mt-3" href="{% url 'avengers:notice_list' %}" style="padding:0.3rem;border-radius:0.3rem;">運営からのお知らせ</a></li>
+            {% include 'dm_count.html' %}
+            {% include 'notice_count.html' %}
             <li><a class="btn btn-secondary" href="{% url 'avengers:terms_of_service' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">利用規約確認</a></li>
             <li><a class="btn btn-secondary" href="{% url 'avengers:privacy_policy' %}" style="padding:0.3rem;border-radius:0.3rem;margin-top:0.3rem;">プライバシーポリシー確認</a></li>
         </ul>

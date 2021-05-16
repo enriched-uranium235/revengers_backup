@@ -3,6 +3,18 @@
 
 {% block title %}選択したユーザーにダイレクトメッセージ | Vengeancers{% endblock %}
 
+{% block head %}
+<style>
+    #id_is_read {
+        display: none !important;
+    }
+
+    label[for="id_is_read"] {
+        display:none !important;
+    }
+</style>
+{% endblock %}
+
 {% block header %}
 <header class="forest">
     <div class="container">

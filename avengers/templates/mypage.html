@@ -6,6 +6,29 @@
 
 {% block active_message_list %}active{% endblock %}
 
+{% block head %}
+<style>
+    .badge1 {
+        position:relative;
+    }
+
+    .badge1[data-badge]:after {
+        content:attr(data-badge);
+        position:absolute;
+        top:-10px;
+        right:-10px;
+        font-size:.7em;
+        background:green;
+        color:white;
+        width:18px;height:18px;
+        text-align:center;
+        line-height:18px;
+        border-radius:50%;
+        box-shadow:0 0 1px #333;
+    }
+</style>
+{% endblock %}
+
 {% block header %}
 <header class="forest">
     <div class="container">
@@ -33,7 +56,7 @@
                 </div>
                 <hr>
                 <div class="clearfix text-center">
-                    <a href="{% url 'avengers:dm_list' %}" class="btn btn-sm btn-outline-primary mb-1">送られたダイレクトメッセージを確認する</a>
+                    {% include 'dm_count2.html' %}
                     <a href="{% url 'avengers:dm_send_list' %}" class="btn btn-sm btn-outline-primary mb-1">送ったダイレクトメッセージを確認する</a>
                 </div>
                 <hr>
